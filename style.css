@@ -7,21 +7,101 @@
 }
 
 :root {
-  --color-highlight: #0038ff;
+  --color-highlight: #e23e57;
+  --color-text: #222;
+  --color-text-secondary: #444;
+  --color-background: #eee;
 }
 
 body {
-  background-color: #eee;
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .container {
+  width: min(800px, calc(100vw - 2rem));
+  margin-inline: auto;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* nav */
+.banner {
+  background-color: #e23e57;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.4rem;
+}
+
+.list-item a {
+  transition: all 0.4s ease-in-out;
+}
+
+.list-item a:hover {
+  background-color: white;
+  color: var(--color-highlight);
+}
+
+.nav-list .list-item:first-child {
+  margin-right: auto;
+}
+
+.list-item:first-child a {
+  padding: 0;
+}
+
+.list-item img {
+  width: 3.5rem;
+}
+
+.list-item a {
+  padding: 0.6rem 0.8rem;
+}
+
+/* hero */
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: var(--color-text);
+}
+
+.hero::before {
+  content: " ";
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-image: url("assets/altumcode-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0.2;
+}
+
+.slogan {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(800px, calc(100vw - 2rem));
   height: 100vh;
-  margin-inline: auto;
+  color: white;
 }
 
 h1 {
@@ -29,11 +109,91 @@ h1 {
   font-weight: normal;
 }
 
-.container p {
+.hero p {
   font-size: 3rem;
   font-weight: bold;
 }
 
 .highlight {
+  color: var(--color-highlight);
+}
+
+/* books */
+.gallery {
+  margin: 4rem 0;
+}
+
+h2 {
+  text-align: center;
+  margin: 2rem 0;
+  text-decoration: underline;
+  text-decoration-color: var(--color-highlight);
+}
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.books > a {
+  flex: 1;
+  color: var(--color-text);
+}
+
+.book {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 4px 4px #eee;
+}
+
+.book .info {
+  padding: 1rem;
+}
+
+.book h3 {
+  padding: 0.4rem 0;
+}
+
+.book p {
+  color: var(--color-text-secondary);
+}
+
+.cover img {
+  border-radius: 1rem 1rem 0 0;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* subscribe newsletter */
+.subscribe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-text);
+  padding: 4rem 0;
+}
+
+/* footer */
+footer {
+  background-color: var(--color-background);
+  margin: 4rem 0;
+}
+
+.social-media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.social-media li a {
+  padding: 1rem;
+  color: var(--color-text);
+  transition: all 0.4s ease-in-out;
+}
+
+.social-media li a:hover {
   color: var(--color-highlight);
 }
