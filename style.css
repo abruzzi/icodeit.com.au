@@ -13,6 +13,10 @@
   --color-background: #eee;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
@@ -117,6 +121,26 @@ h1 {
 }
 
 .highlight {
+  color: var(--color-highlight);
+}
+
+.cta {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  border: 4px solid white;
+}
+
+.cta:hover {
+  background-color: white;
   color: var(--color-highlight);
 }
 
