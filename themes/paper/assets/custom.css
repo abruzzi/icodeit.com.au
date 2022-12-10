@@ -1,0 +1,32 @@
+/* Place custom css here. */
+
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#subscribe {
+  margin-top: 5rem;
+}
+
+.headline {
+  font-family: 'Ubuntu', cursive;
+  font-size: 1.5rem;
+}
+
+.featured {
+  padding-bottom: 2rem;
+}
+
+.dark .subscribe form {
+  background-color: rgb(15, 15, 15) !important;
+}
+
+.dark .subscribe .formkit-subheader, .formkit-header {
+  color: #d4d4d4 !important;
+}
+
+.dark .formkit-input {
+  color: #d4d4d4 !important;
+  background-color: rgb(15, 15, 15) !important;
+}

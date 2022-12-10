@@ -1,0 +1,16 @@
+baseURL = 'https://icodeit.com.au/'
+languageCode = 'en-us'
+title = 'I Code It'
+theme = "paper"
+
+[params]
+  # color style
+  color = 'linen'                 # linen, wheat, gray, light
+
+  # header social icons
+  twitter = 'JuntaoQiu'     # twitter.com/YOUR_TWITTER_ID
+  github = 'abruzzi'       # github.com/YOUR_GITHUB_ID
+
+  # home page profile
+  name = 'Juntao Qiu'
+  bio = 'Hey, my name is Juntao. I am a developer, a YouTuber and an author. I help people write better code.'
