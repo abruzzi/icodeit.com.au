@@ -31,15 +31,12 @@
   }}
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');
+  </style>
   <style> @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'); </style>
   
-  {{ if and .IsPage (not site.Params.disableHLJS) }}
-  <script
-    defer
-    src="{{ `highlight.min.js` | absURL }}"
-    onload="hljs.initHighlightingOnLoad();"
-  ></script>
-  {{ end }}
+
 
   <!-- Preload -->
   {{ $dark_icon := "theme.png" }} {{ if site.Params.monoDarkIcon }} {{

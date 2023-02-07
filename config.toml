@@ -6,6 +6,7 @@ theme = "paper"
 [params]
   # color style
   color = 'linen'                 # linen, wheat, gray, light
+  disableHLJS = true
 
   # header social icons
   twitter = 'JuntaoQiu'     # twitter.com/YOUR_TWITTER_ID

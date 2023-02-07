@@ -9,9 +9,31 @@ body {
   margin-top: 5rem;
 }
 
+.headline-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.headline-container .bio {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 4rem;
+  border: 4px solid deeppink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headline-container img {
+  border-radius: 50%;
+  width: 100%;
+}
+
 .headline {
   font-family: 'Ubuntu', cursive;
   font-size: 1.5rem;
+  flex: 1;
 }
 
 .featured {
