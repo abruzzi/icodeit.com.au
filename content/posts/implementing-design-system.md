@@ -1,7 +1,8 @@
 ---
 title: "Implementing Design System"
-description: "So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience."
+description: "So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation..."
 date: 2022-11-19T17:15:59+11:00
+cover: "/posts/images/implementing-design-system/cypress-vr.png"
 ---
 
 ## What is a design system?

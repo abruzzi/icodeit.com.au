@@ -2,6 +2,7 @@
 title: "Join My 7 Day React Clean Code Challenge"
 date: 2022-12-29T14:47:22+11:00
 description: "Are you looking to start your React journey with React in 2023, or do you want to sharpen your React techniques to the next level? Join my 7-Day Challenge to learn all these with a project simulation!"
+cover: "/posts/images/7-day-react-clean-code-challenge/cover.png"
 ---
 
 How is your new year resolution for 2022 going? Don’t worry if you missed items on it as you still have 2023. Join me on a free [7-Day React Clean Code Challenge](https://icodeit.ck.page/7-day-react-clean-code) to learn to write better React code with some practical techniques and pro tips.

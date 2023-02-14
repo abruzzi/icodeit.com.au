@@ -2,7 +2,7 @@
 title: "Test-Driven Development Mini Course"
 date: 2023-02-01T17:09:59+11:00
 description: "The Mini-Course on React and Test-Driven Development will provide you with the skills and knowledge to build robust, scalable and maintainable React applications."
-cover: '/posts/images/tdd-mini-course/weather.png'
+cover: '/posts/images/tdd-mini-course/cover.png'
 ---
 
 ## Introduction to the mini-course

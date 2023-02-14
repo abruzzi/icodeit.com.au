@@ -1,7 +1,8 @@
 ---
 title: "The Pragmatic Guide for React Network Programming"
 date: 2022-12-16T21:52:12+11:00
-description: "Fetching data from a remote server can be challenging, especially when you have to consider cache, re-fetch, error handling, timeout etc. As well as mixing them with React view states. I'm trying to explain how react-query can simplify the work and relieve the pain a bit."
+description: "Fetching data from a remote server can be challenging, especially when you have to consider cache, re-fetch, error handling, timeout etc..."
+cover: "/posts/images/the-pragmatic-guide-for-react-network-programming/cover.png"
 ---
 
 In this article, I want to share some pragmatic tips for writing better React applications that involve network requests, like, every React application. I will start with the challenges we as developers are facing in dealing with network requests and try to separate these challenges out of the React build views, encapsulate the monster into a cage (into a hook), and finally use `react-query` to simplify as a final touch.

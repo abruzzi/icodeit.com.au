@@ -1,9 +1,8 @@
 ---
 title: "If I Could Only Teach One Thing to a Beginner Developer"
-description: "A few weeks ago, I got an interesting idea when I was writing a blog post about how to abstract your code to make it easier to reuse. I wanted to know what other developers think is the most important principle they would teach a newbie developer and why they would choose that design principle.
-"
+description: "A few weeks ago, I got an interesting idea when I was writing a blog post about how to abstract your code to make it easier to reuse..."
 date: 2022-12-01T15:46:12+11:00
-draft: false
+cover: "/posts/images/if-i-could-only-teach-one-thing-to-a-beginner-developer/cover.png"
 ---
 
 A few weeks ago, I got an interesting idea when I was writing a blog post about how to [abstract your code](https://itnext.io/how-to-write-more-reusable-code-73f936283eff) to make it easier to reuse. I wanted to know what other developers think is the most important principle they would teach a newbie developer and why they would choose that design principle.

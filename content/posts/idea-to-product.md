@@ -1,8 +1,8 @@
 ---
 title: "A story: from idea to product"
-description: "Undoubtedly, Covid-19 has, in many ways, affected our lives profoundly. Mandatory face masks when you go out for a coffee, social distancing in public, How to wash your hands in 6 steps, or the negative mental impacts since physical isolation because of working from home and so on. Those changes are shaping our life."
+description: "As the saying goes: all great things have small beginnings. Even the most complicated product starts with a small and simple idea..."
 date: 2020-10-28T15:46:12+11:00
-draft: false
+cover: "/posts/images/idea-to-product/poster-dark-mode.png"
 ---
 
 # A story: from idea to product

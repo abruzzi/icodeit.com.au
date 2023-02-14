@@ -1,7 +1,8 @@
 ---
 title: "React Clean Code -  mocking network scenarios"
 date: 2022-12-21T15:17:49+11:00
-description: "Handling network requests is complicated. There are too many cases you have to consider on top of the asynchronised process. And testing these code can be even more challenging. I'll demonstrate how to use mirage.js to simplify the network mocking process, as well as how to use react-query to implement the application."
+description: "Handling network requests is complicated. There are too many cases you have to consider on top of the asynchronised process. And testing these code can be even more challenging..."
+cover: "/posts/images/react-clean-code-network-mocking/statechart.png"
 ---
 
 In my book [Maintainable React](https://leanpub.com/maintainable-react), I introduced a feature I had worked on a while ago. That feature is interesting in many ways, and I selected it as it involves several states in the view - which is one of the reasons ***why building UI is complicated***.

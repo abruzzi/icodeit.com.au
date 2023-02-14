@@ -51,6 +51,10 @@ a.featured-article-container {
   margin-block: 0;
 }
 
+.cover-image {
+  margin-block: 0;
+}
+
 .dark .subscribe form {
   background-color: rgb(15, 15, 15) !important;
 }
@@ -67,4 +71,21 @@ a.featured-article-container {
 
 .subscribe .formkit-form {
   max-width: 960px !important;
+}
+
+h1 {
+  margin-block: 1rem;
+  text-decoration: 4px underline #e23e57;
+}
+
+.subscribe-heading {
+  margin-top: 2rem;
+}
+
+.article-container {
+  text-decoration: none;
+}
+
+.article-container p {
+  font-weight: lighter;
 }
