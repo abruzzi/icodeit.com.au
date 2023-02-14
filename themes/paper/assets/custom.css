@@ -1,6 +1,5 @@
 /* Place custom css here. */
 
-
 body {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -40,15 +39,32 @@ body {
   padding-bottom: 2rem;
 }
 
+a.featured-article-container {
+  text-decoration: none;
+}
+
+.featured-article-container img {
+  margin-block: 0;
+}
+
+.featured-article-container figure {
+  margin-block: 0;
+}
+
 .dark .subscribe form {
   background-color: rgb(15, 15, 15) !important;
 }
 
-.dark .subscribe .formkit-subheader, .formkit-header {
+.dark .subscribe .formkit-subheader,
+.formkit-header {
   color: #d4d4d4 !important;
 }
 
 .dark .formkit-input {
   color: #d4d4d4 !important;
   background-color: rgb(15, 15, 15) !important;
+}
+
+.subscribe .formkit-form {
+  max-width: 960px !important;
 }

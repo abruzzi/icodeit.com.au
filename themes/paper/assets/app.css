@@ -28,6 +28,10 @@
   }
 }
 
+.max-w-3xl {
+  max-width: 60rem;
+}
+
 @layer components {
   .btn {
     @apply rounded-full bg-black py-4 px-6 text-sm text-white no-underline shadow-lg duration-100 active:scale-95 dark:bg-white dark:text-black;

@@ -34,10 +34,20 @@
   {{ if site.Params.name }}
   <div class="headline-container">
     <div class="bio">
-      <img src="/posts/images/about/juntao.qiu.avatar.jpg" alt="Juntao Qiu Avatar">
+      <img
+        src="/posts/images/about/juntao.qiu.avatar.jpg"
+        alt="Juntao Qiu Avatar"
+      />
     </div>
-    <div class="break-words headline">
-      Hey, my name is Juntao. I am a developer, a <a href="https://www.youtube.com/@icodeit.juntao" target="_blank">YouTuber</a> and <a href="https://leanpub.com/u/juntao" target="_blank">an author</a>. I help people write better code. <a href="#subscribe">Subscribe to my newsletter</a> to get my latest articles and videos.
+    <div class="headline break-words">
+      Hey, my name is Juntao. I am a developer, a
+      <a href="https://www.youtube.com/@icodeit.juntao" target="_blank"
+        >YouTuber</a
+      >
+      and <a href="https://leanpub.com/u/juntao" target="_blank">an author</a>.
+      I help people write better code.
+      <a href="#subscribe">Subscribe to my newsletter</a> to get my latest
+      articles and videos.
     </div>
   </div>
   {{ end }}
@@ -45,17 +55,113 @@
 {{ end }}<!---->
 
 <div class="featured">
-  <h1>Featured Posts</h1>
-  <ul>
-    <li><a href="https://itnext.io/clean-code-takes-priority-choosing-readability-over-speed-9f467b9d1af3" target="_blank">Clean Code Takes Priority: Choosing Readability Over Speed</a></li>
-    <li><a href="https://itnext.io/the-refactoring-of-the-very-efficient-code-from-dutch-digid-app-ac1b4ec5a2e2" target="_blank">The refactoring of the "Very efficient Code" from Dutch DigiD App</a></li>
-    <li><a href="https://juntao-qiu.medium.com/7-react-clean-code-tips-you-should-know-846b8108fc46" target="_blank">7 React Clean Code Tips You Should Know</a></li>
-    <li><a href="https://itnext.io/10-refactorings-to-boost-your-clean-code-skills-3a1e142d63f3" target="_blank">10 Refactorings to Boost your Clean Code Skills</a></li>
-  </ul>  
+  <h1>Featured Articles</h1>
+
+  <section>
+    <div
+      class="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
+    >
+      <div
+        class="rounded bg-white shadow-lg shadow-gray-200 duration-300 hover:-translate-y-1 dark:bg-gray-800 dark:shadow-gray-900"
+      >
+        <a
+          _href="https://itnext.io/the-refactoring-of-the-very-efficient-code-from-dutch-digid-app-ac1b4ec5a2e2"
+          target="_blank"
+          class="featured-article-container cursor-pointer"
+        >
+          <figure>
+            <img
+              src="/posts/images/featured/efficient-code-refactoring.png"
+              class="h-64 w-full rounded-t object-cover"
+            />
+            <figcaption class="p-4">
+              <h5
+                class="mb-4 text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300"
+              >
+                The refactoring of the "Very efficient Code" from Dutch DigiD
+                App
+              </h5>
+
+              <!-- Description -->
+              <small class="leading-5 text-gray-500 dark:text-gray-400">
+                I found a very interesting code snippet today on a programmer
+                humour channel on Reddit (Very efficient Code), and it turned
+                out more than a joke...
+              </small>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+
+      <div
+        class="rounded bg-white shadow-lg shadow-gray-200 duration-300 hover:-translate-y-1 dark:bg-gray-800 dark:shadow-gray-900"
+      >
+        <a
+          _href="https://itnext.io/clean-code-takes-priority-choosing-readability-over-speed-9f467b9d1af3"
+          target="_blank"
+          class="featured-article-container cursor-pointer"
+        >
+          <figure>
+            <img
+              src="/posts/images/featured/coding.jpg"
+              class="h-64 w-full rounded-t object-cover"
+            />
+
+            <figcaption class="p-4">
+              <h5
+                class="mb-4 text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300"
+              >
+                Clean Code Takes Priority: Choosing Readability Over Speed
+              </h5>
+
+              <!-- Description -->
+              <small class="leading-5 text-gray-500 dark:text-gray-400">
+                There is a particular comment about the refactored version
+                having too much abstraction and can be less performant than the
+                original approach...
+              </small>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+
+      <div
+        class="rounded bg-white shadow-lg shadow-gray-200 duration-300 hover:-translate-y-1 dark:bg-gray-800 dark:shadow-gray-900"
+      >
+        <a
+          _href="https://juntao-qiu.medium.com/7-react-clean-code-tips-you-should-know-846b8108fc46"
+          target="_blank"
+          class="featured-article-container cursor-pointer"
+        >
+          <figure>
+            <img
+              src="/posts/images/featured/common-refactorings-refactorings.png"
+              class="h-64 w-full rounded-t object-cover"
+            />
+
+            <figcaption class="p-4">
+              <h5
+                class="mb-4 text-lg font-bold leading-relaxed text-gray-800 dark:text-gray-300"
+              >
+                7 React Clean Code Tips You Should Know
+              </h5>
+
+              <!-- Description -->
+              <small class="leading-5 text-gray-500 dark:text-gray-400">
+                In this article, I've summarised seven practical tips for you to
+                write maintainable React code...
+              </small>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
 
-{{ end }}
+<h1>Blog posts</h1>
 
+{{ end }}
 <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
   <h2 class="!my-0 pb-1 !leading-none">{{ .Title }}</h2>
   <p>{{ .Description }}</p>
@@ -80,8 +186,14 @@
 </nav>
 {{ end }}<!---->
 
+<h1>Subscribe my newsletter</h1>
+
 <div class="subscribe" id="subscribe">
-  <script async data-uid="63029542b9" src="https://icodeit.ck.page/63029542b9/index.js"></script>
+  <script
+    async
+    data-uid="63029542b9"
+    src="https://icodeit.ck.page/63029542b9/index.js"
+  ></script>
 </div>
 
 {{ end }}
