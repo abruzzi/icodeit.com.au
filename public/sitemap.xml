@@ -1,1 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://icodeit.com.au/</loc><lastmod>2022-12-01T15:46:12+11:00</lastmod></url><url><loc>https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/</loc><lastmod>2022-12-01T15:46:12+11:00</lastmod></url><url><loc>https://icodeit.com.au/posts/</loc><lastmod>2022-12-01T15:46:12+11:00</lastmod></url><url><loc>https://icodeit.com.au/posts/implementing-design-system/</loc><lastmod>2022-11-19T17:15:59+11:00</lastmod></url><url><loc>https://icodeit.com.au/posts/idea-to-product/</loc><lastmod>2020-10-28T15:46:12+11:00</lastmod></url><url><loc>https://icodeit.com.au/posts/levels-of-abs/</loc><lastmod>2020-07-10T23:11:16+11:00</lastmod></url><url><loc>https://icodeit.com.au/categories/</loc></url><url><loc>https://icodeit.com.au/tags/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://icodeit.com.au/</loc>
+    <lastmod>2023-09-07T17:09:59+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/</loc>
+    <lastmod>2023-09-07T17:09:59+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/the-2nd-edition-of-atdd/</loc>
+    <lastmod>2023-09-07T17:09:59+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/tdd-mini-course/</loc>
+    <lastmod>2023-02-01T17:09:59+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/7-day-react-clean-code-challenge/</loc>
+    <lastmod>2022-12-29T14:47:22+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/react-clean-code-network-mocking/</loc>
+    <lastmod>2022-12-21T15:17:49+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/the-pragmatic-guide-for-react-network-programming/</loc>
+    <lastmod>2022-12-16T21:52:12+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/</loc>
+    <lastmod>2022-12-01T15:46:12+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/implementing-design-system/</loc>
+    <lastmod>2022-11-19T17:15:59+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/idea-to-product/</loc>
+    <lastmod>2020-10-28T15:46:12+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/posts/levels-of-abs/</loc>
+    <lastmod>2020-07-10T23:11:16+11:00</lastmod>
+  </url><url>
+    <loc>https://icodeit.com.au/categories/</loc>
+  </url><url>
+    <loc>https://icodeit.com.au/tags/</loc>
+  </url>
+</urlset>

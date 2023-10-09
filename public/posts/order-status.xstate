@@ -1,0 +1,69 @@
+import { createMachine, assign } from 'xstate';
+
+interface Context {
+  retries: number;
+}
+
+const shouldRetry = (context: Context) => {
+  return context.retries < 3;
+};
+
+
+const fetchMachine = createMachine<Context>({
+    id: 'Order Status',
+    initial: 'idle',
+    
+    context: {
+      retries: 0
+    },
+    
+    states: {
+      idle: {
+        on: {
+          FETCH: 'loading'
+        }
+      },
+      
+      loading: {
+        on: {
+          READY: 'ready',
+          NOT_READY: [
+            {
+              target: 'failure',
+              cond: shouldRetry
+            },
+            {
+              target: 'error'
+            }
+          ]
+        }
+      },
+      
+      ready: {
+        on: {
+          NOTIFY: 'notified',
+          ERROR: 'error'
+        }
+      },
+      
+      notified: {
+        type: 'final'  
+      },
+      
+      error: {
+        type: 'final'
+      },
+      
+      failure: {
+        on: {
+          RETRY: {
+            target: 'loading',
+            actions: assign({
+              retries: (context, event) => context.retries + 1
+            })
+          }
+        }
+      }
+    }
+});
+  

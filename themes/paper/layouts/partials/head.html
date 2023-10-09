@@ -27,13 +27,17 @@
   <!---->
   {{ $custom_css := resources.Get "custom.css" }}
   <!---->
-  {{ $css := slice $main_css $custom_css | resources.Concat "main.css" | minify
+  {{ $hl_css := resources.Get "icodeit-hl.css" }}
+  <!---->
+  {{ $css := slice $main_css $custom_css $hl_css | resources.Concat "main.css" | minify
   }}
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
   </style>
 
   <!-- Preload -->

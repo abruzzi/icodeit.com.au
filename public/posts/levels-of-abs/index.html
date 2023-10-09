@@ -1,218 +1,589 @@
-<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Different Levels of Abstraction - I Code It</title><meta name=theme-color><meta name=description content="The ability of abstracting should be the most fundamental skill a developer should have, and I can&rsquo;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.
-However, since every abstraction omits some details and emphasises some other features, sometimes it can block us from understanding the problem (I guess our brains prefer tangible things more)."><meta name=author content><link rel="preload stylesheet" as=style href=https://icodeit.com.au/main.min.css><style>@import 'https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'</style><script defer src=https://icodeit.com.au/highlight.min.js onload=hljs.initHighlightingOnLoad()></script>
-<link rel=preload as=image href=https://icodeit.com.au/theme.png><link rel=preload as=image href=https://icodeit.com.au/twitter.svg><link rel=preload as=image href=https://icodeit.com.au/github.svg><link rel=icon href=https://icodeit.com.au/favicon.ico><link rel=apple-touch-icon href=https://icodeit.com.au/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Different Levels of Abstraction"><meta property="og:description" content="The ability of **abstracting** should be the most fundamental skill a developer should have, and I can't emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go."><meta property="og:type" content="article"><meta property="og:url" content="https://icodeit.com.au/posts/levels-of-abs/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-07-10T23:11:16+11:00"><meta property="article:modified_time" content="2020-07-10T23:11:16+11:00"><meta itemprop=name content="Different Levels of Abstraction"><meta itemprop=description content="The ability of **abstracting** should be the most fundamental skill a developer should have, and I can't emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go."><meta itemprop=datePublished content="2020-07-10T23:11:16+11:00"><meta itemprop=dateModified content="2020-07-10T23:11:16+11:00"><meta itemprop=wordCount content="2372"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Different Levels of Abstraction"><meta name=twitter:description content="The ability of **abstracting** should be the most fundamental skill a developer should have, and I can't emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go."></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://icodeit.com.au/>I Code It</a>
-<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
-<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/JuntaoQiu target=_blank></a>
-<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/abruzzi target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Different Levels of Abstraction</h1><div class="text-sm opacity-60"><time>Jul 10, 2020</time></div></header><section><p>The ability of <strong>abstracting</strong> should be the most fundamental skill a developer should have, and I can&rsquo;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.</p><p>However, since every abstraction omits some details and emphasises some other features, sometimes it can block us from understanding the problem (I guess our brains prefer tangible things more). And that&rsquo;s when examples jump in for help. In other words, during a creative process, either coding or designing we, on the one hand, need to extract concepts out of concrete examples, on the other hand, we need to exemplify concepts we extracted back to instances. <a href=https://en.wikipedia.org/wiki/Bret_Victor>Bret Victor</a> made a <a href=http://worrydream.com/LadderOfAbstraction/>great metaphor</a> about this process as going up and down a ladder - you need to go up to a higher level to have some overview and then back to the ground to test it. Only by combining those two you can understand the problem better and come up with better solutions.</p><p>Another interesting fact about abstraction is it has layers. Once we get rid of all the clutter details on the ground and have higher-level concepts, those abstractions turn to be the new details, and we can again build abstract concepts on top of them. That&rsquo;s why we can use <code>JavaScript</code> or <code>Python</code> to just resolve business problems without knowing the register address or the length of machine instructions, or how the memory is allocated or freed.</p><p>I know it sounds abstract already, but bear with me and have a look at a concrete example.</p><h3 id=some-context>Some context</h3><p>In this article, I&rsquo;m going to describe some patterns and refactor techniques by refactoring the test suite of a simulated project (using cypress). I will talk about some regular refactor tricks and nothing major, and I believe by seeing how to analyze and rewrite some test cases from <code>working code</code> to <code>concise</code> and <code>easy to understand/modify</code> is worthwhile, and hopefully can be fun as well. And I hope you can enjoy it.</p><p>It simulated a project I&rsquo;ve been part of last year. From the business perspective, the difficult of all the business rules and logic is mediocre, but technically there are lots of details that deserve some retrospections. The UI test suites in the project, after several rounds of refactoring, eventually reached somewhere I&rsquo;m pretty happy with, and it has been applying patterns we&rsquo;re going to talk about in this article.</p><p>The simulation here, however, is a service called <code>Questionnaire</code>, it uses some calculation engine at the backend to return some best-fit offers to the user, by asking some questions like roles, skill levels, technical stack, project preferences and so on. I&rsquo;ll leave the <code>recommendation system</code> in the backend along and only focus on data collecting in this article.</p><p>Note that some of the questions are dynamic. For instance, if the user answered <code>A</code> for question <code>Q1</code> then the following question could be <code>Q303</code>. And if they answered <code>B</code> instead, the following one will be <code>Q1024</code>. Which means there are many alternative paths in the UI, and each path is equally important(and each test should walk the path thoroughly until the result is calculated).</p><p><img src=/posts/images/levels-of-abs/ui.png alt></p><p>As you can see from the UI above, the <code>Questionnaire</code> has 3 steps, while in the real-world scenario, it could be 10+ steps, and each step has one or more questions. Some questions may depend on the answers in previous steps. Once all the required fields are collected, the user can proceed by clicking the <code>next</code> button.</p><h3 id=abstract-101---function>Abstract 101 - function</h3><p>From a functional test&rsquo;s point of view, treating each step as a standalone unit is reasonable. Each step has a few similar things to do:</p><ol><li>Verify the step <strong>title</strong></li><li>Fill out all the <strong>mandatory fields</strong></li><li>Click the <strong>Next</strong> button</li></ol><p><img src=/posts/images/levels-of-abs/english-section-example.png alt></p><p>We can test the first <code>Step</code> by using <code>cypress</code> APIs (let&rsquo;s assume all the <code>data-</code> attributes are all in-place already in the product code):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#39;Verify the basic information section&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;step-title&#34;]&#39;</span>).<span style=color:#a6e22e>contains</span>(<span style=color:#e6db74>&#39;Basic information&#39;</span>);
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;email-address&#34;] input&#39;</span>).<span style=color:#a6e22e>type</span>(<span style=color:#e6db74>&#39;juntao.qiu@gmail.com&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;button[data-test=&#34;next-button&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>So the second one is pretty similar: using <code>selector</code> to locate element on the page, and if an element is found we can simulate some user actions by <code>cypress</code> API:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#39;Verify the details section&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;step-title&#34;]&#39;</span>).<span style=color:#a6e22e>contains</span>(<span style=color:#e6db74>&#39;More details&#39;</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;ps-role&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-value=&#34;dev&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;developer&#34;] input[value=&#34;frontend&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;rating&#34;] [for=&#34;rating-4&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;button[data-test=&#34;next-button&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>If you compare the code <em>literally</em>, almost each line is unique, but you can <em>feel</em> there are some sort of duplications. And demolishing those duplications could improve the readability a lot. The easiest way to do this is <code>extract function</code>, for example, extract <em>verify step title</em> and <em>click next button</em> to respective functions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>checkStepTitle</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>title</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#34;[data-test=&#34;</span><span style=color:#a6e22e>step</span><span style=color:#f92672>-</span><span style=color:#a6e22e>title</span><span style=color:#e6db74>&#34;]&#34;</span>).<span style=color:#a6e22e>contains</span>(<span style=color:#a6e22e>title</span>);
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>goToNextStep</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#34;button[data-test=&#34;</span><span style=color:#a6e22e>next</span><span style=color:#f92672>-</span><span style=color:#a6e22e>button</span><span style=color:#e6db74>&#34;]&#34;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Then the test is simplified a bit like:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#39;Verify the basic information section&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>checkStepTitle</span>(<span style=color:#e6db74>&#34;Basic information&#34;</span>);
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;email-address&#34;] input&#39;</span>).<span style=color:#a6e22e>type</span>(<span style=color:#e6db74>&#39;juntao.qiu@gmail.com&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>goToNextStep</span>();  
-</span></span><span style=display:flex><span>});
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#34;Verify the details section&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>checkStepTitle</span>(<span style=color:#e6db74>&#34;More details&#34;</span>);
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;ps-role&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-value=&#34;dev&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;developer&#34;] input[value=&#34;frontend&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;rating&#34;] [for=&#34;rating-4&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>goToNextStep</span>();
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>You will <em>feel</em> there are some other duplicated code, and if you blur the details you can see the similarity:</p><p><img src=/posts/images/levels-of-abs/test-cases-snippet-case.png alt></p><p>When we extract all the <code>cypress</code> actions into a function:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>fillOutBasic</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;email-address&#34;] input&#39;</span>).<span style=color:#a6e22e>type</span>(<span style=color:#e6db74>&#39;juntao.qiu@gmail.com&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>And then define a <em>template function</em> to perform the following actions:</p><ol><li>Verify step title</li><li>Fill out the mandatory fields</li><li>Click next button</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>verifyStep</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>title</span>, <span style=color:#a6e22e>verifier</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>checkStepTitle</span>(<span style=color:#a6e22e>title</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifier</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>goToNextStep</span>();
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>By doing that our test can be simplified further into:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#34;Verify the basic information section&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;Basic information&#34;</span>, <span style=color:#a6e22e>fillOutBasic</span>);
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>And as well as the second one:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#34;Verify the details section&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;More details&#34;</span>, <span style=color:#a6e22e>fillOutDetails</span>);
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><h3 id=abstract-102---simplify-a-bit-more>Abstract 102 - Simplify a bit more</h3><p>As you can see above there are several branches for <code>step 2</code>: for developers, there are 3 questions required and for QA/BA there is only 1 mandatory question. We need more test cases to cover each branch:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>fillOutDetailsForDev</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;ps-role&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-value=&#34;dev&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;developer&#34;] input[value=&#34;frontend&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;rating&#34;] [for=&#34;rating-4&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>fillOutDetailsForQA</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;ps-role&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-value=&#34;qa&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>fillOutDetailsForBA</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;ps-role&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-value=&#34;ba&#34;]&#39;</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Because of those clutter/detailed code, plus all the <code>cypress</code> API like <code>cy.get</code> stuff make it difficult and indirect to understand the purpose behind each line of code. If we can somehow get rid of those noises, the clearness of the test could improve to a new level.</p><p>For example, if we have a group of <code>API</code>s like following to isolate all the DOM details:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>select</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>`[data-test=&#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>selector</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;]`</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>`[data-value=&#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>value</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;]`</span>).<span style=color:#a6e22e>click</span>();
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>checkbox</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>`[data-test=&#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>selector</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;] input[value=&#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>value</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;]`</span>).<span style=color:#a6e22e>check</span>();
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Then function <code>fillOutDetailsForDev</code> could be rewrite like:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>fillOutDetailsForDev</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#34;ps-role&#34;</span>, <span style=color:#e6db74>&#34;dev&#34;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#34;developer&#34;</span>, <span style=color:#e6db74>&#34;frontend&#34;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rating</span>(<span style=color:#e6db74>&#34;rating&#34;</span>, <span style=color:#e6db74>&#34;4&#34;</span>);
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>And <code>fillOutDetailsForQA</code> turns into:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>fillOutDetailsForQA</span> <span style=color:#f92672>=</span> () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#34;ps-role&#34;</span>, <span style=color:#e6db74>&#34;qa&#34;</span>);
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Although their amount of code is pretty similar, what we did here is separate business/test logic and the underlying <code>cypress</code> DOM APIs. If in the future we have to upgrade or change the UI library in product code, we don&rsquo;t have to touch anything in <code>test</code> logic above. Only the implementation of <code>select/checkbox</code> needs to be updated.</p><h3 id=exemplify-101---inline>Exemplify 101 - inline</h3><p>But if we look closely enough at functions like <code>fillOutDetailsForDev</code> and <code>fillOutDetailsForQA</code> extracted above, we can see that we kind of lose some flexibility. These <code>named functions</code> locked some actions down, and we may need more and more functions for different scenarios. Probably the anonymous functions fit more here. For example if we inline those <code>fillOutDetailsForDev</code> into anonymous function:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#34;Verify the details section for developer&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;More details&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#34;ps-role&#34;</span>, <span style=color:#e6db74>&#34;dev&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#34;developer&#34;</span>, <span style=color:#e6db74>&#34;frontend&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>rating</span>(<span style=color:#e6db74>&#34;rating&#34;</span>, <span style=color:#e6db74>&#34;4&#34;</span>);    
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>});
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#34;Verify the details section for QA&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;More details&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#34;ps-role&#34;</span>, <span style=color:#e6db74>&#34;qa&#34;</span>);
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>I suppose the test cases above are much better comparing to those who strongly tied to <code>cypress</code> API, and now each line of code has a more precise purpose, they&rsquo;re saying <em>what</em> needs to be done, other than <em>how</em> to do it.</p><p>And we can take a close look at a complete <code>User Journey</code> now in a test case (remember for the sake of simplicity only 3 steps here, but could be more in a real-world project).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#34;Verify the details section for developer&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;Basic information&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>input</span>(<span style=color:#e6db74>&#34;email-address&#34;</span>, <span style=color:#e6db74>&#34;juntao.qiu@gmail.com&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#34;assignment&#34;</span>, <span style=color:#e6db74>&#34;assigned&#34;</span>);
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;More details&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#34;ps-role&#34;</span>, <span style=color:#e6db74>&#34;dev&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#34;developer&#34;</span>, <span style=color:#e6db74>&#34;frontend&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>rating</span>(<span style=color:#e6db74>&#34;rating&#34;</span>, <span style=color:#e6db74>&#34;4&#34;</span>);    
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#e6db74>&#34;Project preferences&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#34;expectancy&#34;</span>, <span style=color:#e6db74>&#34;frontend&#34;</span>);
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>If you feel the same way as I am for those 3 lines of ```identical"` duplicated code, let&rsquo;s try another approach to demolish these duplications.</p><h3 id=abstract-201---code-and-data>Abstract 201 - code and data</h3><p>In most modern <code>functional programming languages</code>, the boundary between <code>data</code> and <code>code</code> is blurring, by using built-in functions like <code>eval/apply</code> developers can easily convert those two. Even if you can not implement <code>code is data</code> in your code, at least you can extract those volatile pieces into data or config(such as <code>selector</code>, question sequence definition, rearrange the order of questions etc), and ensure the stable part is treated differently as a framework.</p><p>For instance, in the scenario <code>Verify the details section for developer</code> discussed above, we can probably <em>rewrite</em> it as:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>steps</span>.<span style=color:#a6e22e>forEach</span>(<span style=color:#a6e22e>step</span> =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>verifyStep</span>(<span style=color:#a6e22e>step</span>.<span style=color:#a6e22e>title</span>, <span style=color:#a6e22e>step</span>.<span style=color:#a6e22e>verifier</span>)
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>in which the <code>steps</code> is defined as:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>steps</span> <span style=color:#f92672>=</span> [
-</span></span><span style=display:flex><span>  {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>title</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Basic information&#39;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>verifier</span><span style=color:#f92672>:</span> () =&gt; { <span style=color:#75715e>/*input, select, checkbox*/</span> }
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>  {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>title</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Basic information&#39;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>verifier</span><span style=color:#f92672>:</span> () =&gt; { <span style=color:#75715e>/*input, select, checkbox*/</span> }
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>];
-</span></span></code></pre></div><p>This way, we can separate those <code>logic</code> into a static config. Of course, the <code>verifier</code> is still dynamic (defined as a function). If we can introduce a mechanism to convert things like <code>checkbox("expectancy", "frontend")</code> into a static config, we can claim that data and code are completely split, and the benefit of it is that we don&rsquo;t have to touch any <code>code</code> if a <code>User Journey</code> need to be updated.</p><h4 id=a-user-journey>A User Journey</h4><p>Let&rsquo;s say we need to test a <code>user journey</code> defined as following steps:</p><ol><li>A user input email address</li><li>The user selects <code>beach</code> as the current project</li><li>The user rates him/her as a medium-level front end developer</li><li>And he/she wants to try <code>SRE</code> in the coming engagement</li></ol><p>And we can describe those input sequence as the following format:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>const</span> <span style=color:#960050;background-color:#1e0010>steps</span> <span style=color:#960050;background-color:#1e0010>=</span> [
-</span></span><span style=display:flex><span>  {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;title&#34;</span>: <span style=color:#e6db74>&#34;Basic information&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;fields&#34;</span>: [
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;input:email-address:abruzzi.dev@gmail.com&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;checkbox:assignment:assigned&#34;</span>,
-</span></span><span style=display:flex><span>    ]
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>  {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;title&#34;</span>: <span style=color:#e6db74>&#34;More details&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;fields&#34;</span>: [
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;select:ps-role:dev&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;checkbox:developer:frontend&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;rating:rating:4&#34;</span>,
-</span></span><span style=display:flex><span>    ]
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>  {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;title&#34;</span>: <span style=color:#e6db74>&#34;Project preferences&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;fields&#34;</span>: [
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;checkbox:expectancy:frontend&#34;</span>,
-</span></span><span style=display:flex><span>    ]
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>]<span style=color:#960050;background-color:#1e0010>;</span>
-</span></span></code></pre></div><p>And if we have a mapping function to interpret <code>fields</code> above as <code>operation</code> functions we extracted earlier, we can then <em>execute</em> those <code>config</code> eventually:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>executeCypressCommand</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>field</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>type</span>, <span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>field</span>.<span style=color:#a6e22e>split</span>(<span style=color:#e6db74>&#39;:&#39;</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>type</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;input&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>input</span>(<span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;checkbox&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>checkbox</span>(<span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;select&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>select</span>(<span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;rating&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>rating</span>(<span style=color:#a6e22e>selector</span>, <span style=color:#a6e22e>value</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>That means fields definition:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#e6db74>&#34;fields&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> [
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;input:email-address:abruzzi.dev@gmail.com&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;checkbox:assignment:assigned&#34;</span>,
-</span></span><span style=display:flex><span>]
-</span></span></code></pre></div><p>is translated into:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>input</span>(<span style=color:#e6db74>&#39;email-address&#39;</span>, <span style=color:#e6db74>&#39;abruzzi.dev@gmail.com&#39;</span>);
-</span></span><span style=display:flex><span><span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#39;assignment&#39;</span>, <span style=color:#e6db74>&#39;assigned&#39;</span>);
-</span></span></code></pre></div><p>and at runtime, <code>input</code> and <code>checkbox</code> will be interpret into underlying <code>cypress</code> instructions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;email-address&#34;] input&#39;</span>).<span style=color:#a6e22e>type</span>(<span style=color:#e6db74>&#39;abruzzi.dev@gmail.com&#39;</span>);
-</span></span><span style=display:flex><span><span style=color:#a6e22e>cy</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span>).<span style=color:#a6e22e>check</span>();
-</span></span></code></pre></div><p>This way, when a new <code>User Journey</code> is needed, the only change required is to add a <code>json</code> file. The <code>json</code> will be loaded and interpreted, and eventually be able to run in <code>browser</code> like so:</p><p><img src=/posts/images/levels-of-abs/output.gif alt></p><p>And it becomes effortless to add/modify/delete steps in any journey, and it&rsquo;s super easy to make sure tests are synced with the UI of product code as well.</p><p>If the idea of <strong>external</strong> all the test cases into <code>json</code> files looks radical, only utilise the extracted <strong>utility functions</strong> can improve the readability and reduce the dependence to the underlying DOM APIs.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>verifySection</span>(<span style=color:#e6db74>&#39;Basic information&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>input</span>(<span style=color:#e6db74>&#39;email-address&#39;</span>, <span style=color:#e6db74>&#39;abruzzi.dev@gmail.com&#39;</span>);
-</span></span><span style=display:flex><span>	<span style=color:#a6e22e>checkbox</span>(<span style=color:#e6db74>&#39;assignment&#39;</span>, <span style=color:#e6db74>&#39;assigned&#39;</span>);
-</span></span><span style=display:flex><span>});
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>verifySection</span>(<span style=color:#e6db74>&#39;More details&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>select</span>(<span style=color:#e6db74>&#39;ps-role&#39;</span>, <span style=color:#e6db74>&#39;qa&#39;</span>);
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><h3 id=abstract-202---user-cases>Abstract 202 - User cases</h3><p>We&rsquo;ve already done a lot, from extracting reusable functions to a highly abstracted, domain-specific API, and those API in large extent aligns with the language shared by both developers and people who write tests.</p><p>If we inspect those test cases:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#39;explore journey for developers&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>runJourney</span>(<span style=color:#a6e22e>developerJourney</span>)
-</span></span><span style=display:flex><span>});
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>it</span>(<span style=color:#e6db74>&#39;explore journey for qas&#39;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>runJourney</span>(<span style=color:#a6e22e>qaJourney</span>);
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>You can find that they are duplicated code in some way, do you still remember the last refactor we did above for <code>steps</code>? A similar <code>forEach</code> can remove those duplications.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>journeys</span>.<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>journey</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>it</span>(<span style=color:#a6e22e>journey</span>.<span style=color:#a6e22e>title</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>runJourney</span>(<span style=color:#a6e22e>journey</span>);
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>No matter how many <code>User Journeys</code> we have, we don&rsquo;t have to change <code>code</code> any more. For loading different journeys, it&rsquo;s pretty straightforward to use <code>import/export</code> from <code>ES6</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>journey</span> <span style=color:#a6e22e>as</span> <span style=color:#a6e22e>qaJourney</span>} <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./qa&#34;</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>journey</span> <span style=color:#a6e22e>as</span> <span style=color:#a6e22e>baJourney</span>} <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./ba&#34;</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>journey</span> <span style=color:#a6e22e>as</span> <span style=color:#a6e22e>devJourney</span>} <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./developer&#34;</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>journey</span> <span style=color:#a6e22e>as</span> <span style=color:#a6e22e>devBeachJourney</span>} <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./developer-on-beach&#34;</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>journeys</span> <span style=color:#f92672>=</span> [
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>qaJourney</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>baJourney</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>devJourney</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>devBeachJourney</span>,
-</span></span><span style=display:flex><span>];
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>journeys</span>;
-</span></span></code></pre></div><p>Because every <code>journey</code> is a plain static <code>JSON</code>, for any further business logic changes, we only need to update those static files without worrying about regressions of the framework code.</p><h3 id=summary>Summary</h3><p>In this article, I introduced a few <code>how to abstract</code> methods/patterns through refactoring a test suite, and at the end, we isolated all the frequently-changing parts into separate `json&rsquo;s, and make the potential change easier and more centric.</p><p>We have done several forms of abstractions: from the fundamental way of abstract duplicate code into functions to wire logically related code into small functions and then introduce a high-order function to do a higher-level abstraction. Additionally, when some statements with similar structure appear, we can use <code>data+each/map</code> to separate code and data.</p><p>Just as the metaphor <a href=https://en.wikipedia.org/wiki/Bret_Victor>Bret Victor</a> talked about, the whole process may be not straight and could spiral in most cases. We rarely can see how the code will be at the very beginning, and in the middle of refactoring, there will be a lot of back and forth. Those back and forth is not only inevitable but also indispensable. In most cases, a good refactor needs a lot of attempts in different directions and several rounds to make the code into an ideal state. But you have to be very careful of this <code>ideal state</code> because it&rsquo;s normally unstable, and once the next breaking change comes, we have to apply the same principles again to <em>abstract and exemplify</em> in different levels to adopt these changes.</p></section><nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]"><a class="flex w-1/2 items-center p-6 pr-3 no-underline" href=https://icodeit.com.au/posts/idea-to-product/><span class=mr-1.5>←</span><span>A story: from idea to product</span></a></nav></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
-<a class=link href=https://icodeit.com.au/>I Code It</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
-<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Different Levels of Abstraction - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="The ability of abstracting should be the most fundamental skill a developer should have, and I can&rsquo;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.
+However, since every abstraction omits some details and emphasises some other features, sometimes it can block us from understanding the problem (I guess our brains prefer tangible things more)." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Different Levels of Abstraction" />
+<meta property="og:description" content="The ability of abstracting should be the most fundamental skill a developer should have, and I can&#39;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/levels-of-abs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-10T23:11:16+11:00" />
+<meta property="article:modified_time" content="2020-07-10T23:11:16+11:00" />
+
+  
+  <meta itemprop="name" content="Different Levels of Abstraction">
+<meta itemprop="description" content="The ability of abstracting should be the most fundamental skill a developer should have, and I can&#39;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go."><meta itemprop="datePublished" content="2020-07-10T23:11:16+11:00" />
+<meta itemprop="dateModified" content="2020-07-10T23:11:16+11:00" />
+<meta itemprop="wordCount" content="2372">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Different Levels of Abstraction"/>
+<meta name="twitter:description" content="The ability of abstracting should be the most fundamental skill a developer should have, and I can&#39;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go."/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">Different Levels of Abstraction</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Jul 10, 2020</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>The ability of <strong>abstracting</strong> should be the most fundamental skill a developer should have, and I can&rsquo;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.</p>
+<p>However, since every abstraction omits some details and emphasises some other features, sometimes it can block us from understanding the problem (I guess our brains prefer tangible things more). And that&rsquo;s when examples jump in for help. In other words, during a creative process, either coding or designing we, on the one hand, need to extract concepts out of concrete examples, on the other hand, we need to exemplify concepts we extracted back to instances. <a href="https://en.wikipedia.org/wiki/Bret_Victor">Bret Victor</a> made a <a href="http://worrydream.com/LadderOfAbstraction/">great metaphor</a> about this process as going up and down a ladder - you need to go up to a higher level to have some overview and then back to the ground to test it. Only by combining those two you can understand the problem better and come up with better solutions.</p>
+<p>Another interesting fact about abstraction is it has layers. Once we get rid of all the clutter details on the ground and have higher-level concepts, those abstractions turn to be the new details, and we can again build abstract concepts on top of them. That&rsquo;s why we can use <code>JavaScript</code> or <code>Python</code> to just resolve business problems without knowing the register address or the length of machine instructions, or how the memory is allocated or freed.</p>
+<p>I know it sounds abstract already, but bear with me and have a look at a concrete example.</p>
+<h3 id="some-context">Some context</h3>
+<p>In this article, I&rsquo;m going to describe some patterns and refactor techniques by refactoring the test suite of a simulated project (using cypress). I will talk about some regular refactor tricks and nothing major, and I believe by seeing how to analyze and rewrite some test cases from <code>working code</code> to <code>concise</code> and  <code>easy to understand/modify</code> is worthwhile, and hopefully can be fun as well.  And I hope you can enjoy it.</p>
+<p>It simulated a project I&rsquo;ve been part of last year. From the business perspective, the difficult of all the business rules and logic is mediocre, but technically there are lots of details that deserve some retrospections. The UI test suites in the project, after several rounds of refactoring, eventually reached somewhere I&rsquo;m pretty happy with, and it has been applying patterns we&rsquo;re going to talk about in this article.</p>
+<p>The simulation here, however, is a service called <code>Questionnaire</code>, it uses some calculation engine at the backend to return some best-fit offers to the user, by asking some questions like roles, skill levels, technical stack, project preferences and so on. I&rsquo;ll leave the <code>recommendation system</code> in the backend along and only focus on data collecting in this article.</p>
+<p>Note that some of the questions are dynamic. For instance, if the user answered <code>A</code> for question <code>Q1</code> then the following question could be <code>Q303</code>. And if they answered <code>B</code> instead, the following one will be <code>Q1024</code>. Which means there are many alternative paths in the UI, and each path is equally important(and each test should walk the path thoroughly until the result is calculated).</p>
+<p><img src="/posts/images/levels-of-abs/ui.png" alt=""></p>
+<p>As you can see from the UI above, the <code>Questionnaire</code> has 3 steps, while in the real-world scenario, it could be 10+ steps, and each step has one or more questions. Some questions may depend on the answers in previous steps. Once all the required fields are collected, the user can proceed by clicking the <code>next</code> button.</p>
+<h3 id="abstract-101---function">Abstract 101 - function</h3>
+<p>From a functional test&rsquo;s point of view, treating each step as a standalone unit is reasonable. Each step has a few similar things to do:</p>
+<ol>
+<li>Verify the step <strong>title</strong></li>
+<li>Fill out all the <strong>mandatory fields</strong></li>
+<li>Click the <strong>Next</strong> button</li>
+</ol>
+<p><img src="/posts/images/levels-of-abs/english-section-example.png" alt=""></p>
+<p>We can test the first <code>Step</code> by using <code>cypress</code> APIs (let&rsquo;s assume all the <code>data-</code> attributes are all in-place already in the product code):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Verify the basic information section&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;step-title&#34;]&#39;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="s1">&#39;Basic information&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;email-address&#34;] input&#39;</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;juntao.qiu@gmail.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;button[data-test=&#34;next-button&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>So the second one is pretty similar: using <code>selector</code> to locate element on the page, and if an element is found we can simulate some user actions by <code>cypress</code> API:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Verify the details section&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;step-title&#34;]&#39;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="s1">&#39;More details&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;ps-role&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-value=&#34;dev&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;developer&#34;] input[value=&#34;frontend&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;rating&#34;] [for=&#34;rating-4&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;button[data-test=&#34;next-button&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>If you compare the code <em>literally</em>, almost each line is unique, but you can <em>feel</em> there are some sort of duplications. And demolishing those duplications could improve the readability a lot. The easiest way to do this is <code>extract function</code>, for example, extract <em>verify step title</em> and <em>click next button</em> to respective functions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">checkStepTitle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;[data-test=&#34;</span><span class="nx">step</span><span class="o">-</span><span class="nx">title</span><span class="s2">&#34;]&#34;</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">goToNextStep</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;button[data-test=&#34;</span><span class="nx">next</span><span class="o">-</span><span class="nx">button</span><span class="s2">&#34;]&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Then the test is simplified a bit like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Verify the basic information section&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">checkStepTitle</span><span class="p">(</span><span class="s2">&#34;Basic information&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;email-address&#34;] input&#39;</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;juntao.qiu@gmail.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">goToNextStep</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Verify the details section&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">checkStepTitle</span><span class="p">(</span><span class="s2">&#34;More details&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;ps-role&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-value=&#34;dev&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;developer&#34;] input[value=&#34;frontend&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;rating&#34;] [for=&#34;rating-4&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">goToNextStep</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>You will <em>feel</em> there are some other duplicated code, and if you blur the details you can see the similarity:</p>
+<p><img src="/posts/images/levels-of-abs/test-cases-snippet-case.png" alt=""></p>
+<p>When we extract all the <code>cypress</code> actions into a function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fillOutBasic</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;email-address&#34;] input&#39;</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;juntao.qiu@gmail.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And then define a <em>template function</em> to perform the following actions:</p>
+<ol>
+<li>Verify step title</li>
+<li>Fill out the mandatory fields</li>
+<li>Click next button</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">verifyStep</span> <span class="o">=</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">verifier</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">checkStepTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifier</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">goToNextStep</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>By doing that our test can be simplified further into:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Verify the basic information section&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;Basic information&#34;</span><span class="p">,</span> <span class="nx">fillOutBasic</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>And as well as the second one:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Verify the details section&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;More details&#34;</span><span class="p">,</span> <span class="nx">fillOutDetails</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="abstract-102---simplify-a-bit-more">Abstract 102 - Simplify a bit more</h3>
+<p>As you can see above there are several branches for <code>step 2</code>: for developers, there are 3 questions required and for QA/BA there is only 1 mandatory question. We need more test cases to cover each branch:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fillOutDetailsForDev</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;ps-role&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-value=&#34;dev&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;developer&#34;] input[value=&#34;frontend&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;rating&#34;] [for=&#34;rating-4&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fillOutDetailsForQA</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;ps-role&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-value=&#34;qa&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fillOutDetailsForBA</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;ps-role&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-value=&#34;ba&#34;]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Because of those clutter/detailed code, plus all the <code>cypress</code> API like <code>cy.get</code> stuff make it difficult and indirect to understand the purpose behind each line of code. If we can somehow get rid of those noises, the clearness of the test could improve to a new level.</p>
+<p>For example, if we have a group of <code>API</code>s like following to isolate all the DOM details:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">select</span> <span class="o">=</span> <span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`[data-test=&#34;</span><span class="si">${</span><span class="nx">selector</span><span class="si">}</span><span class="sb">&#34;]`</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`[data-value=&#34;</span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb">&#34;]`</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">checkbox</span> <span class="o">=</span> <span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`[data-test=&#34;</span><span class="si">${</span><span class="nx">selector</span><span class="si">}</span><span class="sb">&#34;] input[value=&#34;</span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb">&#34;]`</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Then function <code>fillOutDetailsForDev</code> could be rewrite like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fillOutDetailsForDev</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">select</span><span class="p">(</span><span class="s2">&#34;ps-role&#34;</span><span class="p">,</span> <span class="s2">&#34;dev&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">checkbox</span><span class="p">(</span><span class="s2">&#34;developer&#34;</span><span class="p">,</span> <span class="s2">&#34;frontend&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">rating</span><span class="p">(</span><span class="s2">&#34;rating&#34;</span><span class="p">,</span> <span class="s2">&#34;4&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And <code>fillOutDetailsForQA</code> turns into:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fillOutDetailsForQA</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">select</span><span class="p">(</span><span class="s2">&#34;ps-role&#34;</span><span class="p">,</span> <span class="s2">&#34;qa&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Although their amount of code is pretty similar, what we did here is separate business/test logic and the underlying <code>cypress</code> DOM APIs. If in the future we have to upgrade or change the UI library in product code, we don&rsquo;t have to touch anything in <code>test</code> logic above. Only the implementation of <code>select/checkbox</code> needs to be updated.</p>
+<h3 id="exemplify-101---inline">Exemplify 101 - inline</h3>
+<p>But if we look closely enough at functions like <code>fillOutDetailsForDev</code> and <code>fillOutDetailsForQA</code> extracted above, we can see that we kind of lose some flexibility. These <code>named functions</code> locked some actions down, and we may need more and more functions for different scenarios. Probably the anonymous functions fit more here. For example if we inline those <code>fillOutDetailsForDev</code> into anonymous function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Verify the details section for developer&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;More details&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">select</span><span class="p">(</span><span class="s2">&#34;ps-role&#34;</span><span class="p">,</span> <span class="s2">&#34;dev&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">checkbox</span><span class="p">(</span><span class="s2">&#34;developer&#34;</span><span class="p">,</span> <span class="s2">&#34;frontend&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rating</span><span class="p">(</span><span class="s2">&#34;rating&#34;</span><span class="p">,</span> <span class="s2">&#34;4&#34;</span><span class="p">);</span>    
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Verify the details section for QA&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;More details&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">select</span><span class="p">(</span><span class="s2">&#34;ps-role&#34;</span><span class="p">,</span> <span class="s2">&#34;qa&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>I suppose the test cases above are much better comparing to those who strongly tied to <code>cypress</code> API, and now each line of code has a more precise purpose, they&rsquo;re saying <em>what</em> needs to be done, other than <em>how</em> to do it.</p>
+<p>And we can take a close look at a complete <code>User Journey</code> now in a test case (remember for the sake of simplicity only 3 steps here, but could be more in a real-world project).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;Verify the details section for developer&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;Basic information&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">input</span><span class="p">(</span><span class="s2">&#34;email-address&#34;</span><span class="p">,</span> <span class="s2">&#34;juntao.qiu@gmail.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">checkbox</span><span class="p">(</span><span class="s2">&#34;assignment&#34;</span><span class="p">,</span> <span class="s2">&#34;assigned&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;More details&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">select</span><span class="p">(</span><span class="s2">&#34;ps-role&#34;</span><span class="p">,</span> <span class="s2">&#34;dev&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">checkbox</span><span class="p">(</span><span class="s2">&#34;developer&#34;</span><span class="p">,</span> <span class="s2">&#34;frontend&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rating</span><span class="p">(</span><span class="s2">&#34;rating&#34;</span><span class="p">,</span> <span class="s2">&#34;4&#34;</span><span class="p">);</span>    
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="s2">&#34;Project preferences&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">checkbox</span><span class="p">(</span><span class="s2">&#34;expectancy&#34;</span><span class="p">,</span> <span class="s2">&#34;frontend&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>If you feel the same way as I am for those 3 lines of ```identical&quot;` duplicated code, let&rsquo;s try another approach to demolish these duplications.</p>
+<h3 id="abstract-201---code-and-data">Abstract 201 - code and data</h3>
+<p>In most modern <code>functional programming languages</code>, the boundary between <code>data</code> and <code>code</code> is blurring, by using built-in functions like <code>eval/apply</code> developers can easily convert those two. Even if you can not implement <code>code is data</code> in your code, at least you can extract those volatile pieces into data or config(such as <code>selector</code>, question sequence definition, rearrange the order of questions etc), and ensure the stable part is treated differently as a framework.</p>
+<p>For instance, in the scenario <code>Verify the details section for developer</code> discussed above, we can probably <em>rewrite</em> it as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">steps</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">step</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">verifyStep</span><span class="p">(</span><span class="nx">step</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">step</span><span class="p">.</span><span class="nx">verifier</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>in which the <code>steps</code> is defined as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">steps</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Basic information&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">verifier</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="cm">/*input, select, checkbox*/</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Basic information&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">verifier</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="cm">/*input, select, checkbox*/</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span></code></pre></div><p>This way, we can separate those <code>logic</code> into a static config. Of course, the <code>verifier</code> is still dynamic (defined as a function). If we can introduce a mechanism to convert things like <code>checkbox(&quot;expectancy&quot;, &quot;frontend&quot;)</code> into a static config, we can claim that data and code are completely split, and the benefit of it is that we don&rsquo;t have to touch any <code>code</code> if a <code>User Journey</code> need to be updated.</p>
+<h4 id="a-user-journey">A User Journey</h4>
+<p>Let&rsquo;s say we need to test a <code>user journey</code> defined as following steps:</p>
+<ol>
+<li>A user input email address</li>
+<li>The user selects <code>beach</code> as the current project</li>
+<li>The user rates him/her as a medium-level front end developer</li>
+<li>And he/she wants to try <code>SRE</code> in the coming engagement</li>
+</ol>
+<p>And we can describe those input sequence as the following format:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">const</span> <span class="err">steps</span> <span class="err">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Basic information&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fields&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;input:email-address:abruzzi.dev@gmail.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;checkbox:assignment:assigned&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;More details&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fields&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;select:ps-role:dev&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;checkbox:developer:frontend&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rating:rating:4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Project preferences&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fields&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;checkbox:expectancy:frontend&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span><span class="err">;</span>
+</span></span></code></pre></div><p>And if we have a mapping function to interpret <code>fields</code> above as <code>operation</code> functions we extracted earlier, we can then <em>execute</em> those <code>config</code> eventually:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">executeCypressCommand</span> <span class="o">=</span> <span class="p">(</span><span class="nx">field</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">type</span><span class="p">,</span> <span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">field</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;input&#39;</span><span class="o">:</span> <span class="k">return</span> <span class="nx">input</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;checkbox&#39;</span><span class="o">:</span> <span class="k">return</span> <span class="nx">checkbox</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;select&#39;</span><span class="o">:</span> <span class="k">return</span> <span class="nx">select</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;rating&#39;</span><span class="o">:</span> <span class="k">return</span> <span class="nx">rating</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>That means fields definition:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;fields&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;input:email-address:abruzzi.dev@gmail.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;checkbox:assignment:assigned&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p>is translated into:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">input</span><span class="p">(</span><span class="s1">&#39;email-address&#39;</span><span class="p">,</span> <span class="s1">&#39;abruzzi.dev@gmail.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">checkbox</span><span class="p">(</span><span class="s1">&#39;assignment&#39;</span><span class="p">,</span> <span class="s1">&#39;assigned&#39;</span><span class="p">);</span>
+</span></span></code></pre></div><p>and at runtime, <code>input</code> and <code>checkbox</code> will be interpret into underlying <code>cypress</code> instructions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;email-address&#34;] input&#39;</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;abruzzi.dev@gmail.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;[data-test=&#34;assignment&#34;] input[value=&#34;assigned&#34;]&#39;</span><span class="p">).</span><span class="nx">check</span><span class="p">();</span>
+</span></span></code></pre></div><p>This way, when a new <code>User Journey</code> is needed, the only change required is to add a <code>json</code> file. The <code>json</code> will be loaded and interpreted, and eventually be able to run in <code>browser</code> like so:</p>
+<p><img src="/posts/images/levels-of-abs/output.gif" alt=""></p>
+<p>And it becomes effortless to add/modify/delete steps in any journey, and it&rsquo;s super easy to make sure tests are synced with the UI of product code as well.</p>
+<p>If the idea of <strong>external</strong> all the test cases into <code>json</code> files looks radical, only utilise the extracted <strong>utility functions</strong> can improve the readability and reduce the dependence to the underlying DOM APIs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">verifySection</span><span class="p">(</span><span class="s1">&#39;Basic information&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">input</span><span class="p">(</span><span class="s1">&#39;email-address&#39;</span><span class="p">,</span> <span class="s1">&#39;abruzzi.dev@gmail.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">checkbox</span><span class="p">(</span><span class="s1">&#39;assignment&#39;</span><span class="p">,</span> <span class="s1">&#39;assigned&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">verifySection</span><span class="p">(</span><span class="s1">&#39;More details&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">select</span><span class="p">(</span><span class="s1">&#39;ps-role&#39;</span><span class="p">,</span> <span class="s1">&#39;qa&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="abstract-202---user-cases">Abstract 202 - User cases</h3>
+<p>We&rsquo;ve already done a lot, from extracting reusable functions to a highly abstracted, domain-specific API, and those API in large extent aligns with the language shared by both developers and people who write tests.</p>
+<p>If we inspect those test cases:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;explore journey for developers&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">runJourney</span><span class="p">(</span><span class="nx">developerJourney</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;explore journey for qas&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">runJourney</span><span class="p">(</span><span class="nx">qaJourney</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>You can find that they are duplicated code in some way, do you still remember the last refactor we did above for <code>steps</code>? A similar <code>forEach</code> can remove those duplications.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">journeys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">journey</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">it</span><span class="p">(</span><span class="nx">journey</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">runJourney</span><span class="p">(</span><span class="nx">journey</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>No matter how many <code>User Journeys</code> we have, we don&rsquo;t have to change <code>code</code> any more. For loading different journeys, it&rsquo;s pretty straightforward to use <code>import/export</code> from <code>ES6</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span><span class="nx">journey</span> <span class="nx">as</span> <span class="nx">qaJourney</span><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;./qa&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span><span class="nx">journey</span> <span class="nx">as</span> <span class="nx">baJourney</span><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;./ba&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span><span class="nx">journey</span> <span class="nx">as</span> <span class="nx">devJourney</span><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;./developer&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span><span class="nx">journey</span> <span class="nx">as</span> <span class="nx">devBeachJourney</span><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;./developer-on-beach&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">journeys</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">qaJourney</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">baJourney</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">devJourney</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">devBeachJourney</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">journeys</span><span class="p">;</span>
+</span></span></code></pre></div><p>Because every <code>journey</code> is a plain static <code>JSON</code>, for any further business logic changes,  we only need to update those static files without worrying about regressions of the framework code.</p>
+<h3 id="summary">Summary</h3>
+<p>In this article, I introduced a few <code>how to abstract</code> methods/patterns through refactoring a test suite, and at the end, we isolated all the frequently-changing parts into separate `json&rsquo;s, and make the potential change easier and more centric.</p>
+<p>We have done several forms of abstractions: from the fundamental way of abstract duplicate code into functions to wire logically related code into small functions and then introduce a high-order function to do a higher-level abstraction. Additionally, when some statements with similar structure appear, we can use <code>data+each/map</code> to separate code and data.</p>
+<p>Just as the metaphor <a href="https://en.wikipedia.org/wiki/Bret_Victor">Bret Victor</a> talked about, the whole process may be not straight and could spiral in most cases. We rarely can see how the code will be at the very beginning, and in the middle of refactoring, there will be a lot of back and forth. Those back and forth is not only inevitable but also indispensable. In most cases, a good refactor needs a lot of attempts in different directions and several rounds to make the code into an ideal state. But you have to be very careful of this <code>ideal state</code> because it&rsquo;s normally unstable, and once the next breaking change comes, we have to apply the same principles again to <em>abstract and exemplify</em> in different levels to adopt these changes.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center p-6 pr-3 no-underline"
+      href="https://icodeit.com.au/posts/idea-to-product/"
+      ><span class="mr-1.5">←</span><span>A story: from idea to product</span></a
+    >
+    
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>The 2nd Editor of Test-Driven Development With React - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="After several months of revising and editiong and rewording, finally &ldquo;Test-Driven Development with React and TypeScript,&rdquo; is officially out! 🎉.
+A Little Backstory 🕰️ Around March 2023, I found myself with an unexpected amount of free time. The frontend world is ever-evolving, and technology has a way of becoming obsolete quickly. Just two years after publishing the first edition, I noticed significant shifts in the landscape. Redux, once a go-to choice for many, is now considered more cautiously." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="The 2nd Editor of Test-Driven Development With React" />
+<meta property="og:description" content="After several months of revising and editiong and rewording, finally &#34;Test-Driven Development with React and TypeScript,&#34; is officially out!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/the-2nd-edition-of-atdd/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-07T17:09:59+11:00" />
+<meta property="article:modified_time" content="2023-09-07T17:09:59+11:00" />
+
+  
+  <meta itemprop="name" content="The 2nd Editor of Test-Driven Development With React">
+<meta itemprop="description" content="After several months of revising and editiong and rewording, finally &#34;Test-Driven Development with React and TypeScript,&#34; is officially out!"><meta itemprop="datePublished" content="2023-09-07T17:09:59+11:00" />
+<meta itemprop="dateModified" content="2023-09-07T17:09:59+11:00" />
+<meta itemprop="wordCount" content="380">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The 2nd Editor of Test-Driven Development With React"/>
+<meta name="twitter:description" content="After several months of revising and editiong and rewording, finally &#34;Test-Driven Development with React and TypeScript,&#34; is officially out!"/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">The 2nd Editor of Test-Driven Development With React</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 7, 2023</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>After several months of revising and editiong and rewording, finally &ldquo;Test-Driven Development with React and TypeScript,&rdquo; is officially out! 🎉.</p>
+<p><img src="/posts/images/2nd-edition-atdd/book.png" alt="The book"></p>
+<h2 id="a-little-backstory-">A Little Backstory 🕰️</h2>
+<p>Around March 2023, I found myself with an unexpected amount of free time. The frontend world is ever-evolving, and technology has a way of becoming obsolete quickly. Just two years after publishing the first edition, I noticed significant shifts in the landscape. Redux, once a go-to choice for many, is now considered more cautiously. The popularity of TypeScript has soared, replacing the likes of Flow and ESLint as the de facto standard for type-checking.</p>
+<p>They say that behind every book lie a host of regrets—choices set in ink that can&rsquo;t be changed. That&rsquo;s why the first edition focused on timeless principles, like refactoring basics and mocking &amp; stubbing in tests. Yet, the second edition allowed me to address the unavoidable shifts in technology.</p>
+<h2 id="whats-inside-the-book-">What&rsquo;s Inside the Book? 📖</h2>
+<p>This second edition brings fresh content and improvements to enhance your learning experience:</p>
+<ul>
+<li>New Chapter on Refactoring Fundamentals: This chapter introduces the core techniques of refactoring to make it easier for those just starting to write clean code.</li>
+<li>New Chapter on TypeScript: Given TypeScript&rsquo;s surge in popularity, this new chapter aims to get you up to speed with using it in a front-end context.</li>
+<li>Updated Code Snippets: All code examples have been revised and converted to TypeScript to align you with current best practices.</li>
+<li>Simplified Redux: In tune with the changing landscape, the Redux part of the book has been streamlined, giving you a focused look at state management in today&rsquo;s React apps.</li>
+</ul>
+<p><img src="/posts/images/2nd-edition-atdd/tasking.png" alt="The new edition"></p>
+<h2 id="why-read-this-book-">Why Read This Book? 🤔</h2>
+<p>This book is designed for developers at all levels interested in Test-Driven Development in a modern React and TypeScript environment. It aims to equip you with the &lsquo;what&rsquo; and &lsquo;how&rsquo; and &lsquo;why&rsquo; of TDD, React, and TypeScript.</p>
+<p><img src="/posts/images/2nd-edition-atdd/bdd.png" alt="The new edition"></p>
+<p>You can grab your digital or physical copy from <a href="https://www.amazon.com.au/Test-Driven-Development-React-TypeScript-Maintainable/dp/1484296478/ref=tmm_pap_swatch_0?_encoding=UTF8&amp;qid=&amp;sr=">Amazon</a>. It’s also available on the <a href="https://link.springer.com/book/10.1007/978-1-4842-9648-6">Springer website</a>.</p>
+<p>Also, if you prefer video format, I got a whole course for it as well <a href="https://www.udemy.com/course/mastering-maintainable-react">on udemy</a>.</p>
+<h2 id="feedback-welcome-">Feedback Welcome 🗨️</h2>
+<p>I greatly value your feedback and would love to hear your thoughts on this updated edition. I would love to send you a PDF copy if you want to share some thoughts (drop me an email).</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="https://icodeit.com.au/posts/tdd-mini-course/"
+      ><span>Test-Driven Development Mini Course</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

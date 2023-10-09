@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>The Pragmatic Guide for React Network Programming - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="In this article, I want to share some pragmatic tips for writing better React applications that involve network requests, like, every React application. I will start with the challenges we as developers are facing in dealing with network requests and try to separate these challenges out of the React build views, encapsulate the monster into a cage (into a hook), and finally use react-query to simplify as a final touch." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="The Pragmatic Guide for React Network Programming" />
+<meta property="og:description" content="Fetching data from a remote server can be challenging, especially when you have to consider cache, re-fetch, error handling, timeout etc..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/the-pragmatic-guide-for-react-network-programming/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-16T21:52:12+11:00" />
+<meta property="article:modified_time" content="2022-12-16T21:52:12+11:00" />
+
+  
+  <meta itemprop="name" content="The Pragmatic Guide for React Network Programming">
+<meta itemprop="description" content="Fetching data from a remote server can be challenging, especially when you have to consider cache, re-fetch, error handling, timeout etc..."><meta itemprop="datePublished" content="2022-12-16T21:52:12+11:00" />
+<meta itemprop="dateModified" content="2022-12-16T21:52:12+11:00" />
+<meta itemprop="wordCount" content="1712">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Pragmatic Guide for React Network Programming"/>
+<meta name="twitter:description" content="Fetching data from a remote server can be challenging, especially when you have to consider cache, re-fetch, error handling, timeout etc..."/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">The Pragmatic Guide for React Network Programming</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Dec 16, 2022</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>In this article, I want to share some pragmatic tips for writing better React applications that involve network requests, like, every React application. I will start with the challenges we as developers are facing in dealing with network requests and try to separate these challenges out of the React build views, encapsulate the monster into a cage (into a hook), and finally use <code>react-query</code> to simplify as a final touch.</p>
+<p><a href="https://itnext.io/the-pragmatic-guide-to-react-network-programming-c6f9de9962ed">You can also find the origin article in medium</a>, but I may extend the content here about how to test network related code (and that would be too long for a medium article I reckon).</p>
+<p>In the end, you should be able to build a fairly robust and organised component and supporting functions that are easier to test and maintain.</p>
+<p>The application we’re going to build is a simple user list. As you can imagine, implementing it is straightforward: fetch data from remote in a <code>useEffect</code> hook, and render the list once it is fetched.</p>
+<p><img src="/posts/images/the-pragmatic-guide-for-react-network-programming/user-list.png" alt="user list"></p>
+<h2 id="using-humble-fetch-api">Using humble fetch API</h2>
+<p>Let&rsquo;s break down the simple application into some steps so I can easily reveal all the &ldquo;dark sides&rdquo; of network programming in React.</p>
+<h3 id="the-happy-path">The happy path</h3>
+<p>Fetching remote data from the server side in React is not super difficult. Use <code>fetch</code> with the right URL with the resource and convert the data into JSON, and you are ready to go.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">users</span><span class="p">,</span> <span class="nx">setUsers</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span><span class="p">&gt;([])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setUsers</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span>
+</span></span></code></pre></div><p>But that is only a small part of the whole story. Normally you will need the loading status for slower requests to improve the user experience.</p>
+<h3 id="loading-indicator">Loading indicator</h3>
+<p>With a little bit of change, you can still do it. At the beginning of the network request, you can set a loading indicator as <code>true</code> and reset it once you have returned the data. And you can use that flag for rendering a spinner to let the user know something is going on.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">users</span><span class="p">,</span> <span class="nx">setUsers</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span><span class="p">&gt;([])</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">boolean</span><span class="p">&gt;(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setUsers</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">loading</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">Spinner</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And you can do the regular render when you have the data.</p>
+<h3 id="things-are-not-always-working-as-expected">Things are not always working as expected.</h3>
+<p>In the real world, things go wrong (or at least not what you’re expecting). Network issues, authentication failure, session expired, incorrect data in the payload, earthquakes, flood and who knows.</p>
+<p>The last thing you want to see is a single error blow up the whole application. And that’s why you need error handling, and when it occurs you need to let the user know (or retry for a couple of times)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">boolean</span><span class="p">&gt;(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">string</span><span class="p">&gt;(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users2&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">&lt;=</span> <span class="mi">299</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setUsers</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setError</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">ErrorMessage</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Again, with a little bit of change, you can achieve what is expected. The only catch here is that <code>fetch</code> by default doesn’t treat <code>4xx</code> or <code>5xx</code> as errors, so we need to check the status and throw conditionally.</p>
+<p><img src="/posts/images/the-pragmatic-guide-for-react-network-programming/error.png" alt="error"></p>
+<p>You can surely use other library like <code>axios</code> to relieve the pain a little.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">axios</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span>: <span class="kt">AxiosResponse</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span><span class="p">&gt;)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setUsers</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setError</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span>
+</span></span></code></pre></div><p>The current code works well. But I feel the code is pretty distracting when I read it. Many things are going on here, and we also need these similar code in other network requests. And in real-world applications, this is still a pretty simplified version of a production code.</p>
+<p>For example, there are some pretty standard things we’re missing:</p>
+<ul>
+<li>retry when a temporary error happens (like an unstable network, we should retry a few times at least)</li>
+<li>poll requests for some checks (like a health check or status check requests)</li>
+<li>cancel requests when not needed, or the same request is initiated again.</li>
+</ul>
+<h3 id="lets-try-one-more-time">Let&rsquo;s try one more time.</h3>
+<p>Implementing a retry can be error-prone as there are a bunch more statuses you need to take care of. For example, we can add an instance state <code>retryCount</code> and increase it every second before resending the network request. We usually would gradually increase the retry time span to ensure the remote recovers.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">retryCount</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">&lt;</span><span class="nt">number</span><span class="p">&gt;(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//... fetchUsers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">error</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">retryCount</span><span class="p">.</span><span class="nx">current</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">retryCount</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">retryCount</span><span class="p">.</span><span class="nx">current</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[</span><span class="nx">error</span><span class="p">]);</span>
+</span></span></code></pre></div><p>To adjust the interval time span, we will have to introduce one more state, potentially making the code even harder to read. the general fact is that the longer the file, the easier bugs can slip in. (<em><strong>Note: There is actually a bug in the code above, so don&rsquo;t use it in your production</strong></em>)</p>
+<p>I assume you are already aware of the &ldquo;ugliness&rdquo; of the current implementation. How can we fix the hard-to-maintain problem here, then? One approach is to extract the whole <code>useEffect</code> block into a separate hook and do all the wild things there.</p>
+<h2 id="some-clean-ups-and-refactorings">Some clean-ups and refactorings</h2>
+<h3 id="extract-the-effect-code-into-a-hook">Extract the effect code into a hook</h3>
+<p>By simply copying the code of the state and <code>useEffect</code> part into a separate function <code>useFetchUsers</code> , we have the new hook that manages all the network-related logic:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">useFetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">users</span><span class="p">,</span> <span class="nx">setUsers</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span> <span class="err">|</span> <span class="na">undefined</span><span class="p">&gt;([])</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">boolean</span><span class="p">&gt;(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">string</span> <span class="err">|</span> <span class="na">null</span><span class="p">&gt;(</span><span class="kc">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">retryCount</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">&lt;</span><span class="nt">number</span><span class="p">&gt;(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">[</span><span class="nx">error</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">users</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">loading</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">error</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>We can even split the logic here in <code>fetchUsers</code>. It currently does two things: sending a network request and setting local states. We can define a function that focuses only on the network, including set HTTP headers, network timeout and authentications etc.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">()</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span> <span class="err">|</span> <span class="na">undefined</span><span class="p">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span> <span class="kr">as</span> <span class="nx">User</span><span class="p">[]);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;fetch users data error&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And the code in our original component can be simplified quite a lot into:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">UserList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">{</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">users</span><span class="p">}</span> <span class="o">=</span> <span class="nx">useFetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="nx">loading</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">Spinner</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">ErrorMessage</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{(</span><span class="nx">users</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">map</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">(&lt;</span><span class="nt">article</span> <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;description&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;avatar&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="p">{</span><span class="sb">`https://avatars.dicebear.com/api/adventurer/</span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="si">}</span><span class="sb">.svg`</span><span class="p">}</span> <span class="na">alt</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">works</span> <span class="k">for</span> <span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">company</span><span class="p">.</span><span class="nx">name</span><span class="p">}.&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>That looks much better now. The hook provides data and different statuses, while the view is responsible for rendering data (with different user interface states).</p>
+<p>Essentially we have three parts that are responsible for three different aspects of the application:</p>
+<ol>
+<li>A list view for rendering data (the happy path), as well as <code>loading</code> and <code>error</code> states</li>
+<li>A hook that arranges all the statuses of the application and retries logic when necessary</li>
+<li>A fetch function handling network-related work: sets HTTP headers, defines timeout, etc.</li>
+</ol>
+<p>With this separation of concerns, there is still room for improvement. Especially the network states management.</p>
+<h3 id="one-step-further">One step further</h3>
+<p>I suppose at this stage, you’re aware of how complicated the network-related code can be (and again, that’s only part of the story). Luckily we have <code>react-query</code> from <code>tanstack</code> that can simplify the whole process much more easily.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="nx">yarn</span> <span class="nx">add</span> <span class="kd">@tanstack</span><span class="o">/</span><span class="nx">react</span><span class="o">-</span><span class="nx">query</span> <span class="o">--</span><span class="nx">save</span>
+</span></span></code></pre></div><p>To use the <code>react-query</code> you will need to wrap your application into a <code>Provider</code>, so that all the children nodes can access the query client. <code>react-query</code> provides many useful hooks that can simplify the logic significantly.</p>
+<p>In our <code>useFetchUsers</code> hook, the code with <code>react-query</code> is like the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">useQuery</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@tanstack/react-query&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">useFetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">isLoading</span>: <span class="kt">loading</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">error</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span>: <span class="kt">users</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="o">=</span> <span class="nx">useQuery</span><span class="p">([</span><span class="s2">&#34;fetchUsers&#34;</span><span class="p">],</span> <span class="nx">fetchUsers</span><span class="p">,</span> <span class="p">{</span> <span class="nx">retry</span>: <span class="kt">3</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">users</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">loading</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">error</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>That’s it. All the statuses are now managed by <code>react-query</code> itself, as well as the retry logic, cache, auto-re-fetching when the data is stale, etc.</p>
+<p><a href="https://twitter.com/JuntaoQiu/status/1603354029803077632?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1603354029803077632%7Ctwgr%5Eedad9076d267cd63edf7d57302e92ed3e93e3ae6%7Ctwcon%5Es1_c10&amp;ref_url=https%3A%2F%2Fcdn.embedly.com%2Fwidgets%2Fmedia.html%3Ftype%3Dtext2Fhtmlkey%3Da19fcc184b9711e1b4764040d3dc5c07schema%3Dtwitterurl%3Dhttps3A%2F%2Ftwitter.com%2Fjuntaoqiu%2Fstatus%2F1603354029803077632image%3Dhttps3A%2F%2Fi.embed.ly%2F1%2Fimage3Furl3Dhttps253A252F252Fabs.twimg.com252Ferrors252Flogo46x38.png26key3Da19fcc184b9711e1b4764040d3dc5c07">Comparsion between with and without react-query</a></p>
+<p>So you call <code>useQuery</code> hook with three parameters: the query key acts like an id for the query so you can reference it in other places (to cancel it, for example, or evaluate the cache if it’s a mutation). The second parameter is the function that returns a promise or an error. And an optional options object, you can define how many times you want to retry when something goes wrong, the delay between each retry and many other things.</p>
+<p>Note here with <code>react-query</code>, you can replace the <code>fetchUsers</code> function, which makes the underlying network requests with a humble <code>fetch</code> call.</p>
+<p>There are many other benefits of using <code>react-query</code> , I’ll excerpt a few from the homepage.</p>
+<blockquote>
+<ul>
+<li>Caching&hellip; (possibly the hardest thing to do in programming)</li>
+<li>Deduping multiple requests for the same data into a single request</li>
+<li>Updating &ldquo;out of date&rdquo; data in the background</li>
+<li>Knowing when data is &ldquo;out of date&rdquo;</li>
+<li>Reflecting updates to data as quickly as possible</li>
+<li>Performance optimizations like pagination and lazy loading data</li>
+<li>Managing memory and garbage collection of server state</li>
+<li>Memoizing query results with structural sharing</li>
+</ul>
+</blockquote>
+<p>I’m not going to discuss too many features of <code>react-query</code>. Instead, I’d like to emphasise more on the separation of concerns. As you have seen, how we extracted things into different places makes the switch pretty straightforward. It would help if you always considered that when you write your React code or do refactorings.</p>
+<h2 id="summary">Summary</h2>
+<p>Working with the network isn’t easy. Many things must be considered: protocol, header, cache, timeout, retry when the error occurs and managing different statuses. <code>react-query</code> can make the developers’ life a bit easier. On top of that, you still need to isolate these challenges from views and the underlying network client (either the <code>fetch</code> or <code>axios</code> client).</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center p-6 pr-3 no-underline"
+      href="https://icodeit.com.au/posts/react-clean-code-network-mocking/"
+      ><span class="mr-1.5">←</span><span>React Clean Code -  mocking network scenarios</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/"
+      ><span>If I Could Only Teach One Thing to a Beginner Developer</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

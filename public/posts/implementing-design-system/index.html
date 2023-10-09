@@ -1,10 +1,378 @@
-<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Implementing Design System - I Code It</title><meta name=theme-color><meta name=description content="What is a design system? There are hundreds of definitions of what a design system is, and I think this one is generic enough and also has most of the essential elements:
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Implementing Design System - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="What is a design system? There are hundreds of definitions of what a design system is, and I think this one is generic enough and also has most of the essential elements:
 A design system is a set of standards to manage design at scale by reducing redundancy while creating a shared language and visual consistency across different pages and channels.
-So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation."><meta name=author content><link rel="preload stylesheet" as=style href=https://icodeit.com.au/main.min.css><style>@import 'https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'</style><script defer src=https://icodeit.com.au/highlight.min.js onload=hljs.initHighlightingOnLoad()></script>
-<link rel=preload as=image href=https://icodeit.com.au/theme.png><link rel=preload as=image href=https://icodeit.com.au/twitter.svg><link rel=preload as=image href=https://icodeit.com.au/github.svg><link rel=icon href=https://icodeit.com.au/favicon.ico><link rel=apple-touch-icon href=https://icodeit.com.au/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><meta property="og:title" content="Implementing Design System"><meta property="og:description" content="So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience."><meta property="og:type" content="article"><meta property="og:url" content="https://icodeit.com.au/posts/implementing-design-system/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-11-19T17:15:59+11:00"><meta property="article:modified_time" content="2022-11-19T17:15:59+11:00"><meta itemprop=name content="Implementing Design System"><meta itemprop=description content="So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience."><meta itemprop=datePublished content="2022-11-19T17:15:59+11:00"><meta itemprop=dateModified content="2022-11-19T17:15:59+11:00"><meta itemprop=wordCount content="1475"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Implementing Design System"><meta name=twitter:description content="So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience."></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://icodeit.com.au/>I Code It</a>
-<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
-<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/JuntaoQiu target=_blank></a>
-<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/abruzzi target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><article><header class=mb-20><h1 class="!my-0 pb-2.5">Implementing Design System</h1><div class="text-sm opacity-60"><time>Nov 19, 2022</time></div></header><section><h2 id=what-is-a-design-system>What is a design system?</h2><p>There are hundreds of definitions of what a design system is, and I think <a href=https://www.nngroup.com/articles/design-systems-101/>this one</a> is generic enough and also has most of the essential elements:</p><blockquote><p>A design system is a set of standards to manage design at scale by reducing redundancy while creating a shared language and visual consistency across different pages and channels.</p></blockquote><p>So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience.</p><h2 id=what-is-the-problem-a-design-system-trying-to-solve>What is the problem a design system trying to solve?</h2><p>Imagine you have built an online application that works successfully, and your customers love it. So as the business grows, you want to add a few more features to the application, so several new pages are needed.</p><p>There are a few things you need to consider here. For new UI elements (for example, an accordion you don’t have on any other pages), you will need some design work upfront, and then the developers can start implementing them. But there will usually be some back and forth here, like how much of the <code>border radius</code>, what’s the delay for the open accordion animation, and how about the <code>box-shadow</code> spread radius?</p><p>For these existing elements, like a button used on other pages, may need a “little bit” tackle to be used on the new page.</p><p>And as your business keeps growing, these activities have to happen repeatedly and frequently, and you may need to build other products but still want the visual identity to remain. And you don’t want to do all the processes above over and over again.</p><p>Note that I’m not just talking about visual details (they are critical for sure) like elevation, colour, typography, layout, image, animation, etc. But also accessibility, the language, the tones you use on different pages.</p><p>Imagine you need to upgrade some details of your company&rsquo;s visual identity, like the font face or branding colour. Just think about how many places you have to update in code and also how you can ensure, well, the most important thing, consistency.</p><p>And that’s the <strong>design at scale</strong> we’re talking about here.</p><h2 id=the-challenges-you-might-face>The challenges you might face</h2><p>But building a design system is a challenging thing. There are tons of things that need to consider. In this article, I’ll try to summarise a few important aspects I think of as a developer.</p><p>Extracting the code from your current codebase and separating them into a package should be the first step of building a design system. And that’s only the tip of the iceberg of the system. There are many other details you may not aware of but can make it fail or a success.</p><h3 id=accessibility>Accessibility</h3><p>For a serious design system, accessibility is not optional but a must. You need to build keyboard navigation, you need to use <code>ARIA</code> attributes when needed, and the colour contrast ratio should satisfy <a href=https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html>the minimal requirement</a> of WCAG.</p><p>For example, in <a href=https://mui.com/>Material UI</a> and <a href=https://atlassian.design/>Atlassian Design System</a>, you can use the keyboard to do almost every action: navigate to the next link, search for a document, switch between dark and light modes, etc.</p><p><img src=/posts/images//implementing-design-system/mui.png alt="Material UI"></p><p>But not all design systems are built the same. <a href=https://ant.design/>Ant Design</a> - the most popular “design system” in China, doesn’t have any visual indicator when you navigate by a keyboard. You cannot see the highlight ring around links or so.</p><p><img src=/posts/images//implementing-design-system/antd.png alt="Ant Design"></p><h3 id=upgrading-a-new-version>Upgrading a new version</h3><blockquote><p>With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.</p></blockquote><p>— Hyrum Wright</p><blockquote></blockquote><p>The key here is “observable behaviours”, meaning even if it’s not in the document, when people accidentally find it can be used that way, they (some of them) will rely on that behaviour, which could cause difficulty when upgrading.</p><p>Once a package is released and some product teams start to use it, you need to prepare a lot of subsequent tasks around version bumpings and migrations:</p><ul><li>What steps need to take when it’s a breaking change</li><li>When the upgrade has some issues, what would you do? Downgrade to the old version or patch the new one</li><li>What if some products use a version 3 majors behind and would like to upgrade to the latest version? How easy is it?</li></ul><p><img src=/posts/images/implementing-design-system/codemods.png alt=codemods></p><p>By using tools like jscodeshift (with codemod script), upgrading can be simplified a lot. But still, there will be some difficult cases you might miss. So get ready for some ad-hoc hacks here as well. I have a full article to talk about how to <a href=https://itnext.io/automatic-refactoring-with-jscodeshift-codemods-45c219eaf992>use codemod and jscodeshift</a> to automatically upgrade a breaking API.</p><h3 id=testing-strategy>Testing Strategy</h3><p>It’s needless to say that how important the test is to any codebase, and the test pyramid theory applies to design system components. In addition to the unit tests, which focus more on the isolated test without the real browser involved, and integration tests, which put some components together and see if they work well in all the supported browsers (with different versions as well), you will need <strong>visual regression tests</strong> as well.</p><p>Using tools like <a href=https://www.browserstack.com/>browserstack</a>, you can test all these browsers in different versions and ensure they work well on all environments.</p><p>Visual Regression Tests check pixel-by-pixel how a component renders on a certain screen size. They are normally considered too expensive in regular web applications but is mandatory in the design system context.</p><p>Below is a concrete example of how it runs in a real scenario. I was using <code>cypress</code> + <code>cypress-visual-regression</code> to do the check. There are many other alternatives. Both commercial (<a href=https://www.browserstack.com/percy/visual-testing>browserstack</a>) and open-source frameworks are available.</p><p><img src=/posts/images/implementing-design-system/cypress-vr.png alt=cypress-vr></p><p>And in the implementation, I swapped the two products in the order detail section, and so the visual regression detected the difference:</p><p><img src=/posts/images/implementing-design-system/cypress-vr-result.png alt=cypress-vr></p><p>You may also want to adjust the threshold of the differences between the <code>base</code> and <code>actual</code> screenshots just in case it’s too sensitive. For example, sometimes a pixel box-shadow size might be tolerable.</p><p><img src=/posts/images/implementing-design-system/threshold.png alt="adjust the threshold"></p><h3 id=documents>Documents</h3><p>It’s easy to overlook how important the document could be in a design system. If you could make it a <strong>live document</strong>, like embedding a codesanbox in the page so that the consumer (developer) can play around with the code, that would be awesome.</p><p><img src=/posts/images/implementing-design-system/live-document.png alt="live document"></p><p>Also, a good document should include guidance on when a product should pick up what components to make the user experience more natural. In Atlassian Design System, the usage of a component has a few clearly defined sections, like <strong>Anatomy</strong>, <strong>Behaviour</strong>, <strong>Best practices and Content guidelines</strong>, etc.</p><p><img src=/posts/images/implementing-design-system/ds-document.png alt="live document"></p><h3 id=business-as-usual>Business As Usual</h3><p>When you’re big enough to attract internal and external users, it comes together with the supporting and on-call duties. People might use the components in an unexpected way (so you need more time to investigate), and you may need to make sure the message is always consistent as a team(so that the consumer doesn&rsquo;t feel confused).</p><p>Ask people to provide a working example can be super helpful for you to investigate, like a codesandbox or codepen with minimal code that can reproduce the case. And after you fix the issue, you can update the example section in your documents of the component, too, so that when people stumbled into the same issue will get their answer from the doc.</p><h3 id=the-ownership-of-the-design-system>The ownership of the Design System</h3><p>In a company that doesn&rsquo;t have a huge developer team, the product team can own the design system as there aren’t many users anyway. However, if the business grows to a certain size. Not only will the efforts to develop new features and maintain the code be huge, but also the domain knowledge of the design system is different to the product, so you need to have a dedicated team for the design system.</p><p>The product team may focus on how to fetch data and transform it into some shape that can be used by a <code>Order</code> or <code>UserProfile</code> component, while the design system focuses more on tokens, the performance of the individual component, and how to make them more composable and such.</p><h2 id=summary>Summary</h2><p>A design System is a great way to ensure your product&rsquo;s user experience remains consistent and relieves some pain when designing at scale. But it’s not free, actually, it is pretty expensive than you thought. Extracting a common component library is the simple first step, there are 80% of the work afterwards.</p><p>You need to plan a lot on version upgrading, documents and BAU. You will need a team behind it as that’s a different domain than your normal business model.</p><h2 id=references>References</h2><ul><li><a href=https://www.nngroup.com/articles/design-systems-101/>Design System 101</a></li><li><a href=https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969>Everything You Need To Know About Design Systems</a></li><li><a href=https://javascript.plainenglish.io/did-someone-say-composition-c7843d898b2>Did someone say composition</a></li><li><a href=https://itnext.io/automatic-refactoring-with-jscodeshift-codemods-45c219eaf992>Automatic refactoring with jscodeshift/codemods</a></li></ul></section><nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]"><a class="flex w-1/2 items-center p-6 pr-3 no-underline" href=https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/><span class=mr-1.5>←</span><span>If I Could Only Teach One Thing to a Beginner Developer</span></a>
-<a class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline" href=https://icodeit.com.au/posts/idea-to-product/><span>A story: from idea to product</span><span class=ml-1.5>→</span></a></nav></article></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
-<a class=link href=https://icodeit.com.au/>I Code It</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
-<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>
+So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Implementing Design System" />
+<meta property="og:description" content="So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/implementing-design-system/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-19T17:15:59+11:00" />
+<meta property="article:modified_time" content="2022-11-19T17:15:59+11:00" />
+
+  
+  <meta itemprop="name" content="Implementing Design System">
+<meta itemprop="description" content="So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation..."><meta itemprop="datePublished" content="2022-11-19T17:15:59+11:00" />
+<meta itemprop="dateModified" content="2022-11-19T17:15:59+11:00" />
+<meta itemprop="wordCount" content="1475">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Implementing Design System"/>
+<meta name="twitter:description" content="So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation..."/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">Implementing Design System</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Nov 19, 2022</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="what-is-a-design-system">What is a design system?</h2>
+<p>There are hundreds of definitions of what a design system is, and I think <a href="https://www.nngroup.com/articles/design-systems-101/">this one</a> is generic enough and also has most of the essential elements:</p>
+<blockquote>
+<p>A design system is a set of standards to manage design at scale by reducing redundancy while creating a shared language and visual consistency across different pages and channels.</p>
+</blockquote>
+<p>So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience.</p>
+<h2 id="what-is-the-problem-a-design-system-trying-to-solve">What is the problem a design system trying to solve?</h2>
+<p>Imagine you have built an online application that works successfully, and your customers love it. So as the business grows, you want to add a few more features to the application, so several new pages are needed.</p>
+<p>There are a few things you need to consider here. For new UI elements (for example, an accordion you don’t have on any other pages), you will need some design work upfront, and then the developers can start implementing them. But there will usually be some back and forth here, like how much of the <code>border radius</code>, what’s the delay for the open accordion animation, and how about the <code>box-shadow</code> spread radius?</p>
+<p>For these existing elements, like a button used on other pages, may need a “little bit” tackle to be used on the new page.</p>
+<p>And as your business keeps growing, these activities have to happen repeatedly and frequently, and you may need to build other products but still want the visual identity to remain. And you don’t want to do all the processes above over and over again.</p>
+<p>Note that I’m not just talking about visual details (they are critical for sure) like elevation, colour, typography, layout, image, animation, etc. But also accessibility, the language, the tones you use on different pages.</p>
+<p>Imagine you need to upgrade some details of your company&rsquo;s visual identity, like the font face or branding colour. Just think about how many places you have to update in code and also how you can ensure, well, the most important thing, consistency.</p>
+<p>And that’s the <strong>design at scale</strong> we’re talking about here.</p>
+<h2 id="the-challenges-you-might-face">The challenges you might face</h2>
+<p>But building a design system is a challenging thing. There are tons of things that need to consider.  In this article, I’ll try to summarise a few important aspects I think of as a developer.</p>
+<p>Extracting the code from your current codebase and separating them into a package should be the first step of building a design system. And that’s only the tip of the iceberg of the system. There are many other details you may not aware of but can make it fail or a success.</p>
+<h3 id="accessibility">Accessibility</h3>
+<p>For a serious design system, accessibility is not optional but a must. You need to build keyboard navigation, you need to use <code>ARIA</code> attributes when needed, and the colour contrast ratio should satisfy <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html">the minimal requirement</a> of WCAG.</p>
+<p>For example, in <a href="https://mui.com/">Material UI</a> and <a href="https://atlassian.design/">Atlassian Design System</a>, you can use the keyboard to do almost every action: navigate to the next link, search for a document, switch between dark and light modes, etc.</p>
+<p><img src="/posts/images//implementing-design-system/mui.png" alt="Material UI"></p>
+<p>But not all design systems are built the same. <a href="https://ant.design/">Ant Design</a> - the most popular “design system” in China, doesn’t have any visual indicator when you navigate by a keyboard. You cannot see the highlight ring around links or so.</p>
+<p><img src="/posts/images//implementing-design-system/antd.png" alt="Ant Design"></p>
+<h3 id="upgrading-a-new-version">Upgrading a new version</h3>
+<blockquote>
+<p>With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.</p>
+</blockquote>
+<p>— Hyrum Wright</p>
+<blockquote>
+</blockquote>
+<p>The key here is “observable behaviours”, meaning even if it’s not in the document, when people accidentally find it can be used that way, they (some of them) will rely on that behaviour, which could cause difficulty when upgrading.</p>
+<p>Once a package is released and some product teams start to use it, you need to prepare a lot of subsequent tasks around version bumpings and migrations:</p>
+<ul>
+<li>What steps need to take when it’s a breaking change</li>
+<li>When the upgrade has some issues, what would you do? Downgrade to the old version or patch the new one</li>
+<li>What if some products use a version 3 majors behind and would like to upgrade to the latest version? How easy is it?</li>
+</ul>
+<p><img src="/posts/images/implementing-design-system/codemods.png" alt="codemods"></p>
+<p>By using tools like jscodeshift (with codemod script), upgrading can be simplified a lot. But still, there will be some difficult cases you might miss. So get ready for some ad-hoc hacks here as well. I have a full article to talk about how to <a href="https://itnext.io/automatic-refactoring-with-jscodeshift-codemods-45c219eaf992">use codemod and jscodeshift</a> to automatically upgrade a breaking API.</p>
+<h3 id="testing-strategy">Testing Strategy</h3>
+<p>It’s needless to say that how important the test is to any codebase, and the test pyramid theory applies to design system components. In addition to the unit tests, which focus more on the isolated test without the real browser involved, and integration tests, which put some components together and see if they work well in all the supported browsers (with different versions as well), you will need <strong>visual regression tests</strong> as well.</p>
+<p>Using tools like <a href="https://www.browserstack.com/">browserstack</a>, you can test all these browsers in different versions and ensure they work well on all environments.</p>
+<p>Visual Regression Tests check pixel-by-pixel how a component renders on a certain screen size. They are normally considered too expensive in regular web applications but is mandatory in the design system context.</p>
+<p>Below is a concrete example of how it runs in a real scenario. I was using <code>cypress</code> + <code>cypress-visual-regression</code> to do the check. There are many other alternatives. Both commercial (<a href="https://www.browserstack.com/percy/visual-testing">browserstack</a>) and open-source frameworks are available.</p>
+<p><img src="/posts/images/implementing-design-system/cypress-vr.png" alt="cypress-vr"></p>
+<p>And in the implementation, I swapped the two products in the order detail section, and so the visual regression detected the difference:</p>
+<p><img src="/posts/images/implementing-design-system/cypress-vr-result.png" alt="cypress-vr"></p>
+<p>You may also want to adjust the threshold of the differences between the <code>base</code> and <code>actual</code> screenshots just in case it’s too sensitive. For example, sometimes a pixel box-shadow size might be tolerable.</p>
+<p><img src="/posts/images/implementing-design-system/threshold.png" alt="adjust the threshold"></p>
+<h3 id="documents">Documents</h3>
+<p>It’s easy to overlook how important the document could be in a design system. If you could make it a <strong>live document</strong>, like embedding a codesanbox in the page so that the consumer (developer) can play around with the code, that would be awesome.</p>
+<p><img src="/posts/images/implementing-design-system/live-document.png" alt="live document"></p>
+<p>Also, a good document should include guidance on when a product should pick up what components to make the user experience more natural. In Atlassian Design System, the usage of a component has a few clearly defined sections, like <strong>Anatomy</strong>, <strong>Behaviour</strong>, <strong>Best practices and Content guidelines</strong>, etc.</p>
+<p><img src="/posts/images/implementing-design-system/ds-document.png" alt="live document"></p>
+<h3 id="business-as-usual">Business As Usual</h3>
+<p>When you’re big enough to attract internal and external users, it comes together with the supporting and on-call duties. People might use the components in an unexpected way (so you need more time to investigate), and you may need to make sure the message is always consistent as a team(so that the consumer doesn&rsquo;t feel confused).</p>
+<p>Ask people to provide a working example can be super helpful for you to investigate, like a codesandbox or codepen with minimal code that can reproduce the case. And after you fix the issue, you can update the example section in your documents of the component, too, so that when people stumbled into the same issue will get their answer from the doc.</p>
+<h3 id="the-ownership-of-the-design-system">The ownership of the Design System</h3>
+<p>In a company that doesn&rsquo;t have a huge developer team, the product team can own the design system as there aren’t many users anyway. However, if the business grows to a certain size. Not only will the efforts to develop new features and maintain the code be huge, but also the domain knowledge of the design system is different to the product, so you need to have a dedicated team for the design system.</p>
+<p>The product team may focus on how to fetch data and transform it into some shape that can be used by a <code>Order</code> or <code>UserProfile</code> component, while the design system focuses more on tokens, the performance of the individual component, and how to make them more composable and such.</p>
+<h2 id="summary">Summary</h2>
+<p>A design System is a great way to ensure your product&rsquo;s user experience remains consistent and relieves some pain when designing at scale. But it’s not free, actually, it is pretty expensive than you thought. Extracting a common component library is the simple first step, there are 80% of the work afterwards.</p>
+<p>You need to plan a lot on version upgrading, documents and BAU. You will need a team behind it as that’s a different domain than your normal business model.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.nngroup.com/articles/design-systems-101/">Design System 101</a></li>
+<li><a href="https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969">Everything You Need To Know About Design Systems</a></li>
+<li><a href="https://javascript.plainenglish.io/did-someone-say-composition-c7843d898b2">Did someone say composition</a></li>
+<li><a href="https://itnext.io/automatic-refactoring-with-jscodeshift-codemods-45c219eaf992">Automatic refactoring with jscodeshift/codemods</a></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center p-6 pr-3 no-underline"
+      href="https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/"
+      ><span class="mr-1.5">←</span><span>If I Could Only Teach One Thing to a Beginner Developer</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="https://icodeit.com.au/posts/idea-to-product/"
+      ><span>A story: from idea to product</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>React Clean Code -  mocking network scenarios - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="In my book Maintainable React, I introduced a feature I had worked on a while ago. That feature is interesting in many ways, and I selected it as it involves several states in the view - which is one of the reasons why building UI is complicated.
+They are not typical UI states but server cache as described in Kent’s article here. All the network requests could go wrong, timeout, too many requests or even service downtime." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="React Clean Code -  mocking network scenarios" />
+<meta property="og:description" content="Handling network requests is complicated. There are too many cases you have to consider on top of the asynchronised process. And testing these code can be even more challenging..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/react-clean-code-network-mocking/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-21T15:17:49+11:00" />
+<meta property="article:modified_time" content="2022-12-21T15:17:49+11:00" />
+
+  
+  <meta itemprop="name" content="React Clean Code -  mocking network scenarios">
+<meta itemprop="description" content="Handling network requests is complicated. There are too many cases you have to consider on top of the asynchronised process. And testing these code can be even more challenging..."><meta itemprop="datePublished" content="2022-12-21T15:17:49+11:00" />
+<meta itemprop="dateModified" content="2022-12-21T15:17:49+11:00" />
+<meta itemprop="wordCount" content="1118">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React Clean Code -  mocking network scenarios"/>
+<meta name="twitter:description" content="Handling network requests is complicated. There are too many cases you have to consider on top of the asynchronised process. And testing these code can be even more challenging..."/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">React Clean Code -  mocking network scenarios</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Dec 21, 2022</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>In my book <a href="https://leanpub.com/maintainable-react">Maintainable React</a>, I introduced a feature I had worked on a while ago. That feature is interesting in many ways, and I selected it as it involves several states in the view - which is one of the reasons <em><strong>why building UI is complicated</strong></em>.</p>
+<p>They are not typical UI states but server cache as described in <a href="https://kentcdodds.com/blog/application-state-management-with-react#server-cache-vs-ui-state">Kent’s article here</a>. All the network requests could go wrong, timeout, too many requests or even service downtime. In the React views, we need to reflect these network statuses correspondingly.</p>
+<p><a href="https://www.youtube.com/watch?v=GacOp9SPHaA">https://www.youtube.com/watch?v=GacOp9SPHaA</a></p>
+<h3 id="different-status">Different status</h3>
+<p>The feature <strong>Direct to boot</strong> here is that at the beginning, when the user is landed on the page, we need to check the current status of an order. If it’s in progress, we need to show a disabled button <code>I'm here</code> and some hint messages. And at some point, when the order is ready to pick up, the button needs to be enabled so we can click it to notify the store. When the button is clicked, a notification is sent and the order will be delivered right into the boot of your vehicle. In addition, if anything goes wrong, we show a number as a fallback so we can call the store by phone.</p>
+<p><img src="/posts/images/react-clean-code-network-mocking/direct-to-boot.png" alt="Direct to boot"></p>
+<p>So we need to consider the following things at least:</p>
+<ul>
+<li>Fetch data from the server</li>
+<li>Retry if something goes wrong in the network</li>
+<li>Retry if the data is returned but not what we wanted</li>
+<li>Stop retrying when we fail too many times</li>
+<li>Update data to the server</li>
+<li>Handling errors</li>
+</ul>
+<p>If we draw a <code>statechart</code> for the description above, it will be something like the diagram below. Note that the happy path (idle → ready → notified) is only <strong>one of</strong> the branches. Before the order is <code>ready</code>, we need to retry several times. And the notification might have another retry counter (we’re not doing it in this chart). Also, each network request could lead to an error.</p>
+<p><img src="/posts/images/react-clean-code-network-mocking/statechart.png" alt="Statechart"></p>
+<h3 id="the-happy-path">The happy path</h3>
+<p>We can start with the happy path as that’s the most easier step and the most important thing we want to ensure to happen.</p>
+<p>In test, the happy path for (initialised → ready) can be described as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;enables button when the order is ready&#34;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">render</span><span class="p">(&lt;</span><span class="nt">DirectToBoot</span> <span class="na">orderId</span><span class="o">=</span><span class="s">&#34;order-id&#34;</span><span class="p">/&gt;);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">expect</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">&#34;We are preparing your order...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">expect</span><span class="p">(</span><span class="nx">button</span><span class="p">).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">expect</span><span class="p">(</span><span class="nx">button</span><span class="p">).</span><span class="nx">toBeDisabled</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="nx">waitFor</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">button</span><span class="p">).</span><span class="nx">toBeEnabled</span><span class="p">(),</span> <span class="p">{</span><span class="nx">timeout</span>: <span class="kt">3000</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">findByText</span><span class="p">(</span><span class="s2">&#34;Please click the button when you have arrived...&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="miragejs-for-mocking">Mirage.js for mocking</h3>
+<p>In my book I used <code>msw</code> as the mocking server, and it worked pretty well. I’m using <code>mirage.js</code> here just for simplicity. It doesn’t matter much here anyway, and you <a href="https://miragejs.com/docs/comparison-with-other-tools/">are safe to use either one</a>.</p>
+<p>For example, we can define a <code>get</code> API for checking the order status in the test. It intercepts requests send to <code>/api/orders/&lt;id&gt;</code> and always returns an object with <code>ready</code> status.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">createServer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;miragejs&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">createMockServer</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">createServer</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes() {</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="s2">&#34;/api/orders/:id&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">schema</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">id</span>: <span class="kt">request.params.id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">status</span><span class="o">:</span> <span class="s2">&#34;ready&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>And then, we create a server at the beginning of each test, and shut it down at the end.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;Direct To Boot&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">server</span> <span class="o">=</span> <span class="nx">createMockServer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">server</span><span class="p">.</span><span class="nx">shutdown</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span>
+</span></span></code></pre></div><p>The API looks intuitive and works just as expected. We can then in our component to send requests and consume the response like it would for the actual APIs.</p>
+<h3 id="use-react-query-to-simplify-the-logic">Use react-query to simplify the logic</h3>
+<p>In <a href="https://itnext.io/the-pragmatic-guide-to-react-network-programming-c6f9de9962ed">my previous article</a>, I have discussed in detail how many trivial things you need to consider for making a “simple” network request as well as how simpler if you use <code>react-query</code> instead of implementing it manually.</p>
+<p>To use <code>react-query</code> we’ll need to define a <code>query</code> function. Note here if the <code>res.data.status</code> is not <code>ready</code>, it will throw an error. And <code>react-query</code> can detect that error and trigger a <code>refetch</code> if configured.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fetchOrder</span> <span class="o">=</span> <span class="p">(</span><span class="nx">orderId</span>: <span class="kt">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">axios</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="sb">`/api/orders/</span><span class="si">${</span><span class="nx">orderId</span><span class="si">}</span><span class="sb">`</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s2">&#34;ready&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;fetch error&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>Now with the <code>fetchQuery</code> function, I can then call <code>useQuery</code>, and wrap the whole logic inside a hook <code>useOrder</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">useOrder</span> <span class="o">=</span> <span class="p">(</span><span class="nx">orderId</span>: <span class="kt">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">status</span><span class="p">,</span> <span class="nx">setStatus</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">string</span><span class="p">&gt;(</span><span class="s2">&#34;initialised&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">useQuery</span><span class="p">([</span><span class="s2">&#34;fetchOrder&#34;</span><span class="p">],</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">fetchOrder</span><span class="p">(</span><span class="nx">orderId</span><span class="p">),</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">retry</span>: <span class="kt">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onError</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setStatus</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onSuccess</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setStatus</span><span class="p">(</span><span class="s2">&#34;ready&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span> <span class="nx">status</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>I set retry as 5, so whenever an actual error happens (say, 500 from the server side) or when <code>res.data.status</code> is not <code>ready</code>, <code>react-query</code> will retry. And <a href="https://tanstack.com/query/v4/docs/react/guides/query-retries#retry-delay">it doesn’t retry right away</a> but wait for a little while as a delay between each failure.</p>
+<h3 id="simulate-an-error">Simulate an error</h3>
+<p>In <code>mirage.js</code>, simulating an error for the test to catch is fairly straightforward. I also found it might be helpful to have several <code>id</code>s that would trigger errors so you can test different error-handling logic.</p>
+<p>For example, we can define a list of <code>id</code>s that indicate errors when used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="s2">&#34;/api/orders/:id&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">schema</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">([</span><span class="s1">&#39;error-id&#39;</span><span class="p">,</span> <span class="s1">&#39;timeout-id&#39;</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="p">{},</span> <span class="p">{</span><span class="nx">error</span><span class="o">:</span> <span class="s2">&#34;something went wrong&#34;</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">id</span>: <span class="kt">request.params.id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">status</span><span class="o">:</span> <span class="s2">&#34;ready&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>And then, in our test, we can use either <code>error-id</code> or <code>timeout-id</code> as the <code>orderId</code> to simulate the error:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="nx">it</span><span class="p">(</span><span class="s2">&#34;shows a fallback call the store button&#34;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">(&lt;</span><span class="nt">DirectToBoot</span> <span class="na">orderId</span><span class="o">=</span><span class="s">&#34;error-id&#34;</span><span class="p">/&gt;);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">(()</span> <span class="o">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">expect</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">&#34;Seems something went wrong...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">).</span><span class="nx">toBeInTheDocument</span><span class="p">(),</span> <span class="p">{</span> <span class="nx">timeout</span>: <span class="kt">3000</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">&#34;04 23 33&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">waitFor</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">button</span><span class="p">).</span><span class="nx">toBeInTheDocument</span><span class="p">(),</span> <span class="p">{</span><span class="nx">timeout</span>: <span class="kt">3000</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="simulate-retries">Simulate Retries</h3>
+<p>In our feature, we also want to simulate the <code>long-running</code> order to make sure the UI won’t be blocked by the initial fetch. We can simulate it by defining a variable with <code>initialised</code> state and later on using a timer to update the value.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">longRunningOrder</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;long-running-order&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">status</span><span class="o">:</span> <span class="s2">&#34;initialised&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">createMockServer</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">createServer</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">routes() {</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="s2">&#34;/api/orders/:id&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">schema</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">([</span><span class="s1">&#39;long-running-order&#39;</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">timerId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">longRunningOrder</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="s1">&#39;ready&#39;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timerId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span> <span class="mi">2000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">longRunningOrder</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>Then after several retries, the view finally gets the <code>ready</code> status and is ready for notifying the store. Note in the console mirage had done three retries in this case.</p>
+<p><img src="/posts/images/react-clean-code-network-mocking/retry-on-failure.png" alt="Retry on failure"></p>
+<h3 id="summary">Summary</h3>
+<p>In this article, we have discussed how to use <code>mirage.js</code> to simplify the network mocking for either impossible or difficult cases if you talk to real APIs in your frontend application. We looked at the happy path, error handling and retries with <code>mirage.js</code> , and also how easy it is to use <code>react-query</code> to simplify the logic of implementing the network-related code.</p>
+<hr>
+<p>You can find the <a href="https://github.com/abruzzi/direct-to-boot">full source code</a> for this article here. And if you prefer videos, I’ve published these in <a href="https://www.youtube.com/@icodeit.juntao">my YouTuBe channel</a> in 2 one-hour-long videos.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center p-6 pr-3 no-underline"
+      href="https://icodeit.com.au/posts/7-day-react-clean-code-challenge/"
+      ><span class="mr-1.5">←</span><span>Join My 7 Day React Clean Code Challenge</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="https://icodeit.com.au/posts/the-pragmatic-guide-for-react-network-programming/"
+      ><span>The Pragmatic Guide for React Network Programming</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

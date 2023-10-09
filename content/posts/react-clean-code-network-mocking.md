@@ -36,7 +36,22 @@ We can start with the happy path as that’s the most easier step and the most i
 
 In test, the happy path for (initialised → ready) can be described as:
 
-![Happy path](/posts/images/react-clean-code-network-mocking/first-test.png)
+```tsx
+it("enables button when the order is ready", async () => {
+    render(<DirectToBoot orderId="order-id"/>);
+
+    expect(
+        screen.getByText("We are preparing your order...")
+    ).toBeInTheDocument();
+
+    const button = screen.getByRole("button");
+    expect(button).toBeInTheDocument();
+    expect(button).toBeDisabled();
+
+    await waitFor(() => expect(button).toBeEnabled(), {timeout: 3000});
+    await screen.findByText("Please click the button when you have arrived...");
+});
+```
 
 ### Mirage.js for mocking
 

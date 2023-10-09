@@ -5,7 +5,7 @@ theme = "paper"
 
 [params]
   # color style
-  color = 'linen'                 # linen, wheat, gray, light
+  color = 'gray'                 # linen, wheat, gray, light
   disableHLJS = true
 
   # header social icons
@@ -15,3 +15,20 @@ theme = "paper"
   # home page profile
   name = 'Juntao Qiu'
   bio = 'Hey, my name is Juntao. I am a developer, a YouTuber and an author. I help people write better code.'
+  
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    noHl = false
+    style = 'monokai'
+    tabWidth = 4  

@@ -1,10 +1,584 @@
-<!doctype html><html class="not-ready text-sm lg:text-base" style=--bg:#faf6f1 lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>I Code It</title><meta name=theme-color><meta name=description content><meta name=author content><link rel="preload stylesheet" as=style href=https://icodeit.com.au/main.min.css><style>@import 'https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'</style><link rel=preload as=image href=https://icodeit.com.au/theme.png><link rel=preload as=image href=https://icodeit.com.au/twitter.svg><link rel=preload as=image href=https://icodeit.com.au/github.svg><link rel=icon href=https://icodeit.com.au/favicon.ico><link rel=apple-touch-icon href=https://icodeit.com.au/apple-touch-icon.png><meta name=generator content="Hugo 0.102.3"><link rel=alternate type=application/rss+xml href=https://icodeit.com.au/index.xml title="I Code It"><meta property="og:title" content="I Code It"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://icodeit.com.au/"><meta itemprop=name content="I Code It"><meta itemprop=description content><meta name=twitter:card content="summary"><meta name=twitter:title content="I Code It"><meta name=twitter:description content></head><body class="text-black duration-200 ease-out dark:text-white"><header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center"><div class="relative z-50 mr-auto flex items-center"><a class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold" href=https://icodeit.com.au/>I Code It</a>
-<a class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"></a></div><a class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"></a>
-<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove("not-ready")},10);const btnMenu=document.querySelector(".btn-menu");btnMenu.addEventListener("click",()=>{htmlClass.toggle("open")});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg=`"#faf6f1"`.replace(/"/g,""),setDark=e=>{metaTheme.setAttribute("content",e?"#000":lightBg),htmlClass[e?"add":"remove"]("dark"),localStorage.setItem("dark",e)},darkScheme=window.matchMedia("(prefers-color-scheme: dark)");if(htmlClass.contains("dark"))setDark(!0);else{const e=localStorage.getItem("dark");setDark(e?e==="true":darkScheme.matches)}darkScheme.addEventListener("change",e=>{setDark(e.matches)});const btnDark=document.querySelector(".btn-dark");btnDark.addEventListener("click",()=>{setDark(localStorage.getItem("dark")!=="true")})</script><div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"><nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"><a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./twitter.svg) href=https://twitter.com/JuntaoQiu target=_blank></a>
-<a class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/abruzzi target=_blank></a></nav></div></header><main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"><div class="-mt-4 mb-20 flex items-start"><div><h1 class="mt-1.5 mb-3 text-3xl font-bold">Juntao Qiu</h1><div class="break-words headline">Hey, my name is Juntao. I am a developer, a YouTuber and an author. I help people write better code.</div></div></div><div class=featured><h1>Featured Posts</h1><ul><li><a href=https://juntao-qiu.medium.com/7-react-clean-code-tips-you-should-know-846b8108fc46 target=_blank>7 React Clean Code Tips You Should Know</a></li><li><a href=https://itnext.io/how-to-write-more-reusable-code-73f936283eff target=_blank>How to Write More Reusable Code?</a></li><li><a href=https://itnext.io/10-refactorings-to-boost-your-clean-code-skills-3a1e142d63f3 target=_blank>10 Refactorings to Boost your Clean Code Skills</a></li></ul></div><section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0"><h2 class="!my-0 pb-1 !leading-none">If I Could Only Teach One Thing to a Beginner Developer</h2><p>A few weeks ago, I got an interesting idea when I was writing a blog post about how to abstract your code to make it easier to reuse. I wanted to know what other developers think is the most important principle they would teach a newbie developer and why they would choose that design principle.</p><time class="text-sm opacity-60">Dec 1, 2022</time>
-<a class="absolute inset-0" href=https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/></a></section><section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0"><h2 class="!my-0 pb-1 !leading-none">Implementing Design System</h2><p>So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation. Lastly, consistency is the key here, and you will want all the products to have the same patterns in terms of user experience.</p><time class="text-sm opacity-60">Nov 19, 2022</time>
-<a class="absolute inset-0" href=https://icodeit.com.au/posts/implementing-design-system/></a></section><section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0"><h2 class="!my-0 pb-1 !leading-none">A story: from idea to product</h2><p>Undoubtedly, Covid-19 has, in many ways, affected our lives profoundly. Mandatory face masks when you go out for a coffee, social distancing in public, How to wash your hands in 6 steps, or the negative mental impacts since physical isolation because of working from home and so on. Those changes are shaping our life.</p><time class="text-sm opacity-60">Oct 28, 2020</time>
-<a class="absolute inset-0" href=https://icodeit.com.au/posts/idea-to-product/></a></section><section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0"><h2 class="!my-0 pb-1 !leading-none">Different Levels of Abstraction</h2><p>The ability of **abstracting** should be the most fundamental skill a developer should have, and I can't emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.</p><time class="text-sm opacity-60">Jul 10, 2020</time>
-<a class="absolute inset-0" href=https://icodeit.com.au/posts/levels-of-abs/></a></section><div class=subscribe id=subscribe><script async data-uid=63029542b9 src=https://icodeit.ck.page/63029542b9/index.js></script></div></main><footer class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"><div class=mr-auto>&copy; 2022
-<a class=link href=https://icodeit.com.au/>I Code It</a></div><a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
-<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>▷ Paper 6</a></footer></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+  <link
+    rel="alternate"
+    type="application/rss&#43;xml"
+    href="https://icodeit.com.au/index.xml"
+    title="I Code It"
+  />
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="I Code It" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://icodeit.com.au/" />
+
+  
+  <meta itemprop="name" content="I Code It">
+<meta itemprop="description" content="">
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="I Code It"/>
+<meta name="twitter:description" content=""/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+<div class="-mt-4 mb-20 flex items-start">
+  
+  
+  <div class="headline-container">
+    <div class="bio">
+      <img
+        src="/posts/images/about/juntao.qiu.avatar.jpg"
+        alt="Juntao Qiu Avatar"
+      />
+    </div>
+    <div class="headline break-words">
+      Hey, my name is Juntao. I am a developer, a
+      <a href="https://www.youtube.com/@icodeit.juntao" target="_blank"
+        >YouTuber</a
+      >
+      and <a href="https://leanpub.com/u/juntao" target="_blank">an author</a>.
+      I help people write better code.
+      <a href="https://juntao.substack.com/" target="_blank">Subscribe to my newsletter</a> to get my latest
+      articles and videos.
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+<h1>Recent Blogs</h1>
+
+
+<a href="https://icodeit.com.au/posts/the-2nd-edition-of-atdd/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/2nd-edition-atdd/cover.jpg" alt="The 2nd Editor of Test-Driven Development With React" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">The 2nd Editor of Test-Driven Development With React</h3>
+      <p class="mt-2 dark:text-gray-400">After several months of revising and editiong and rewording, finally &#34;Test-Driven Development with React and TypeScript,&#34; is officially out!</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Sep 7, 2023
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/tdd-mini-course/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/tdd-mini-course/cover.png" alt="Test-Driven Development Mini Course" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">Test-Driven Development Mini Course</h3>
+      <p class="mt-2 dark:text-gray-400">The Mini-Course on React and Test-Driven Development will provide you with the skills and knowledge to build robust, scalable and maintainable React applications.</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Feb 1, 2023
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/7-day-react-clean-code-challenge/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/7-day-react-clean-code-challenge/cover.png" alt="Join My 7 Day React Clean Code Challenge" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">Join My 7 Day React Clean Code Challenge</h3>
+      <p class="mt-2 dark:text-gray-400">Are you looking to start your React journey with React in 2023, or do you want to sharpen your React techniques to the next level? Join my 7-Day Challenge to learn all these with a project simulation!</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Dec 29, 2022
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/react-clean-code-network-mocking/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/react-clean-code-network-mocking/statechart.png" alt="React Clean Code -  mocking network scenarios" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">React Clean Code -  mocking network scenarios</h3>
+      <p class="mt-2 dark:text-gray-400">Handling network requests is complicated. There are too many cases you have to consider on top of the asynchronised process. And testing these code can be even more challenging...</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Dec 21, 2022
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/the-pragmatic-guide-for-react-network-programming/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/the-pragmatic-guide-for-react-network-programming/cover.png" alt="The Pragmatic Guide for React Network Programming" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">The Pragmatic Guide for React Network Programming</h3>
+      <p class="mt-2 dark:text-gray-400">Fetching data from a remote server can be challenging, especially when you have to consider cache, re-fetch, error handling, timeout etc...</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Dec 16, 2022
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/if-i-could-only-teach-one-thing-to-a-beginner-developer/cover.png" alt="If I Could Only Teach One Thing to a Beginner Developer" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">If I Could Only Teach One Thing to a Beginner Developer</h3>
+      <p class="mt-2 dark:text-gray-400">A few weeks ago, I got an interesting idea when I was writing a blog post about how to abstract your code to make it easier to reuse...</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Dec 1, 2022
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/implementing-design-system/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/implementing-design-system/cypress-vr.png" alt="Implementing Design System" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">Implementing Design System</h3>
+      <p class="mt-2 dark:text-gray-400">So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation...</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Nov 19, 2022
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/idea-to-product/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/idea-to-product/poster-dark-mode.png" alt="A story: from idea to product" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">A story: from idea to product</h3>
+      <p class="mt-2 dark:text-gray-400">As the saying goes: all great things have small beginnings. Even the most complicated product starts with a small and simple idea...</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Oct 28, 2020
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+<a href="https://icodeit.com.au/posts/levels-of-abs/" class="article-container">
+  <div
+    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
+  >
+    
+
+    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
+      
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
+      <img class="cover-image h-full w-full object-cover object-center" src="/posts/images/levels-of-abs/output.gif" alt="Different Levels of Abstraction" />
+    </div>
+
+    
+    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
+      <h3 class="truncate text-lg font-semibold leading-tight">Different Levels of Abstraction</h3>
+      <p class="mt-2 dark:text-gray-400">The ability of abstracting should be the most fundamental skill a developer should have, and I can&#39;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.</p>
+      <p
+        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
+      >
+        Juntao Qiu &bull; Jul 10, 2020
+      </p>
+    </div>
+  </div>
+</a>
+
+
+
+
+
+
+<div class="subscribe" id="subscribe">
+  <h1 class="subscribe-heading">Subscribe</h1>
+  <iframe src="https://juntao.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

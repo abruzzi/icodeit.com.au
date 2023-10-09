@@ -1,6 +1,102 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on I Code It</title><link>https://icodeit.com.au/posts/</link><description>Recent content in Posts on I Code It</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 01 Dec 2022 15:46:12 +1100</lastBuildDate><atom:link href="https://icodeit.com.au/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>If I Could Only Teach One Thing to a Beginner Developer</title><link>https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/</link><pubDate>Thu, 01 Dec 2022 15:46:12 +1100</pubDate><guid>https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/</guid><description>A few weeks ago, I got an interesting idea when I was writing a blog post about how to abstract your code to make it easier to reuse. I wanted to know what other developers think is the most important principle they would teach a newbie developer and why they would choose that design principle.
-So I did a few different “interviews”, some over WeChat, a few by Google Forms and the rest from a Google Chat thread internally.</description></item><item><title>Implementing Design System</title><link>https://icodeit.com.au/posts/implementing-design-system/</link><pubDate>Sat, 19 Nov 2022 17:15:59 +1100</pubDate><guid>https://icodeit.com.au/posts/implementing-design-system/</guid><description>What is a design system? There are hundreds of definitions of what a design system is, and I think this one is generic enough and also has most of the essential elements:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on I Code It</title>
+    <link>https://icodeit.com.au/posts/</link>
+    <description>Recent content in Posts on I Code It</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Sep 2023 17:09:59 +1100</lastBuildDate><atom:link href="https://icodeit.com.au/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The 2nd Editor of Test-Driven Development With React</title>
+      <link>https://icodeit.com.au/posts/the-2nd-edition-of-atdd/</link>
+      <pubDate>Thu, 07 Sep 2023 17:09:59 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/the-2nd-edition-of-atdd/</guid>
+      <description>After several months of revising and editiong and rewording, finally &amp;ldquo;Test-Driven Development with React and TypeScript,&amp;rdquo; is officially out! 🎉.
+A Little Backstory 🕰️ Around March 2023, I found myself with an unexpected amount of free time. The frontend world is ever-evolving, and technology has a way of becoming obsolete quickly. Just two years after publishing the first edition, I noticed significant shifts in the landscape. Redux, once a go-to choice for many, is now considered more cautiously.</description>
+    </item>
+    
+    <item>
+      <title>Test-Driven Development Mini Course</title>
+      <link>https://icodeit.com.au/posts/tdd-mini-course/</link>
+      <pubDate>Wed, 01 Feb 2023 17:09:59 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/tdd-mini-course/</guid>
+      <description>Introduction to the mini-course Welcome to the React and Test-Driven Development course! In this comprehensive mini-course, you&amp;rsquo;ll learn how to build a weather application from scratch using the latest and greatest in front-end development technology. With a focus on React, you&amp;rsquo;ll learn how to develop components and build a user interface that is fast, responsive, and user-friendly.
+One of the most exciting parts of this course is the emphasis on test-driven development (TDD).</description>
+    </item>
+    
+    <item>
+      <title>Join My 7 Day React Clean Code Challenge</title>
+      <link>https://icodeit.com.au/posts/7-day-react-clean-code-challenge/</link>
+      <pubDate>Thu, 29 Dec 2022 14:47:22 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/7-day-react-clean-code-challenge/</guid>
+      <description>How is your new year resolution for 2022 going? Don’t worry if you missed items on it as you still have 2023. Join me on a free 7-Day React Clean Code Challenge to learn to write better React code with some practical techniques and pro tips.
+In the challenge, you&amp;rsquo;ll be asked to implement a full functional Todo application like this in 7 days:
+In each day I&amp;rsquo;ll give you enough tips and code snippets you&amp;rsquo;ll need to finish the daily challenge.</description>
+    </item>
+    
+    <item>
+      <title>React Clean Code -  mocking network scenarios</title>
+      <link>https://icodeit.com.au/posts/react-clean-code-network-mocking/</link>
+      <pubDate>Wed, 21 Dec 2022 15:17:49 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/react-clean-code-network-mocking/</guid>
+      <description>In my book Maintainable React, I introduced a feature I had worked on a while ago. That feature is interesting in many ways, and I selected it as it involves several states in the view - which is one of the reasons why building UI is complicated.
+They are not typical UI states but server cache as described in Kent’s article here. All the network requests could go wrong, timeout, too many requests or even service downtime.</description>
+    </item>
+    
+    <item>
+      <title>The Pragmatic Guide for React Network Programming</title>
+      <link>https://icodeit.com.au/posts/the-pragmatic-guide-for-react-network-programming/</link>
+      <pubDate>Fri, 16 Dec 2022 21:52:12 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/the-pragmatic-guide-for-react-network-programming/</guid>
+      <description>In this article, I want to share some pragmatic tips for writing better React applications that involve network requests, like, every React application. I will start with the challenges we as developers are facing in dealing with network requests and try to separate these challenges out of the React build views, encapsulate the monster into a cage (into a hook), and finally use react-query to simplify as a final touch.</description>
+    </item>
+    
+    <item>
+      <title>If I Could Only Teach One Thing to a Beginner Developer</title>
+      <link>https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/</link>
+      <pubDate>Thu, 01 Dec 2022 15:46:12 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/if-i-could-only-teach-one-thing-to-a-beginner-developer/</guid>
+      <description>A few weeks ago, I got an interesting idea when I was writing a blog post about how to abstract your code to make it easier to reuse. I wanted to know what other developers think is the most important principle they would teach a newbie developer and why they would choose that design principle.
+So I did a few different “interviews”, some over WeChat, a few by Google Forms and the rest from a Google Chat thread internally.</description>
+    </item>
+    
+    <item>
+      <title>Implementing Design System</title>
+      <link>https://icodeit.com.au/posts/implementing-design-system/</link>
+      <pubDate>Sat, 19 Nov 2022 17:15:59 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/implementing-design-system/</guid>
+      <description>What is a design system? There are hundreds of definitions of what a design system is, and I think this one is generic enough and also has most of the essential elements:
 A design system is a set of standards to manage design at scale by reducing redundancy while creating a shared language and visual consistency across different pages and channels.
-So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation.</description></item><item><title>A story: from idea to product</title><link>https://icodeit.com.au/posts/idea-to-product/</link><pubDate>Wed, 28 Oct 2020 15:46:12 +1100</pubDate><guid>https://icodeit.com.au/posts/idea-to-product/</guid><description>A story: from idea to product Undoubtedly, Covid-19 has, in many ways, affected our lives profoundly. Mandatory face masks when you go out for a coffee, social distancing in public, How to wash your hands in 6 steps, or the negative mental impacts since physical isolation because of working from home and so on. Those changes are shaping our life.
-What I&amp;rsquo;m sharing today has something to do with covid-19. It&amp;rsquo;s about how I built and published a mobile App from scratch after Daniel Andrews announced Victoria enters Disaster State for two months and I have to stay at home for almost 24 hours per day.</description></item><item><title>Different Levels of Abstraction</title><link>https://icodeit.com.au/posts/levels-of-abs/</link><pubDate>Fri, 10 Jul 2020 23:11:16 +1100</pubDate><guid>https://icodeit.com.au/posts/levels-of-abs/</guid><description>The ability of abstracting should be the most fundamental skill a developer should have, and I can&amp;rsquo;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.
-However, since every abstraction omits some details and emphasises some other features, sometimes it can block us from understanding the problem (I guess our brains prefer tangible things more).</description></item></channel></rss>
+So it’s not a single standard of how you would design at scale but a set of standards, and it is a visual language, which is important both by the user experience design and implementation.</description>
+    </item>
+    
+    <item>
+      <title>A story: from idea to product</title>
+      <link>https://icodeit.com.au/posts/idea-to-product/</link>
+      <pubDate>Wed, 28 Oct 2020 15:46:12 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/idea-to-product/</guid>
+      <description>A story: from idea to product Undoubtedly, Covid-19 has, in many ways, affected our lives profoundly. Mandatory face masks when you go out for a coffee, social distancing in public, How to wash your hands in 6 steps, or the negative mental impacts since physical isolation because of working from home and so on. Those changes are shaping our life.
+What I&amp;rsquo;m sharing today has something to do with covid-19. It&amp;rsquo;s about how I built and published a mobile App from scratch after Daniel Andrews announced Victoria enters Disaster State for two months and I have to stay at home for almost 24 hours per day.</description>
+    </item>
+    
+    <item>
+      <title>Different Levels of Abstraction</title>
+      <link>https://icodeit.com.au/posts/levels-of-abs/</link>
+      <pubDate>Fri, 10 Jul 2020 23:11:16 +1100</pubDate>
+      
+      <guid>https://icodeit.com.au/posts/levels-of-abs/</guid>
+      <description>The ability of abstracting should be the most fundamental skill a developer should have, and I can&amp;rsquo;t emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go.
+However, since every abstraction omits some details and emphasises some other features, sometimes it can block us from understanding the problem (I guess our brains prefer tangible things more).</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Join My 7 Day React Clean Code Challenge - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="How is your new year resolution for 2022 going? Don’t worry if you missed items on it as you still have 2023. Join me on a free 7-Day React Clean Code Challenge to learn to write better React code with some practical techniques and pro tips.
+In the challenge, you&rsquo;ll be asked to implement a full functional Todo application like this in 7 days:
+In each day I&rsquo;ll give you enough tips and code snippets you&rsquo;ll need to finish the daily challenge." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Join My 7 Day React Clean Code Challenge" />
+<meta property="og:description" content="Are you looking to start your React journey with React in 2023, or do you want to sharpen your React techniques to the next level? Join my 7-Day Challenge to learn all these with a project simulation!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/7-day-react-clean-code-challenge/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-29T14:47:22+11:00" />
+<meta property="article:modified_time" content="2022-12-29T14:47:22+11:00" />
+
+  
+  <meta itemprop="name" content="Join My 7 Day React Clean Code Challenge">
+<meta itemprop="description" content="Are you looking to start your React journey with React in 2023, or do you want to sharpen your React techniques to the next level? Join my 7-Day Challenge to learn all these with a project simulation!"><meta itemprop="datePublished" content="2022-12-29T14:47:22+11:00" />
+<meta itemprop="dateModified" content="2022-12-29T14:47:22+11:00" />
+<meta itemprop="wordCount" content="228">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Join My 7 Day React Clean Code Challenge"/>
+<meta name="twitter:description" content="Are you looking to start your React journey with React in 2023, or do you want to sharpen your React techniques to the next level? Join my 7-Day Challenge to learn all these with a project simulation!"/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">Join My 7 Day React Clean Code Challenge</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Dec 29, 2022</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>How is your new year resolution for 2022 going? Don’t worry if you missed items on it as you still have 2023. Join me on a free <a href="https://icodeit.ck.page/7-day-react-clean-code">7-Day React Clean Code Challenge</a> to learn to write better React code with some practical techniques and pro tips.</p>
+<p>In the challenge, you&rsquo;ll be asked to implement a full functional Todo application like this in 7 days:</p>
+<p><img src="/posts/images/7-day-react-clean-code-challenge/todos.png" alt="Todo application"></p>
+<p>In each day I&rsquo;ll give you enough tips and code snippets you&rsquo;ll need to finish the daily challenge. And from the second day on, I&rsquo;ll show you how I did it and how I cleaned the code up to a better shape as well as tips how you should do similar thing.</p>
+<p>At the end of the challenge, you will be able to identify common code smells and do the corresponding refactorings to fix them easily.</p>
+<h2 id="what-will-you-learn">What will you learn?</h2>
+<ul>
+<li>Fundamental React techniques (components and <strong>common hooks</strong>, like useState, useEffect, useMemo and <code>useCallback</code>)</li>
+<li>Apply <strong>Test-Driven Development</strong> in your React to protect yourself from making mistakes when adding new features</li>
+<li>Common <strong>refactorings</strong> and <strong>clean code</strong> skills to transform the code beautiful and <strong>maintainable</strong> when scaling</li>
+<li>Advanced techniques for clean up your code: <strong>extract components</strong> write <strong>custom hooks</strong> to capture reusable logic</li>
+</ul>
+<h2 id="you-might-also-like-to">You might also like to</h2>
+<ul>
+<li>Subscribe my <a href="https://www.youtube.com/@icodeit.juntao">Youtube channel</a></li>
+<li>Read my <a href="https://juntao-qiu.medium.com/">blogs on medium</a></li>
+<li>Checkout my <a href="https://github.com/abruzzi">lastest code</a></li>
+<li>Buy some <a href="https://leanpub.com/u/juntao">React Clean Code books</a></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center p-6 pr-3 no-underline"
+      href="https://icodeit.com.au/posts/tdd-mini-course/"
+      ><span class="mr-1.5">←</span><span>Test-Driven Development Mini Course</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="https://icodeit.com.au/posts/react-clean-code-network-mocking/"
+      ><span>React Clean Code -  mocking network scenarios</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

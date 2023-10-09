@@ -1,11 +1,19 @@
 /* Place custom css here. */
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+  font-family: 'Merriweather', serif;
 }
 
 #subscribe {
   margin-top: 5rem;
+}
+
+#subscribe iframe {
+  border-radius: 6px;
 }
 
 .headline-container {
@@ -30,7 +38,7 @@ body {
 }
 
 .headline {
-  font-family: 'Ubuntu', cursive;
+  /* font-family: 'Ubuntu', cursive; */
   font-size: 1.5rem;
   flex: 1;
 }
@@ -75,7 +83,6 @@ a.featured-article-container {
 
 h1 {
   margin-block: 1rem;
-  text-decoration: 4px underline #e23e57;
 }
 
 .subscribe-heading {
@@ -84,8 +91,4 @@ h1 {
 
 .article-container {
   text-decoration: none;
-}
-
-.article-container p {
-  font-weight: lighter;
 }
