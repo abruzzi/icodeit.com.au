@@ -5,8 +5,6 @@ date: 2020-10-28T15:46:12+11:00
 cover: "/posts/images/idea-to-product/poster-dark-mode.png"
 ---
 
-# A story: from idea to product
-
 Undoubtedly, Covid-19 has, in many ways, affected our lives profoundly. Mandatory face masks when you go out for a coffee, social distancing in public, How to wash your hands in 6 steps, or the negative mental impacts since physical isolation because of working from home and so on. Those changes are shaping our life.
 
 What I'm sharing today has something to do with covid-19. It's about how I built and published a mobile App from scratch after Daniel Andrews announced Victoria enters Disaster State for two months and I have to stay at home for almost 24 hours per day. All of these, of course, start from a single requirement.

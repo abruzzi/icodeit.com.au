@@ -59,41 +59,23 @@
 <h1>Recent Blogs</h1>
 
 {{ end }}
-<a href="{{ .Permalink }}" class="article-container">
-  <div
-    class="w-100 mx-2 mt-12 flex flex-col overflow-hidden rounded bg-white shadow shadow-gray-200 duration-300 hover:bg-gray-300 dark:bg-gray-800 dark:shadow-gray-900 md:flex-row"
-  >
-    <!-- <div class="h-64 w-auto md:w-1/2">
-      {{ $image := .Params.cover }} {{ if not $image }} {{ $image =
-      "/posts/images/misc/coding.jpg" }} {{ end }}
-      <img
-        class="cover-image h-full w-full object-cover object-center"
-        src="{{ $image }}"
-        alt="{{.Title}}"
-      />
-    </div> -->
 
-    <div class="h-64 w-auto md:w-1/2 bg-e23e57 relative overflow-hidden">
-      {{ $image := .Params.cover }}
-      {{ if not $image }}
-          {{ $image = "/posts/images/misc/coding.jpg" }}
-      {{ end }}
-      <div class="absolute inset-0 bg-gradient-to-t from-e23e57 opacity-60"></div>
-      <img class="cover-image h-full w-full object-cover object-center" src="{{ $image }}" alt="{{ .Title }}" />
-    </div>
+<a href="{{ .Permalink }}" class="article-container block p-3 hover:bg-gray-100 transition-colors duration-200 rounded-md dark:hover:bg-gray-900">
+  <div class="w-full flex flex-col space-y-3 text-gray-800 dark:text-gray-300">
 
-    <!-- content -->
-    <div class="flex w-full flex-col justify-between py-4 px-6 text-gray-800">
-      <h3 class="truncate text-lg font-semibold leading-tight">{{ .Title }}</h3>
-      <p class="mt-2 dark:text-gray-400">{{ .Description }}</p>
-      <p
-        class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-400"
-      >
+    <!-- Title -->
+    <h3 class="text-xl font-semibold leading-tight hover:text-e23e57 transition-colors duration-200">{{ .Title }}</h3>
+
+    <!-- Description -->
+    <p class="text-base">{{ .Description }}</p>
+
+    <!-- Date & Author -->
+    <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
         Juntao Qiu &bull; {{ .Date | time.Format ":date_medium" }}
-      </p>
     </div>
   </div>
 </a>
+
 
 {{ end }}
 
