@@ -2,7 +2,6 @@
 title: "A story: from idea to product"
 description: "As the saying goes: all great things have small beginnings. Even the most complicated product starts with a small and simple idea..."
 date: 2020-10-28T15:46:12+11:00
-category: "ideas"
 cover: "/posts/images/idea-to-product/poster-dark-mode.png"
 ---
 

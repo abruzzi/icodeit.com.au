@@ -28,6 +28,14 @@
   }
 }
 
+.info-panel {
+  @apply p-4 border-l-4 border-blue-500 bg-blue-100 text-blue-700;
+}
+
+.dark .info-panel {
+  @apply bg-gray-700 border-gray-600 text-gray-300;
+}
+
 .max-w-3xl {
   max-width: 60rem;
 }

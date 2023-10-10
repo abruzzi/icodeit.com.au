@@ -9,6 +9,7 @@
     "start": "hugo server --buildDrafts --watch --minify --disableFastRender --themesDir=../.. --source=exampleSite --bind=0.0.0.0 --baseURL=192.168.0.122 --port=1313",
     "open": "open http://0.0.0.0:1313/",
     "css": "pnpm tailwindcss -i ./assets/app.css -o ./assets/main.css --watch",
+    "postcss": "postcss ./assets/app.css -o ./assets/main.css",
     "go": "cp exampleSite/go.default.mod exampleSite/go.mod",
     "site": "hugo --gc --minify --themesDir=../.. --source=exampleSite --config=go.toml,config.toml",
     "dev": "killall hugo & pnpm css & pnpm start & pnpm open",
@@ -16,6 +17,9 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.8",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "stylelint": "^14.15.0",

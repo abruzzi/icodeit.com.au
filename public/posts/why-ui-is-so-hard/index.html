@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #F5F5F5"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Why Web UI Development Is So Hard? - I Code It</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="Web UI development might appear straightforward at first glance, but delve deeper and you&rsquo;ll discover a multitude of complexities that challenge even seasoned developers. This piece aims to dissect the inherent challenges of web UI development, from the discrepancy between web languages and the modern UI requirements, to intricate data management issues and asynchronous API calls. We&rsquo;ll also explore often-overlooked &ldquo;unhappy paths&rdquo; such as loading states and error handling, as well as broader architecture considerations encompassing security, performance, and accessibility." />
+  <meta
+    name="author"
+    content=""
+  />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://icodeit.com.au/main.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+  </style>
+
+  
+   
+  <link rel="preload" as="image" href="https://icodeit.com.au/theme.png" />
+
+  
+  
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/twitter.svg" />
+  
+  <link rel="preload" as="image" href="https://icodeit.com.au/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://icodeit.com.au/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://icodeit.com.au/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.111.1">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Why Web UI Development Is So Hard?" />
+<meta property="og:description" content="The landscape of web UI development is fraught with challenges that extend beyond writing code and designing interfaces. The inherent language limitations, nuanced data management, async complexities, and often-ignored unhappy paths collectively make this a formidable field. Architectural decisions ..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icodeit.com.au/posts/why-ui-is-so-hard/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-11T07:40:47+11:00" />
+<meta property="article:modified_time" content="2023-10-11T07:40:47+11:00" />
+
+  
+  <meta itemprop="name" content="Why Web UI Development Is So Hard?">
+<meta itemprop="description" content="The landscape of web UI development is fraught with challenges that extend beyond writing code and designing interfaces. The inherent language limitations, nuanced data management, async complexities, and often-ignored unhappy paths collectively make this a formidable field. Architectural decisions ..."><meta itemprop="datePublished" content="2023-10-11T07:40:47+11:00" />
+<meta itemprop="dateModified" content="2023-10-11T07:40:47+11:00" />
+<meta itemprop="wordCount" content="3805">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Why Web UI Development Is So Hard?"/>
+<meta name="twitter:description" content="The landscape of web UI development is fraught with challenges that extend beyond writing code and designing interfaces. The inherent language limitations, nuanced data management, async complexities, and often-ignored unhappy paths collectively make this a formidable field. Architectural decisions ..."/>
+
+  
+  
+</head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRMPWKNZPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRMPWKNZPP');
+</script>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
+      href="https://icodeit.com.au/"
+      >I Code It</a
+    >
+    <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#F5F5F5"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+    
+      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
+      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
+      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
+      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href=" https://twitter.com/JuntaoQiu "
+        target="_blank"
+      ></a>
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href=" https://github.com/abruzzi "
+        target="_blank"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">Why Web UI Development Is So Hard?</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Oct 11, 2023</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>Web UI development might appear straightforward at first glance, but delve deeper and you&rsquo;ll discover a multitude of complexities that challenge even seasoned developers. This piece aims to dissect the inherent challenges of web UI development, from the discrepancy between web languages and the modern UI requirements, to intricate data management issues and asynchronous API calls. We&rsquo;ll also explore often-overlooked &ldquo;unhappy paths&rdquo; such as loading states and error handling, as well as broader architecture considerations encompassing security, performance, and accessibility.</p>
+<h2 id="navigating-language-mismatches">Navigating Language Mismatches</h2>
+<p>Unless you&rsquo;re building a straightforward, document-like webpage—such as a basic article (<a href="http://www.paulgraham.com/selfindulgence.html">http://www.paulgraham.com/selfindulgence.html</a>) without advanced UI elements like search boxes or modals—the built-in languages offered by web browsers are generally insufficient. Most web applications are much more complex than a simple document.</p>
+<p><img src="why-ui-is-so-hard/html-document.png" alt="HTML Document"></p>
+<p>The disparity between the language of the web and the UI experiences people encounter daily is substantial. Whether it&rsquo;s a ticket booking platform, a project management tool, or an image gallery, modern web UIs are intricate, and native web languages don&rsquo;t readily support them. You can go the extra mile to &ldquo;simulate&rdquo; UI components like accordions, toggle switches, or interactive cards, but fundamentally, you&rsquo;re still working with what amounts to a document, not a genuine UI component.</p>
+<p>In an ideal world, building a user interface would resemble working with a visual UI designer. Tools like C++ Builder or Delphi, or more modern alternatives like Figma, let you drag-and-drop components onto a canvas that then renders seamlessly on any screen.</p>
+<p><img src="why-ui-is-so-hard/cpp-builder.png" alt="C++ Builder"></p>
+<p><a href="https://25.cppbuilder.dev/quick-history/">https://25.cppbuilder.dev/quick-history/</a> - An ancient IDE back to the last century for desktop applications.</p>
+<p>This isn&rsquo;t the case with web development. For instance, to create a custom search input, you&rsquo;ll need to wrap it in additional elements, fine-tune colors, adjust padding and fonts, and perhaps add an icon for user guidance. Creating an auto-suggestion list that appears right under the search box, matching its width exactly, is often far more labor-intensive than one might initially think.</p>
+<p><img src="why-ui-is-so-hard/no-component-in-fe.png" alt="Jira issue view"></p>
+<p>Above is a Jira ticket - an issue view, and as you can tell it’s a relatively complicated user interface. For such a UI you might expect there is <code>Navigator</code> component, <code>Dropdown</code> list, <code>Accordion</code> and so on. But there isn’t, or should I say not directly.</p>
+<p>Developers have worked hard to simulate these with HTML, CSS and JavaScript. If I disable the CSS for the site temporarily, I will get something like this:</p>
+<p><img src="why-ui-is-so-hard/jira-board-without-css.png" alt="jira with out css"></p>
+<p>Thanks to Jira engineers’ hard work, the application, even though doesn’t look right, still functions - you can click buttons and links to navigate around and even upload an image as an attachment for the ticket.</p>
+<p>Utilizing a design system library can alleviate some of these challenges, offering developers a head start rather than building from scratch. However, design systems come with their own set of drawbacks and require thorough evaluation before integration into your project.</p>
+<p><a href="https://juntao-qiu.medium.com/the-challenges-of-implementing-a-design-system-f83565605573">https://juntao-qiu.medium.com/the-challenges-of-implementing-a-design-system-f83565605573</a></p>
+<h1 id="exploring-a-bit-on-ways-of-building-ui">Exploring a bit on ways of building ui</h1>
+<p>Let&rsquo;s move a bit back to history to see how the way we build web ui in the old time, and how the technique at different stage solve problems and why we end up with declartive ui library like React.</p>
+<p>Firstly, let&rsquo;s start from a simple feature: given an array of strings, make a HTML list on the page. This is a common problem we face as a web developer - in real world scenario the data might come from a remote server, and the data might be more complicated, say, a nested object contains more data in each item, and we might need to render more sophiscated user interface, for example, a product card or a property listing. But we&rsquo;ll skip all these details and over simplify it for the demo here.</p>
+<p>So the array is defined as the following content - it contains three famous quotes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">quotes</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;The only way to do great work is to love what you do.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;The only limit to our realization of tomorrow is our doubts of today.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;In the end, we will remember not the words of our enemies, but the silence of our friends.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span></code></pre></div><p>Let&rsquo;s beginging with implementing the feature with native DOM APIs.</p>
+<p>Note: DOM
+The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects, where each object corresponds to a part of the page such as an HTML tag. Essentially, the DOM serves as a representation of the web page so that languages like JavaScript can interact with it to change the document structure, style, and content.</p>
+<p>The DOM is not part of the JavaScript language, but rather a standard object-based representation of a web page, which can be manipulated using JavaScript. It allows for dynamic changes, enabling rich interactive web applications.</p>
+<h2 id="using-dom-api">Using DOM API</h2>
+<p>With the raw DOM API, you&rsquo;ll have to create each element and append it to the parent manually.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">quotes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">quote</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">li</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">quote</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ul</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ul</span><span class="p">);</span>
+</span></span></code></pre></div><p>We use JavaScript&rsquo;s native DOM API to create an unordered list by invoking document.createElement(&lsquo;ul&rsquo;). Then, for each quote in our quotes array, we create a new li element and set its inner text to the quote description. Finally, we append each li to the ul, and the ul gets appended to the document body with <code>document.body.appendChild(ul)</code>.</p>
+<p>This approach offers the most control but is quite verbose and easy to get wrong. You directly interact with the DOM, meaning you&rsquo;re responsible for managing all aspects of element creation, updating, and deletion. This could lead to more errors and makes the code harder to manage and debug.</p>
+<p>The native DOM API is a bit verbose and easy to go wrong if you don&rsquo;t pay enough attention. And jQuery changed the way people write code to manipulate the DOM.</p>
+<h2 id="using-jquery">Using jQuery</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;ul&gt;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">quotes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">quote</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">li</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">quote</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ul</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">ul</span><span class="p">);</span>
+</span></span></code></pre></div><p>Similarly, we start by creating an empty <code>&lt;ul&gt;</code> element using the jQuery constructor function <code>$('&lt;ul&gt;')</code>. For each quote in our array, we create a new <code>&lt;li&gt;</code> element, setting its text to the quote string using <code>.text()</code>. We then append each <code>&lt;li&gt;</code> to the <code>&lt;ul&gt;</code> using the <code>.append()</code> method. Finally, we append the complete <code>&lt;ul&gt;</code> to the body of the document using <code>$('body').append(ul)</code>.</p>
+<p>Using jQuery simplifies the process and reduces boilerplate code. It abstracts away many complexities of native DOM manipulation, making the code more concise and less prone to errors. Instead of directly interacting with the DOM, we benefit from the utility methods jQuery offers, which internally handle the lower-level operations. This generally results in cleaner, more maintainable code that is easier to debug.</p>
+<p>But still, we&rsquo;re thinking in how to do DOM manipulations, we need to consider which node to be inserted to where.</p>
+<h2 id="using-early-frameworks-like-backbonejs">Using Early Frameworks like Backbone.js</h2>
+<p>Frameworks like Backbone.js attempted to bring structure to the frontend, introducing the MVC (Model-View-Controller) pattern to JavaScript development. While Backbone.js added more organization, it also increased complexity by necessitating a deep understanding of models, views, and routers.</p>
+<p>For example, if we write the same function above with Backbone.js, we&rsquo;ll end up with some fairly complicated code like following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">QuoteView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">initialize</span>: <span class="kt">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span>: <span class="kt">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">QuotesListView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#quote-list&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">initialize</span>: <span class="kt">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">quotes</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">quotes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span>: <span class="kt">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">quotes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">quoteText</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">quoteView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuoteView</span><span class="p">({</span> <span class="nx">text</span>: <span class="kt">quoteText</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">quoteView</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">quotesListView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QuotesListView</span><span class="p">({</span> <span class="nx">quotes</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">quotesListView</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+</span></span></code></pre></div><p>In the Backbone.js code, we define two distinct views: <code>QuoteView</code> and <code>QuotesListView</code>. A view in Backbone.js is a piece of the user interface that is responsible for displaying data and handling user interactions. The <code>QuoteView</code> is responsible for rendering a single quote as a list item. It uses the <code>tagName</code> property to specify that it should generate an &rsquo;li&rsquo; element. When initialized, it sets its internal <code>text</code> property to the quote text passed through the <code>options</code> argument.</p>
+<p>The <code>QuotesListView</code> is a more complex view that manages a collection of <code>QuoteView</code> instances. A collection in Backbone.js is an ordered set of models that provides methods for managing them. The <code>el</code> property links the view to an existing DOM element, in this case, an element with the id <code>quote-list</code>. When the <code>QuotesListView</code> is initialized, it receives an array of quotes via <code>options</code>, which it sets as its internal <code>quotes</code> property.</p>
+<p>The <code>render</code> method in <code>QuotesListView</code> iterates over the <code>quotes</code> array and for each quote, creates a new <code>QuoteView</code> instance, renders it, and appends it to its root element. This composition of views makes the application easier to manage and scale, as each view has a well-defined role.</p>
+<p>In contrast to directly manipulating the DOM or using jQuery, Backbone.js offers a structured approach that separates the concerns of data management and UI rendering, making it easier to maintain and extend the codebase.</p>
+<p>Backbone.js, while offering a structured approach to building web applications, has some challenges that led developers to explore alternative paradigms like two-way data binding:</p>
+<ol>
+<li>
+<p>Boilerplate Code: Backbone often requires a lot of boilerplate to get simple features up and running. For example, you have to manually set up listeners for model changes to update the view.</p>
+</li>
+<li>
+<p>Manual DOM Management: With Backbone, you&rsquo;re still required to write logic to manipulate the DOM. This is tedious and error-prone.</p>
+</li>
+<li>
+<p>Lack of Data Binding: Unlike frameworks that support two-way data binding, Backbone requires you to write custom code to sync your views with your models. This can become cumbersome for complex applications.</p>
+</li>
+<li>
+<p>Complexity: As your application grows, you may find yourself managing a lot of views, models, and their interconnections. This could lead to spaghetti code if not managed carefully.</p>
+</li>
+</ol>
+<p>Two-way data binding frameworks like AngularJS (1.x) sought to address these issues by providing a more declarative way to sync the view with the model. With two-way data binding, any changes to the model are automatically reflected in the view and vice versa, without the need for manual DOM manipulation or event handling for synchronization.</p>
+<p>Note: Two-way data binding
+Two-way data binding is a mechanism where the User Interface (UI) fields are bound to model data dynamically, such that when a UI field changes, the model data changes with it and vice versa. This can significantly simplify how changes in your UI are reflected in your application state and how changes in your application state are reflected back in your UI.</p>
+<p>Two-way data binding also had its downsides, such as performance issues on large applications and difficulties in debugging, as changes could be triggered from either the view or the model. This led to the adoption of a one-way data flow architecture in newer frameworks like React and Angular 2+, which offer greater control and predictability.</p>
+<ul>
+<li>Performance: Constantly watching for changes in the DOM and updating the model, and vice versa, can be resource-intensive, especially for large applications.</li>
+<li>Complexity: It can make the data flow in your application harder to understand and debug because changes can be initiated from both the UI and the model.</li>
+<li>Predictability: Two-way data binding can lead to situations where changes in one part of the application unexpectedly and undesirably affect other parts, which makes the system harder to reason about.</li>
+</ul>
+<h2 id="introducing-react-and-modern-frontend-frameworks">Introducing React and Modern Frontend Frameworks</h2>
+<p>There are many new things with React compare to its predecessors. Namingly:</p>
+<ol>
+<li>
+<p><strong>One-Way Data Flow</strong>: React employs a unidirectional data flow, ensuring that child components can&rsquo;t affect parent data. This creates a single source of truth within the application, which simplifies debugging and makes the state more predictable. This is a departure from two-way data binding methods found in older frameworks, where changes could propagate in both directions, often making it harder to track state changes and debug issues.</p>
+</li>
+<li>
+<p><strong>Virtual DOM</strong>: Unlike earlier libraries and frameworks that directly manipulated the real DOM, React creates a virtual DOM in-memory. When an element&rsquo;s state changes, React first performs the changes on the virtual DOM, then compares it with the real DOM, and finally updates only the differing parts. This results in enhanced performance by reducing costly DOM manipulations and repaints.</p>
+</li>
+<li>
+<p><strong>Component-Based Architecture</strong>: React brought a highly composable component-based architecture to the forefront. This not only allows for better code reusability but also makes it easier to manage state and lifecycle methods. Components are the building blocks of a React application, and they make it simpler to develop, maintain, and scale large applications.</p>
+</li>
+<li>
+<p><strong>Server-Side Rendering</strong>: Unlike some client-side rendering-only libraries, React allows for server-side rendering (SSR) out of the box. SSR can significantly improve the initial load time of a web application, which is crucial for both user experience and SEO.</p>
+</li>
+<li>
+<p><strong>Immutable Data</strong>: React pairs well with immutable data structures. This enables optimized rendering and improves the application&rsquo;s performance. When data is immutable, React can more easily determine changes, which is beneficial for optimizing re-renders.</p>
+</li>
+</ol>
+<p>These features set React apart from many of its predecessors, offering a more robust, maintainable, and scalable solution for building modern web applications.</p>
+<p>Now let&rsquo;s write the same example with in React:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">Quotes() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="nx">quotes</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">quote</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}&gt;{</span><span class="nx">quote</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>In this React functional component named <code>Quotes</code>, an unordered list (<code>&lt;ul&gt;</code>) is rendered. Inside this list, the <code>.map()</code> function iterates over the <code>quotes</code> array to generate a list item (<code>&lt;li&gt;</code>) for each quote. The <code>{quote}</code> syntax injects the actual text of the quote into each list item.</p>
+<p>A <code>key</code> attribute is also set to the index of each quote within the array, ensuring each list item has a unique identifier, as per React&rsquo;s best practices. This helps React optimize re-rendering by quickly identifying which items have changed.</p>
+<p>Compared to the vanilla JavaScript example (and jQuery version), this React code is more declarative and easier to understand. You describe what you want (a list of quotes) rather than detailing all the steps to create it. This makes the code easier to debug and maintain in the long run.</p>
+<h2 id="the-key-takeaways">The Key Takeaways</h2>
+<p>You can see that as we progress from the raw DOM API to React, the code becomes easier to read and understand. In the DOM API, you have to explicitly create and append each element. jQuery improves upon this but still involves manual DOM manipulation. Backbone introduces the concept of views, but you still have to handle the rendering yourself.</p>
+<p>React takes a step further by letting you focus on describing what the UI should look like, not how to get there. This declarative approach simplifies the mental model, reduces side effects, and makes the code much more maintainable.</p>
+<p>The benefits of using a declarative API, as found in React, are manifold. One of the most significant advantages is that it abstracts away the manual manipulation of the DOM, allowing developers to focus more on the application&rsquo;s state and logic rather than how it is rendered. You describe what you want the UI to look like, and React takes care of making it so. This simplifies the codebase and makes it easier to maintain.</p>
+<p>Another benefit is reusability. In React, components can be easily shared and reused across different parts of an application or even across different projects. This DRY (Don&rsquo;t Repeat Yourself) approach enhances code quality and speeds up development.</p>
+<p>Declarative APIs also enhance the predictability and reliability of applications. Because you&rsquo;re describing what the UI should look like for a given state, it&rsquo;s easier to reason about the application&rsquo;s behavior. This makes debugging and testing simpler, as well as improves the overall maintainability of the codebase.</p>
+<p>Lastly, React&rsquo;s declarative nature works well with modern development tooling and practices, such as component-driven development and various state management libraries. This ecosystem integration further eases the development process, providing a robust, efficient, and scalable way to build user interfaces.</p>
+<p>In summary, React&rsquo;s declarative API offers a more maintainable, reusable, and predictable way to build UIs compared to the manual and error-prone methods required when using the native DOM API. It lets you focus on the &lsquo;what&rsquo; rather than the &lsquo;how,&rsquo; streamlining the development process and improving code quality.</p>
+<p>A declarative API certainly alleviates some frontend challenges and narrows the gap caused by language discrepancies. However, the frontend domain still faces hurdles, with data (state) management being a prominent concern.</p>
+<h2 id="understanding-the-state-management">Understanding the State management</h2>
+<p>Managing the state in modern frontend development is a complex task. Nearly every application has to retrieve data from a remote server via a network. This often involves various concerns like authentication for API access and the specifics of the data-fetching code, such as the protocol used, data format, and whether the API is RESTful, GraphQL, or RPC-based.</p>
+<p>But that&rsquo;s just one aspect; there&rsquo;s also the matter of managing local state. For example, an accordion component needs to track whether it&rsquo;s expanded or collapsed, and a text field in a form must manage its own value.</p>
+<p><img src="why-ui-is-so-hard/expandable.png" alt="Expandable panel"></p>
+<p>Using a third-party state management library like Redux or MobX can be beneficial when your application reaches a level of complexity that makes state tracking difficult. However, this approach isn&rsquo;t without its caveats and should be considered carefully.</p>
+<p>Many developers are leaning towards using React&rsquo;s built-in Context API for state management. Additional complexities such as steep learning curves, boilerplate code, and potential performance overhead are some reasons why these libraries might not be suitable for everyone.</p>
+<h2 id="exploring-the-unhappy-paths">Exploring the Unhappy Paths</h2>
+<p>When it comes to UI development, our primary focus is often on the &ldquo;happy path&rdquo;—the optimal user journey where everything goes as planned. However, neglecting the &ldquo;unhappy paths&rdquo; can make your UI far more complicated than you might initially think. Here are some scenarios that could lead to unhappy paths and consequently complicate your UI development efforts:</p>
+<h3 id="errors-in-another-component">Errors in Another Component</h3>
+<p>Imagine you&rsquo;re using a third-party component or even another team&rsquo;s component within your application. If that component throws an error, it could potentially break your UI or lead to unexpected behaviors that you have to account for. This can involve adding conditional logic or error boundaries to handle these errors gracefully, making your UI more complex than initially anticipated.</p>
+<p>For example, the following code we’re trying to access something doesn’t exist in the passed in props - a common <strong>TypeError: Cannot read properties of undefined (reading &lsquo;doesnt&rsquo;)</strong> and it throws an exception.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">MenuItem</span> <span class="o">=</span> <span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">item</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">onItemClick</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">item</span><span class="o">:</span> <span class="nx">MenuItemType</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">onItemClick</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span><span class="o">:</span> <span class="nx">MenuItemType</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// @ts-ignore
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">information</span>  <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="nx">item</span><span class="p">.</span><span class="nx">something</span><span class="p">.</span><span class="nx">doesnt</span><span class="p">.</span><span class="nx">exist</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;{</span><span class="nx">item</span><span class="p">.</span><span class="nx">description</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">onItemClick</span><span class="p">(</span><span class="nx">item</span><span class="p">)}&gt;</span><span class="nx">Add</span> <span class="nx">to</span> <span class="nx">Cart</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>It can cause the whole application to crash if we don’t isolate the error into a Error Boundary.</p>
+<p><img src="why-ui-is-so-hard/error-boundary.png" alt="Error boundary"></p>
+<h3 id="downstream-systems-are-down">Downstream Systems Are Down</h3>
+<p>Your UI might depend on various microservices or APIs for fetching data. If any of these downstream systems are down, your UI has to account for it. You&rsquo;ll need to design fallbacks, loading indicators, or friendly error messages that guide the user on what to do next. Handling these scenarios effectively often involves both frontend and backend logic, thus adding another layer of complexity to your UI development tasks.</p>
+<h3 id="unexpected-user-behavior">Unexpected User Behavior</h3>
+<p>No matter how perfectly you design your UI, users will always find ways to use your system in manners you didn&rsquo;t anticipate. Whether they input special characters in text fields, try to submit forms too quickly, or use browser extensions that interfere with your site, you have to design your UI to handle these edge cases. This means implementing additional validation, checks, and safeguards that can complicate your UI codebase.</p>
+<p>Understanding and effectively managing these unhappy paths are critical for creating a robust, resilient, and user-friendly interface. Not only do they make your application more reliable, but they also contribute to a more comprehensive and well-thought-out user experience.</p>
+<p>I’ve discussed the unhappy path in this article before, please have a read if you haven’t yet.</p>
+<p><a href="https://itnext.io/how-long-does-it-take-for-adding-an-inputbox-486bd4434dfa">https://itnext.io/how-long-does-it-take-for-adding-an-inputbox-486bd4434dfa</a></p>
+<h2 id="accessing-remote-state-over-network">Accessing remote state over network</h2>
+<p>In React, network programming poses unique challenges that go beyond the apparent simplicity of making API calls with <code>useEffect</code>. While the happy path might seem straightforward, the reality quickly complicates as you account for various scenarios like error handling, loading states, and retries. Add to that the complexities of caching and the code can quickly become unwieldy and hard to maintain.</p>
+<p>So instead of doing this (it’s a good starting point though) with <code>useEffect</code> hook.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">users</span><span class="p">,</span> <span class="nx">setUsers</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span><span class="p">&gt;([])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">setUsers</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span>
+</span></span></code></pre></div><p>In a real-world codebase, beyond just using the fetch function, you&rsquo;ll often find yourself managing additional states, a process that&rsquo;s also susceptible to errors.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">boolean</span><span class="p">&gt;(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">&lt;</span><span class="nt">string</span><span class="p">&gt;(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">fetchUsers</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users2&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">&lt;=</span> <span class="mi">299</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setUsers</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setError</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fetchUsers</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">ErrorMessage</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>There is a long list of potential considerations in <a href="%5Bhttps://tanstack.com/query/v4/docs/react/overview%5D(https://tanstack.com/query/v4/docs/react/overview)">react-query documentation page</a>.</p>
+<p><img src="why-ui-is-so-hard/react-query.png" alt="React query benefits"></p>
+<h2 id="other-considerations">Other Considerations</h2>
+<p>We&rsquo;ve touched on some key challenges in Web UI Development, yet this is just a fraction of the complexities you&rsquo;ll encounter in real-world projects. There are many more factors to consider as you navigate these and other challenges.</p>
+<ol>
+<li><strong>Cross-browser Compatibility</strong>: Different browsers have different rendering engines, and even different versions of the same browser can behave differently. This makes cross-browser compatibility a major concern.</li>
+<li><strong>Performance Optimization</strong>: Ensuring that the website is fast and efficient requires a deep understanding of how browsers render elements, lazy loading, optimizing assets, and much more.</li>
+<li><strong>Accessibility</strong>: Building an accessible website that&rsquo;s usable for all individuals, including those with disabilities, requires additional knowledge and testing.</li>
+<li><strong>Security Concerns</strong>: With the rise of front-end applications, client-side security has become more crucial. Think about issues like Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), and data leaking through client-side logs.</li>
+</ol>
+<p>While each bulletin above could warrant its own article or even a series of articles, I&rsquo;ll stop here to keep this post from becoming too lengthy and overwhelming. For those interested in diving deeper, I&rsquo;ve included a references section with further reading materials.</p>
+<h2 id="summary">Summary</h2>
+<p>In sum, the landscape of web UI development is fraught with challenges that extend beyond writing code and designing interfaces. The inherent language limitations, nuanced data management, async complexities, and often-ignored unhappy paths collectively make this a formidable field. Architectural decisions around security, performance, and accessibility further complicate the landscape. Understanding these challenges is the first step towards navigating them effectively and crafting web UIs that are not just visually appealing but also robust, secure, and user-friendly.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="%5Bhttps://itnext.io/the-pragmatic-guide-to-react-network-programming-c6f9de9962ed%5D(https://itnext.io/the-pragmatic-guide-to-react-network-programming-c6f9de9962ed)">The pragmatic guide to React network programming</a></li>
+<li><a href="%5Bhttps://www.udemy.com/course/mastering-maintainable-react%5D(https://www.udemy.com/course/mastering-maintainable-react)">Mastering Maintainable React Course</a></li>
+<li><a href="%5Bhttps://martinfowler.com/articles/modularizing-react-apps.html%5D(https://martinfowler.com/articles/modularizing-react-apps.html)">Modularising React Applications</a></li>
+<li><a href="%5Bhttps://icodeit.thinkific.com/courses/test-driven-development-with-react%5D(https://icodeit.thinkific.com/courses/test-driven-development-with-react)">Test-Driven Development with React</a></li>
+</ul>
+<h2 id="you-might-also-want-to">You might also want to</h2>
+<ul>
+<li>Subscribe my <a href="https://www.youtube.com/@icodeit.juntao">Youtube channel</a></li>
+<li>Read my <a href="https://juntao-qiu.medium.com/">blogs on medium</a></li>
+<li>Checkout my <a href="https://github.com/abruzzi">lastest code</a></li>
+<li>Buy some <a href="https://leanpub.com/u/juntao">React Clean Code books</a></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="https://icodeit.com.au/posts/the-2nd-edition-of-atdd/"
+      ><span>The 2nd Editor of Test-Driven Development With React</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://icodeit.com.au/">I Code It</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

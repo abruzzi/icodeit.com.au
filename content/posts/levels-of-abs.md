@@ -2,7 +2,7 @@
 title: "Different Levels of Abstraction"
 date: 2020-07-10T23:11:16+11:00
 description: "The ability of abstracting should be the most fundamental skill a developer should have, and I can't emphasise this enough. By abstracting, we can escape from the overwhelming seemingly irrelevant details to a solution that could solve all the problems at one go."
-
+category: "Code"
 cover: "/posts/images/levels-of-abs/output.gif"
 ---
 
