@@ -117,3 +117,8 @@ h1 {
 .dark .logo {
   background-image: url("/logo-dark.png");
 }
+
+.book-cover {
+  width: 180px; 
+  max-width: none;
+}
