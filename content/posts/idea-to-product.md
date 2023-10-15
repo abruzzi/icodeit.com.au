@@ -1,6 +1,6 @@
 ---
 title: "A story: from idea to product"
-description: "As the saying goes: all great things have small beginnings. Even the most complicated product starts with a small and simple idea..."
+description: "As the saying goes: all great things have small beginnings. Even the most complicated product starts with a small and simple idea. And during the process of implementing it, even for a simple App like To Buy, there are many details to consider and polish."
 date: 2020-10-28T15:46:12+11:00
 cover: "/posts/images/idea-to-product/poster-dark-mode.png"
 ---

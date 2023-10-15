@@ -3,16 +3,49 @@
     <a
       class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
       href="{{ `` | absURL }}"
-      >{{ site.Title }}</a
-    >
-    <a
-      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert{{ else }}[background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)]{{ end }} dark:[background-position:right]"
-    ></a>
+      >
+      <img src="/logo.png" alt="logo" style="width: 100px;">
+    </a>
   </div>
 
   <a
     class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
   ></a>
+
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    {{ $url := .RelPermalink }}<!---->
+    {{ with site.Menus.main }}
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      {{ range . }}
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="{{ .URL }}"
+        >{{ .Name }}</a
+      >
+      {{ end }}
+    </nav>
+    {{ end }}<!---->
+
+    <nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6">
+      <a class="link text-black flex items-center gap-2 text-gray-800" href="/courses">
+          <i class="fas fa-graduation-cap mr-2"></i>Courses
+      </a>
+      <a class="link text-black flex items-center gap-2 text-gray-800" href="/books">
+          <i class="fas fa-book mr-2"></i>Books
+      </a>
+      <a class="link text-black flex items-center gap-2 text-gray-800" href="https://www.youtube.com/@icodeit.juntao" target="_blank">
+          <i class="fas fa-video mr-2"></i>Videos
+      </a>
+      <a class="link text-black flex items-center gap-2 text-gray-800" href="https://juntao-qiu.medium.com/" target="_blank">
+          <i class="fab fa-medium-m mr-2"></i>Medium
+      </a>
+      <a
+      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert{{ else }}[background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)]{{ end }} dark:[background-position:right]"
+    ></a>
+  </nav>
 
   {{ $bg_color := $.Scratch.Get "bg_color" }}
   <script>
@@ -58,40 +91,5 @@
     });
   </script>
 
-  <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    {{ $url := .RelPermalink }}<!---->
-    {{ with site.Menus.main }}
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      {{ range . }}
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="{{ .URL }}"
-        >{{ .Name }}</a
-      >
-      {{ end }}
-    </nav>
-    {{ end }}<!---->
-
-    {{ with $.Scratch.Get "social_list" }}
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
-    >
-    
-      <a class="link text-black" href="https://icodeit.thinkific.com/collections" target="_blank">Courses</a>
-      <a class="link text-black" href="https://leanpub.com/u/juntao" target="_blank">Books</a>
-      <a class="link text-black" href="https://www.youtube.com/@icodeit.juntao" target="_blank">Videos</a>
-      <a class="link text-black" href="https://juntao-qiu.medium.com/" target="_blank">Medium</a>
-      {{ range . }}<!---->
-      <a
-        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./{{ . }}.svg)"
-        href="{{ if eq . `rss` }} {{ `index.xml` | absURL }} {{ else }} https://{{ . }}.com/{{ index site.Params . }} {{ end }}"
-        target="_blank"
-      ></a>
-      {{ end }}<!---->
-    </nav>
-    {{ end }}<!---->
   </div>
 </header>

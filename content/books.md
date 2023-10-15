@@ -1,5 +1,5 @@
 ---
-title: "My Books"
+title: "If you prefer reading..."
 layout: "books"
 ---
 
@@ -10,6 +10,8 @@ layout: "books"
 Apply Test-Driven principles to create scalable and maintainable React applications. This book covers a wide range of topics, including setting up a testing environment and utilizing popular testing frameworks like **Cypress**, **Jest**, and the React Testing Library. It also delves into valuable **refactoring** techniques, as well as enhancing code maintainability and readability.
 
 {{< /book >}}
+
+## Leanpub Books
 
 {{< book link="https://leanpub.com/maintainable-react" cover="/images/maintainable-react.png" title="Maintainable React: Test-Driven Development, Refacotring and Clean Code">}}
 
