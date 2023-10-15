@@ -87,3 +87,33 @@ h1 {
 .article-container {
   text-decoration: none;
 }
+
+/* Styles for smaller screens (e.g., mobile) */
+@media (max-width: 767px) {  /* Adjust 767px to your preferred breakpoint */
+  .book-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .book-container img {
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .book-container .text-content {
+      margin-left: 0;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: 36px;
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.dark .logo {
+  background-image: url("/logo-dark.png");
+}
