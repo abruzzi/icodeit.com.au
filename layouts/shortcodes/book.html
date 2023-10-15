@@ -1,0 +1,16 @@
+<a href="{{ .Get "link" }}" target="_blank" class="text-indigo-500 hover:text-indigo-700 mt-2 inline-block no-underline">
+<div class="px-4 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+    <div class="flex-shrink-0">
+        <!-- Placeholder Image, ideally you'd fetch this from Leanpub or have a local image -->
+        <img style="width: 180px; max-width: none;" class="object-cover rounded" src="{{ .Get "cover" }}" alt="{{ .Get "title" }}">
+    </div>
+    <div class="ml-6">
+        <div class="text-xl font-medium">
+            {{ .Get "title" }}
+        </div>
+        <p class="text-gray-500">
+            {{ .Inner | markdownify }}
+        </p>
+    </div>
+</div>
+</a>
