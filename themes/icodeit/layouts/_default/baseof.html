@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: {{ $.Scratch.Get `bg_color` }}"
+  lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}"
+>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    {{ partial "header.html" . }}
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-4xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="opaco mx-auto flex h-[5rem] max-w-4xl items-center px-8 text-[0.9em] opacity-60">
+      {{ partial "footer.html" . }}
+    </footer>
+  </body>
+</html>

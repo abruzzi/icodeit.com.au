@@ -1,0 +1,179 @@
+/* Place custom css here. */
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7 {
+    font-family: 'Merriweather', serif;
+}
+
+
+/* hero */
+
+.headline-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.headline-container .bio {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 4rem;
+    border: 4px solid #e23e57;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headline-container img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.headline {
+    font-size: 1.5rem;
+    flex: 1;
+}
+
+.featured {
+    padding-bottom: 2rem;
+}
+
+a.featured-article-container {
+    text-decoration: none;
+}
+
+.featured-article-container img {
+    margin-block: 0;
+}
+
+.featured-article-container figure {
+    margin-block: 0;
+}
+
+
+h1 {
+    margin-block: 1rem;
+}
+
+.subscribe-heading {
+    margin-top: 2rem;
+}
+
+/* Styles for smaller screens (e.g., mobile) */
+@media (max-width: 767px) {
+
+    /* Adjust 767px to your preferred breakpoint */
+    .book-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-container img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .book-container .text-content {
+        margin-left: 0;
+    }
+}
+
+.logo {
+    width: 100px;
+    height: 36px;
+    background-image: url("/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.dark .logo {
+    background-image: url("/logo-dark.png");
+}
+
+.book-cover {
+    width: 180px;
+    max-width: none;
+}
+
+/* subscribe */
+#subscribe {
+    margin-top: 5rem;
+}
+
+#subscribe iframe {
+    border-radius: 6px;
+}
+
+.dark .subscribe form {
+    background-color: rgb(15, 15, 15) !important;
+}
+
+.dark .subscribe .formkit-subheader,
+.formkit-header {
+    color: #d4d4d4 !important;
+}
+
+.dark .formkit-input {
+    color: #d4d4d4 !important;
+    background-color: rgb(15, 15, 15) !important;
+}
+
+.subscribe .formkit-form {
+    max-width: 960px !important;
+}
+
+
+.info-panel {
+    @apply p-4 border-l-4 border-blue-500 bg-blue-100 text-blue-700;
+  }
+  
+  .dark .info-panel {
+    @apply bg-gray-700 border-gray-600 text-gray-300;
+  }
+  
+
+
+/* Styles for smaller screens (e.g., mobile) */
+@media (max-width: 767px) {  /* Adjust 767px to your preferred breakpoint */
+  .book-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .book-container img {
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .book-container .text-content {
+      margin-left: 0;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: 36px;
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.dark .logo {
+  background-image: url("/logo-dark.png");
+}
+
+.book-cover {
+  width: 180px; 
+  max-width: none;
+}  

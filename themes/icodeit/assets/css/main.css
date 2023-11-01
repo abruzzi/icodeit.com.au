@@ -1,0 +1,30 @@
+@import 'content.css';
+@import 'code.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+
+  html {
+    --bg: transparent;
+  }
+
+  body {
+    -webkit-tap-highlight-color: transparent;
+    background: var(--bg);
+    font-weight: normal;
+    
+    @apply dark:bg-black;
+  }
+}
+
+.article-container {
+  text-decoration: none;
+}

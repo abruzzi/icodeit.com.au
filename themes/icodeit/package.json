@@ -1,0 +1,16 @@
+{
+  "name": "icodeit",
+  "version": "1.0.0",
+  "description": "A theme for content creators",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "npx tailwindcss -i assets/css/main.css -o assets/dist/app.css --watch"
+  },
+  "author": "Juntao Qiu",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "tailwindcss": "^3.3.5"
+  }
+}

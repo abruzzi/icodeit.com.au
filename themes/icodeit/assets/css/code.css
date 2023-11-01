@@ -1,0 +1,224 @@
+.highlight code {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+article pre {
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+/* Remove back quote from inline code in prose */
+.prose :where(code):not(:where([class~=not-prose] *))::before,
+.prose :where(code):not(:where([class~=not-prose] *))::after {
+    content: none;
+}
+
+/* Style inline code to resemble a token */
+.prose code:not([class]) {
+    background-color: #f2f2f2;
+    /* Light background for light mode */
+    border-radius: 4px;
+    /* Rounded corners */
+    padding: 0.1em 0.4em;
+    /* Some padding for spacing */
+    color: #e23e57;
+    /* Your brand color for the text */
+    font-size: 0.9em;
+    /* Adjust font size if necessary */
+}
+
+/* Adjustments for dark mode */
+.dark .prose code:not([class]) {
+    background-color: #2b2b2b;
+    /* Darker background for dark mode */
+    color: #e23e57;
+    /* Your brand color can remain consistent */
+}
+
+
+/* Background */
+.bg {
+    color: #333;
+    /* Dark text for better contrast on light background */
+    background-color: #f7f8f9;
+    /* Very light gray for subtle contrast */
+}
+
+/* PreWrapper */
+.chroma {
+    color: #333;
+    background-color: #f7f8f9;
+}
+
+/* Error */
+.chroma .err {
+    color: #e23e57;
+    /* Brand color for errors */
+    background-color: #ffecec;
+    /* Light red background for error */
+}
+
+/* LineHighlight */
+.chroma .hl {
+    background-color: #f0f0f0;
+    /* Slightly different from the main background for line highlight */
+}
+
+/* LineNumbersTable, LineNumbers */
+.chroma .lnt,
+.chroma .ln {
+    color: #888;
+    /* Lighter than main text for line numbers */
+}
+
+/* Keyword, KeywordConstant, KeywordDeclaration, ... */
+.chroma .k,
+.chroma .kc,
+.chroma .kd,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr,
+.chroma .kt {
+    color: #e23e57;
+    /* Brand color for keywords for consistency and brand touch */
+}
+
+/* NameAttribute, NameClass, NameDecorator, ... */
+.chroma .na,
+.chroma .nc,
+.chroma .nd,
+.chroma .nx {
+    color: #2a8fbd;
+    /* A complementary color for names */
+}
+
+/* Literal, LiteralString, ... */
+.chroma .l,
+.chroma .s,
+.chroma .s1,
+.chroma .s2 {
+    color: #228922;
+    /* A contrasting color for literals */
+}
+
+/* LiteralNumber, ... */
+.chroma .m,
+.chroma .mi,
+.chroma .mf,
+.chroma .mh,
+.chroma .mo {
+    color: #994f00;
+    /* A distinct color for numbers */
+}
+
+/* Operator, OperatorWord */
+.chroma .o,
+.chroma .ow {
+    color: #993399;
+    /* A muted purple for operators */
+}
+
+/* Comment */
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
+.chroma .cp,
+.chroma .cpf {
+    color: #888888;
+    /* Grayed out comments for reduced focus */
+}
+
+/* Use the brand color subtly for some other specific token types */
+.chroma .nt,
+.chroma .nf,
+.chroma .no {
+    color: #e23e57;
+    /* Your brand color */
+}
+
+/* For other types, you can continue to specify or just fall back to the default text color which is set in .bg */
+
+/* -------------------------------------------- */
+
+/* Dark Mode Monokai Theme with Brand Color Accent */
+
+/* Background */
+.dark .chroma {
+    color: #f8f8f2;
+    background-color: #272822;
+}
+
+/* Keywords, with brand color accent */
+.dark .chroma .k,
+.dark .chroma .kc,
+.dark .chroma .kd,
+.dark .chroma .kp,
+.dark .chroma .kr,
+.dark .chroma .kt {
+    color: #e23e57;
+}
+
+/* Function names, with brand color accent */
+.dark .chroma .nf {
+    color: #e23e57;
+}
+
+/* Other tokens with original Monokai colors */
+.dark .chroma .err {
+    color: #960050;
+    background-color: #1e0010;
+}
+
+.dark .chroma .na {
+    color: #a6e22e;
+}
+
+.dark .chroma .nc {
+    color: #a6e22e;
+}
+
+.dark .chroma .no {
+    color: #66d9ef;
+}
+
+.dark .chroma .nd {
+    color: #a6e22e;
+}
+
+.dark .chroma .ni {
+    color: #a6e22e;
+}
+
+.dark .chroma .nn {
+    color: #a6e22e;
+}
+
+.dark .chroma .nt {
+    color: #f92672;
+}
+
+.dark .chroma .nv {
+    color: #f92672;
+}
+
+.dark .chroma .m {
+    color: #ae81ff;
+}
+
+.dark .chroma .o {
+    color: #f92672;
+}
+
+.dark .chroma .s {
+    color: #e6db74;
+}
+
+.dark .chroma .c {
+    color: #75715e;
+}
+
+/* ... You can continue this pattern to further customize other tokens ... */
