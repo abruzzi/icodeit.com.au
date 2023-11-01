@@ -16,35 +16,20 @@
   <div
     class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
   >
-    {{ $url := .RelPermalink }}<!---->
-    {{ with site.Menus.main }}
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      {{ range . }}
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
-        href="{{ .URL }}"
-        >{{ .Name }}</a
-      >
-      {{ end }}
-    </nav>
-    {{ end }}<!---->
-
-    <nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6">
-      <a class="link text-black flex items-center gap-2 text-gray-800" href="/courses">
-          <i class="fas fa-graduation-cap mr-2"></i>Courses
+    <nav class="mt-12 flex justify-center space-x-10 dark:invert transition-color lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6">
+      <a class=" flex items-center gap-2 text-gray-800" href="/courses">
+          Courses
       </a>
-      <a class="link text-black flex items-center gap-2 text-gray-800" href="/books">
-          <i class="fas fa-book mr-2"></i>Books
+      <a class="flex items-center gap-2 text-gray-800" href="/books">
+          Books
       </a>
-      <a class="link text-black flex items-center gap-2 text-gray-800" href="https://www.youtube.com/@icodeit.juntao" target="_blank">
-          <i class="fas fa-video mr-2"></i>Videos
+      <a class="flex items-center gap-2 text-gray-800" href="https://www.youtube.com/@icodeit.juntao" target="_blank">
+          Videos
       </a>
-      <a class="link text-black flex items-center gap-2 text-gray-800" href="https://juntao-qiu.medium.com/" target="_blank">
-          <i class="fab fa-medium-m mr-2"></i>Medium
+      <a class="flex items-center gap-2 text-gray-800" href="https://juntao-qiu.medium.com/" target="_blank">
+          Medium
       </a>
-      <a
-      class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert{{ else }}[background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)]{{ end }} dark:[background-position:right]"
-    ></a>
+      <div class="btn-dark dark:invert ml-6 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert{{ else }}[background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)]{{ end }} dark:[background-position:right]" />
   </nav>
 
   {{ $bg_color := $.Scratch.Get "bg_color" }}
