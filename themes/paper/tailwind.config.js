@@ -4,8 +4,8 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      backgroundColor: {
-        'e23e57': '#e23e57',
+      colors: {
+        brand: '#e23e57',
       }
     },
   },

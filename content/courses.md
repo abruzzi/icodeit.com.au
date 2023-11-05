@@ -1,7 +1,11 @@
 ---
-title: "If you prefer watching..."
+title: "My Courses"
 layout: "courses"
 ---
+
+Videos offer a dynamic learning experience where you can witness live demonstrations, from utilizing keyboard shortcuts to leveraging helpful tools. They provide the convenience to easily jump to specific sections or review previous parts at your own pace. For interactive topics such as understanding CSS flex layouts, undertaking a series of minor refactorings, or troubleshooting CSS animations, videos serve as an ideal medium to bypass extensive and cumbersome text. 
+
+If you're inclined towards visual learning, consider exploring my courses and don't forget to check out my [YouTube channel](https://www.youtube.com/@icodeit.juntao) for complimentary content.
 
 ## My video courses
 

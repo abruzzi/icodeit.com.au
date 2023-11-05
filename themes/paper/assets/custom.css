@@ -41,7 +41,6 @@ h1, h2, h3, h4, h5, h6, h7 {
 .headline {
   font-size: 1.4rem;
   flex: 1;
-  font-weight: 300;
 }
 
 .featured {
@@ -108,8 +107,8 @@ h1 {
 }
 
 .logo {
-  width: 100px;
-  height: 36px;
+  width: 136px;
+  height: 48px;
   background-image: url("/logo.png");
   background-size: contain;
   background-repeat: no-repeat;

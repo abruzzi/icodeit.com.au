@@ -52,9 +52,7 @@
 </div>
 {{ end }}<!---->
 
-
-
-<h1>Recent Blogs</h1>
+<h3 class="uppercase font-light text-slate-700 dark:text-slate-200">Recent Blogs</h3>
 
 {{ end }}
 
@@ -62,10 +60,10 @@
   <div class="w-full flex flex-col space-y-3 text-gray-800 dark:text-gray-300">
 
     <!-- Title -->
-    <h3 class="flex items-center gap-x-2 text-xl font-semibold leading-tight hover:text-e23e57 transition-colors duration-200">
+    <h3 class="flex items-center gap-x-2 text-xl font-semibold leading-tight hover:text-gray-600 transition-colors duration-200">
       <!-- Category Badge -->
       {{ with .Params.category }}
-      <span class="inline-block px-2 py-1 text-xs font-semibold uppercase rounded bg-e23e57 text-white mr-1">
+      <span class="inline-block px-2 py-1 text-xs font-semibold uppercase rounded bg-gray-600 text-white mr-1">
           {{ . }}
       </span>
       {{ end }}

@@ -1,7 +1,9 @@
 ---
-title: "If you prefer reading..."
+title: "My Books"
 layout: "books"
 ---
+
+I'm passionate about writing because it allows me to delve deeply into a subject and examine it from various perspectives. For those who appreciate absorbing content at their leisure, books are undoubtedly an excellent choice. My preference is for a methodical teaching approach, leading my audience from the basics to a point where concepts of maintainability, testability, superior design, and inherent quality become clear and logical.
 
 ## My Published Books
 
