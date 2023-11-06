@@ -10,6 +10,11 @@ article pre {
 }
 
 /* Remove back quote from inline code in prose */
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before, 
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::after {
+    content: none;
+}
+
 .prose :where(code):not(:where([class~=not-prose] *))::before,
 .prose :where(code):not(:where([class~=not-prose] *))::after {
     content: none;
@@ -220,5 +225,3 @@ article pre {
 .dark .chroma .c {
     color: #75715e;
 }
-
-/* ... You can continue this pattern to further customize other tokens ... */

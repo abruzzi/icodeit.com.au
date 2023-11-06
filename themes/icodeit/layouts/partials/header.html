@@ -1,7 +1,7 @@
 <!-- <h1>{{ site.Title }}</h1>
 {{ partial "menu.html" (dict "menuID" "main" "page" .) }} -->
 
-<header class="mx-auto flex h-[5rem] max-w-4xl px-8 lg:justify-center">
+<header class="mx-auto flex h-[8rem] max-w-4xl px-8 lg:justify-center">
     <div class="relative z-50 mr-auto flex items-center">
       <a
         class="-translate-x-[1px] -translate-y-0.5 text-3xl font-bold"
@@ -21,26 +21,24 @@
     >
       {{ $url := .RelPermalink }}<!---->
       
-      
       <!---->
   
-      <nav class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6">
-        <a class="link text-black flex items-center gap-2 text-gray-800" href="/courses">
-            <i class="fas fa-graduation-cap mr-2"></i>Courses
+      <nav class="mt-12 flex justify-center space-x-10 dark:invert transition-color lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6">
+        <a class="flex items-center gap-2 text-gray-800 text-lg" href="/books">
+          Books
+      </a>
+
+        <a class="flex items-center gap-2 text-gray-800 text-lg" href="/courses">
+            Courses
         </a>
-        <a class="link text-black flex items-center gap-2 text-gray-800" href="/books">
-            <i class="fas fa-book mr-2"></i>Books
-        </a>
-        <a class="link text-black flex items-center gap-2 text-gray-800" href="https://www.youtube.com/@icodeit.juntao" target="_blank">
-            <i class="fas fa-video mr-2"></i>Videos
-        </a>
-        <a class="link text-black flex items-center gap-2 text-gray-800" href="https://juntao-qiu.medium.com/" target="_blank">
-            <i class="fab fa-medium-m mr-2"></i>Medium
-        </a>
-        <a
-        class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert{{ else }}[background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)]{{ end }} dark:[background-position:right]"
-      ></a>
+  
+        <a class="flex items-center gap-2 text-gray-800 text-lg primary-link" href="https://juntao.substack.com/" target="_blank">
+          Newsletter
+      </a>
+        
+        <div class="btn-dark ml-6 h-6 w-6 shrink-0 cursor-pointer light-dark-toggle transition-all duration-200" />
     </nav>
+    
   
     {{ $bg_color := $.Scratch.Get "bg_color" }}
     <script>

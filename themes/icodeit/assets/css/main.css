@@ -28,3 +28,10 @@
 .article-container {
   text-decoration: none;
 }
+
+/* Add this inside your <style> tag or your external CSS file if you're using @apply directive */
+@media (min-width: 1024px) {
+  .toc {
+    max-height: calc(100vh - 4rem); /* Adjust 4rem if your top spacing is different */
+  }
+}
