@@ -35,3 +35,7 @@
     max-height: calc(100vh - 4rem); /* Adjust 4rem if your top spacing is different */
   }
 }
+
+.primary-link {
+  text-decoration: underline wavy #e23e57 !important;
+}

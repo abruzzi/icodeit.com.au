@@ -186,11 +186,6 @@ h1 {
   background-image: url("/dark-mode.svg");
 }
 
-.primary-link {
-  -webkit-text-decoration: underline wavy #e23e57;
-          text-decoration: underline wavy #e23e57;
-}
-
 .highlight code {
   font-family: 'Fira Code', 'Courier New', Courier, monospace;
 }
@@ -2133,8 +2128,8 @@ body {
   width: 100%;
 }
 
-.max-w-4xl {
-  max-width: 56rem;
+.max-w-5xl {
+  max-width: 64rem;
 }
 
 .flex-shrink {
@@ -3901,6 +3896,11 @@ body {
     max-height: calc(100vh - 4rem);
     /* Adjust 4rem if your top spacing is different */
   }
+}
+
+.primary-link {
+  -webkit-text-decoration: underline wavy #e23e57 !important;
+          text-decoration: underline wavy #e23e57 !important;
 }
 
 .hover\:prose-lg:hover {
