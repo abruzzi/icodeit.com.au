@@ -1,29 +1,6 @@
+@import 'base.css';
 @import 'content.css';
 @import 'code.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-@layer base {
-  html,
-  body {
-    @apply h-full;
-  }
-
-  html {
-    --bg: transparent;
-  }
-
-  body {
-    -webkit-tap-highlight-color: transparent;
-    background: var(--bg);
-    font-weight: normal;
-    
-    @apply dark:bg-black;
-  }
-}
 
 .article-container {
   text-decoration: none;
@@ -38,4 +15,10 @@
 
 .primary-link {
   text-decoration: underline wavy #e23e57 !important;
+}
+
+.section-heading {
+  letter-spacing: 2px;
+  font-family: 'Inter';
+  font-weight: normal;
 }

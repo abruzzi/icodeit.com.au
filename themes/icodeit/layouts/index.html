@@ -1,17 +1,16 @@
 {{ define "main" }}
   <div class="container mx-auto">
     {{ partialCached "bio.html" . }}
-    <h2 class="text-xl text-brand mb-4 uppercase">Recent Articles</h2>
-    <div role="list">
+    <h2 class="text-xl text-brand mb-4 uppercase section-heading">Recent Articles</h2>
+    <div role="list" class="flex flex-col space-y-6">
       {{ range first 5 (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
-
       
         <div class="w-full flex flex-col space-y-3 text-gray-800 dark:text-gray-300" role="listitem">
       
           <!-- Title -->
           
           <h3 class="text-xl font-semibold leading-tight transition-colors duration-200 hover:text-brand">
-            <a href="{{ .Permalink }}" class="article-container block rounded-md flex items-center gap-x-2">
+            <a href="{{ .Permalink }}" class="article-container block rounded-md flex items-center gap-x-2 hover:text-brand transition-color duration-200">
             <!-- Category Badge -->
             {{ with .Params.category }}
             <span class="inline-block px-2 py-1 text-xs font-semibold uppercase rounded bg-slate-700 text-white mr-1">
@@ -41,8 +40,8 @@
     </a>    
 
     <div class="subscribe" id="subscribe">
-      <h2 class="subscribe-heading text-xl text-brand mb-4 uppercase">Subscribe</h1>
+      <h2 class="subscribe-heading text-xl text-brand mb-4 uppercase section-heading">Subscribe</h2>
       <iframe src="https://juntao.substack.com/embed" width="100%" height="320" style="border:1px solid transparent; background-color:#F5F5F5;" frameborder="0" scrolling="no"></iframe>
-    </div>    
+    </div> 
   </div>
 {{ end }}

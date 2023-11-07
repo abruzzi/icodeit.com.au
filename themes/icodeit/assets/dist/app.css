@@ -1,438 +1,6 @@
-/* Place custom css here. */
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-h7 {
-  font-family: 'Merriweather', serif;
-}
-
-/* hero */
-
-.headline-container {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.headline-container .bio {
-  width: 8rem;
-  height: 8rem;
-  display: inline-block;
-  background: linear-gradient(45deg, #e23e57, #f5a6b1);
-  padding: 4px;
-  border-radius: 50%;
-}
-
-.headline-container img {
-  border-radius: 50%;
-  width: 100%;
-  display: block;
-  margin: 0;
-}
-
-.headline {
-  font-size: 1.5rem;
-  flex: 1;
-}
-
-.featured {
-  padding-bottom: 2rem;
-}
-
-a.featured-article-container {
-  text-decoration: none;
-}
-
-.featured-article-container img {
-  margin-block: 0;
-}
-
-.featured-article-container figure {
-  margin-block: 0;
-}
-
-h1 {
-  margin-block: 1rem;
-}
-
-.subscribe-heading {
-  margin-top: 2rem;
-}
-
-/* Styles for smaller screens (e.g., mobile) */
-
-@media (max-width: 767px) {
-  /* Adjust 767px to your preferred breakpoint */
-
-  .book-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .book-container img {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .book-container .text-content {
-    margin-left: 0;
-  }
-}
-
-.book-cover {
-  width: 180px;
-  max-width: none;
-}
-
-/* subscribe */
-
-#subscribe {
-  margin-top: 5rem;
-}
-
-#subscribe iframe {
-  border-radius: 6px;
-}
-
-.dark .subscribe form {
-  background-color: rgb(15, 15, 15) !important;
-}
-
-.dark .subscribe .formkit-subheader,
-.formkit-header {
-  color: #d4d4d4 !important;
-}
-
-.dark .formkit-input {
-  color: #d4d4d4 !important;
-  background-color: rgb(15, 15, 15) !important;
-}
-
-.subscribe .formkit-form {
-  max-width: 960px !important;
-}
-
-.info-panel {
-  border-left-width: 4px;
-  --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
-  padding: 1rem;
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
-}
-
-.dark .info-panel {
-  --tw-border-opacity: 1;
-  border-color: rgb(75 85 99 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity));
-}
-
-/* Styles for smaller screens (e.g., mobile) */
-
-@media (max-width: 767px) {
-  /* Adjust 767px to your preferred breakpoint */
-
-  .book-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .book-container img {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .book-container .text-content {
-    margin-left: 0;
-  }
-}
-
-.logo {
-  width: 140px;
-  height: 48px;
-  background-image: url("/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
-.dark .logo {
-  background-image: url("/logo-dark.png");
-}
-
-.book-cover {
-  width: 180px;
-  max-width: none;
-}
-
-.light-dark-toggle {
-  background-image: url("/light-mode.svg");
-}
-
-.dark .light-dark-toggle {
-  background-image: url("/dark-mode.svg");
-}
-
-.highlight code {
-  font-family: 'Fira Code', 'Courier New', Courier, monospace;
-}
-
-article pre {
-  box-shadow: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0;
-}
-
-/* Remove back quote from inline code in prose */
-
-.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before, 
-.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::after {
-  content: none;
-}
-
-.prose :where(code):not(:where([class~=not-prose] *))::before,
-.prose :where(code):not(:where([class~=not-prose] *))::after {
-  content: none;
-}
-
-/* Style inline code to resemble a token */
-
-.prose code:not([class]) {
-  background-color: #f2f2f2;
-  /* Light background for light mode */
-  border-radius: 4px;
-  /* Rounded corners */
-  padding: 0.1em 0.4em;
-  /* Some padding for spacing */
-  color: #e23e57;
-  /* Your brand color for the text */
-  font-size: 0.9em;
-  /* Adjust font size if necessary */
-}
-
-/* Adjustments for dark mode */
-
-.dark .prose code:not([class]) {
-  background-color: #2b2b2b;
-  /* Darker background for dark mode */
-  color: #e23e57;
-  /* Your brand color can remain consistent */
-}
-
-/* Background */
-
-.bg {
-  color: #333;
-  /* Dark text for better contrast on light background */
-  background-color: #f7f8f9;
-  /* Very light gray for subtle contrast */
-}
-
-/* PreWrapper */
-
-.chroma {
-  color: #333;
-  background-color: #f7f8f9;
-}
-
-/* Error */
-
-.chroma .err {
-  color: #e23e57;
-  /* Brand color for errors */
-  background-color: #ffecec;
-  /* Light red background for error */
-}
-
-/* LineHighlight */
-
-.chroma .hl {
-  background-color: #f0f0f0;
-  /* Slightly different from the main background for line highlight */
-}
-
-/* LineNumbersTable, LineNumbers */
-
-.chroma .lnt,
-.chroma .ln {
-  color: #888;
-  /* Lighter than main text for line numbers */
-}
-
-/* Keyword, KeywordConstant, KeywordDeclaration, ... */
-
-.chroma .k,
-.chroma .kc,
-.chroma .kd,
-.chroma .kn,
-.chroma .kp,
-.chroma .kr,
-.chroma .kt {
-  color: #e23e57;
-  /* Brand color for keywords for consistency and brand touch */
-}
-
-/* NameAttribute, NameClass, NameDecorator, ... */
-
-.chroma .na,
-.chroma .nc,
-.chroma .nd,
-.chroma .nx {
-  color: #2a8fbd;
-  /* A complementary color for names */
-}
-
-/* Literal, LiteralString, ... */
-
-.chroma .l,
-.chroma .s,
-.chroma .s1,
-.chroma .s2 {
-  color: #228922;
-  /* A contrasting color for literals */
-}
-
-/* LiteralNumber, ... */
-
-.chroma .m,
-.chroma .mi,
-.chroma .mf,
-.chroma .mh,
-.chroma .mo {
-  color: #994f00;
-  /* A distinct color for numbers */
-}
-
-/* Operator, OperatorWord */
-
-.chroma .o,
-.chroma .ow {
-  color: #993399;
-  /* A muted purple for operators */
-}
-
-/* Comment */
-
-.chroma .c,
-.chroma .ch,
-.chroma .cm,
-.chroma .c1,
-.chroma .cs,
-.chroma .cp,
-.chroma .cpf {
-  color: #888888;
-  /* Grayed out comments for reduced focus */
-}
-
-/* Use the brand color subtly for some other specific token types */
-
-.chroma .nt,
-.chroma .nf,
-.chroma .no {
-  color: #e23e57;
-  /* Your brand color */
-}
-
-/* For other types, you can continue to specify or just fall back to the default text color which is set in .bg */
-
-/* -------------------------------------------- */
-
-/* Dark Mode Monokai Theme with Brand Color Accent */
-
-/* Background */
-
-.dark .chroma {
-  color: #f8f8f2;
-  background-color: #272822;
-}
-
-/* Keywords, with brand color accent */
-
-.dark .chroma .k,
-.dark .chroma .kc,
-.dark .chroma .kd,
-.dark .chroma .kp,
-.dark .chroma .kr,
-.dark .chroma .kt {
-  color: #e23e57;
-}
-
-/* Function names, with brand color accent */
-
-.dark .chroma .nf {
-  color: #e23e57;
-}
-
-/* Other tokens with original Monokai colors */
-
-.dark .chroma .err {
-  color: #960050;
-  background-color: #1e0010;
-}
-
-.dark .chroma .na {
-  color: #a6e22e;
-}
-
-.dark .chroma .nc {
-  color: #a6e22e;
-}
-
-.dark .chroma .no {
-  color: #66d9ef;
-}
-
-.dark .chroma .nd {
-  color: #a6e22e;
-}
-
-.dark .chroma .ni {
-  color: #a6e22e;
-}
-
-.dark .chroma .nn {
-  color: #a6e22e;
-}
-
-.dark .chroma .nt {
-  color: #f92672;
-}
-
-.dark .chroma .nv {
-  color: #f92672;
-}
-
-.dark .chroma .m {
-  color: #ae81ff;
-}
-
-.dark .chroma .o {
-  color: #f92672;
-}
-
-.dark .chroma .s {
-  color: #e6db74;
-}
-
-.dark .chroma .c {
-  color: #75715e;
-}
-
-/* ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com */
+/*
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
+*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -1769,43 +1337,43 @@ body {
   margin-bottom: 0;
 }
 
-.prose-neutral {
-  --tw-prose-body: #404040;
-  --tw-prose-headings: #171717;
-  --tw-prose-lead: #525252;
-  --tw-prose-links: #171717;
-  --tw-prose-bold: #171717;
-  --tw-prose-counters: #737373;
-  --tw-prose-bullets: #d4d4d4;
-  --tw-prose-hr: #e5e5e5;
-  --tw-prose-quotes: #171717;
-  --tw-prose-quote-borders: #e5e5e5;
-  --tw-prose-captions: #737373;
-  --tw-prose-kbd: #171717;
-  --tw-prose-kbd-shadows: 23 23 23;
-  --tw-prose-code: #171717;
-  --tw-prose-pre-code: #e5e5e5;
-  --tw-prose-pre-bg: #262626;
-  --tw-prose-th-borders: #d4d4d4;
-  --tw-prose-td-borders: #e5e5e5;
-  --tw-prose-invert-body: #d4d4d4;
+.prose-gray {
+  --tw-prose-body: #374151;
+  --tw-prose-headings: #111827;
+  --tw-prose-lead: #4b5563;
+  --tw-prose-links: #111827;
+  --tw-prose-bold: #111827;
+  --tw-prose-counters: #6b7280;
+  --tw-prose-bullets: #d1d5db;
+  --tw-prose-hr: #e5e7eb;
+  --tw-prose-quotes: #111827;
+  --tw-prose-quote-borders: #e5e7eb;
+  --tw-prose-captions: #6b7280;
+  --tw-prose-kbd: #111827;
+  --tw-prose-kbd-shadows: 17 24 39;
+  --tw-prose-code: #111827;
+  --tw-prose-pre-code: #e5e7eb;
+  --tw-prose-pre-bg: #1f2937;
+  --tw-prose-th-borders: #d1d5db;
+  --tw-prose-td-borders: #e5e7eb;
+  --tw-prose-invert-body: #d1d5db;
   --tw-prose-invert-headings: #fff;
-  --tw-prose-invert-lead: #a3a3a3;
+  --tw-prose-invert-lead: #9ca3af;
   --tw-prose-invert-links: #fff;
   --tw-prose-invert-bold: #fff;
-  --tw-prose-invert-counters: #a3a3a3;
-  --tw-prose-invert-bullets: #525252;
-  --tw-prose-invert-hr: #404040;
-  --tw-prose-invert-quotes: #f5f5f5;
-  --tw-prose-invert-quote-borders: #404040;
-  --tw-prose-invert-captions: #a3a3a3;
+  --tw-prose-invert-counters: #9ca3af;
+  --tw-prose-invert-bullets: #4b5563;
+  --tw-prose-invert-hr: #374151;
+  --tw-prose-invert-quotes: #f3f4f6;
+  --tw-prose-invert-quote-borders: #374151;
+  --tw-prose-invert-captions: #9ca3af;
   --tw-prose-invert-kbd: #fff;
   --tw-prose-invert-kbd-shadows: 255 255 255;
   --tw-prose-invert-code: #fff;
-  --tw-prose-invert-pre-code: #d4d4d4;
+  --tw-prose-invert-pre-code: #d1d5db;
   --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
-  --tw-prose-invert-th-borders: #525252;
-  --tw-prose-invert-td-borders: #404040;
+  --tw-prose-invert-th-borders: #4b5563;
+  --tw-prose-invert-td-borders: #374151;
 }
 
 .sr-only {
@@ -2698,6 +2266,18 @@ body {
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 1;
 }
@@ -3530,11 +3110,6 @@ body {
   color: rgb(100 116 139 / var(--tw-text-opacity));
 }
 
-.text-slate-600 {
-  --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -3881,8 +3456,524 @@ body {
   content: var(--tw-content);
 }
 
+.not-ready * {
+  transition-property: none !important;
+}
+
+.btn-menu::before,
+    .btn-menu::after {
+  display: block;
+  height: 2px;
+  width: 1.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  transition-duration: 200ms;
+  --tw-content: '';
+  content: var(--tw-content);
+}
+
+:is(.dark .btn-menu)::before,:is(.dark 
+    .btn-menu)::after {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.nav-wrapper {
+  background: var(--bg);
+}
+
+.open {
+  overflow: hidden;
+}
+
+.open .btn-menu::before {
+  width: 1.5rem;
+  --tw-translate-y: 5.5px;
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.open .btn-menu::after {
+  width: 1.5rem;
+  --tw-translate-y: -5.5px;
+  --tw-rotate: -45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.open .nav-wrapper {
+  top: 0px;
+}
+
+article {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 1.9;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+:is(.dark article) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+article pre {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding: 2rem !important;
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+article blockquote {
+  padding-left: calc(2rem - 3px) !important;
+  margin-left: calc(2rem * -1) !important;
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity)) !important;
+}
+
+:is(.dark article blockquote) {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity)) !important;
+}
+
 .\[background\:var\(--url\)_center_center\/cover_no-repeat\] {
   background: var(--url) center center/cover no-repeat;
+}
+
+/* Place custom css here. */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7 {
+  font-family: 'Merriweather', serif;
+}
+
+/* hero */
+
+.headline-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.headline-container .bio {
+  width: 8rem;
+  height: 8rem;
+  display: inline-block;
+  background: linear-gradient(45deg, #e23e57, #f5a6b1);
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.headline-container img {
+  border-radius: 50%;
+  width: 100%;
+  display: block;
+  margin: 0;
+}
+
+.headline {
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.featured {
+  padding-bottom: 2rem;
+}
+
+a.featured-article-container {
+  text-decoration: none;
+}
+
+.featured-article-container img {
+  margin-block: 0;
+}
+
+.featured-article-container figure {
+  margin-block: 0;
+}
+
+h1 {
+  margin-block: 1rem;
+}
+
+.subscribe-heading {
+  margin-top: 2rem;
+}
+
+/* Styles for smaller screens (e.g., mobile) */
+
+@media (max-width: 767px) {
+  /* Adjust 767px to your preferred breakpoint */
+
+  .book-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-container img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .book-container .text-content {
+    margin-left: 0;
+  }
+}
+
+.book-cover {
+  width: 180px;
+  max-width: none;
+}
+
+/* subscribe */
+
+#subscribe {
+  margin-top: 5rem;
+}
+
+#subscribe iframe {
+  border-radius: 6px;
+}
+
+.dark .subscribe form {
+  background-color: rgb(15, 15, 15) !important;
+}
+
+.dark .subscribe .formkit-subheader,
+.formkit-header {
+  color: #d4d4d4 !important;
+}
+
+.dark .formkit-input {
+  color: #d4d4d4 !important;
+  background-color: rgb(15, 15, 15) !important;
+}
+
+.subscribe .formkit-form {
+  max-width: 960px !important;
+}
+
+.info-panel {
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+  padding: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
+.dark .info-panel {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+/* Styles for smaller screens (e.g., mobile) */
+
+@media (max-width: 767px) {
+  /* Adjust 767px to your preferred breakpoint */
+
+  .book-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-container img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .book-container .text-content {
+    margin-left: 0;
+  }
+}
+
+.logo {
+  width: 140px;
+  height: 48px;
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.dark .logo {
+  background-image: url("/logo-dark.png");
+}
+
+.book-cover {
+  width: 180px;
+  max-width: none;
+}
+
+.light-dark-toggle {
+  background-image: url("/light-mode.svg");
+}
+
+.dark .light-dark-toggle {
+  background-image: url("/dark-mode.svg");
+}
+
+.highlight code {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+article pre {
+  box-shadow: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
+
+/* Remove back quote from inline code in prose */
+
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before, 
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::after {
+  content: none;
+}
+
+.prose :where(code):not(:where([class~=not-prose] *))::before,
+.prose :where(code):not(:where([class~=not-prose] *))::after {
+  content: none;
+}
+
+/* Style inline code to resemble a token */
+
+.prose code:not([class]) {
+  background-color: #f2f2f2;
+  /* Light background for light mode */
+  border-radius: 4px;
+  /* Rounded corners */
+  padding: 0.1em 0.4em;
+  /* Some padding for spacing */
+  color: #e23e57;
+  /* Your brand color for the text */
+  font-size: 0.9em;
+  /* Adjust font size if necessary */
+}
+
+/* Adjustments for dark mode */
+
+.dark .prose code:not([class]) {
+  background-color: #2b2b2b;
+  /* Darker background for dark mode */
+  color: #e23e57;
+  /* Your brand color can remain consistent */
+}
+
+/* Background */
+
+.bg {
+  color: #333;
+  /* Dark text for better contrast on light background */
+  background-color: #f7f8f9;
+  /* Very light gray for subtle contrast */
+}
+
+/* PreWrapper */
+
+.chroma {
+  color: #333;
+  background-color: #f7f8f9;
+}
+
+/* Error */
+
+.chroma .err {
+  color: #e23e57;
+  /* Brand color for errors */
+  background-color: #ffecec;
+  /* Light red background for error */
+}
+
+/* LineHighlight */
+
+.chroma .hl {
+  background-color: #f0f0f0;
+  /* Slightly different from the main background for line highlight */
+}
+
+/* LineNumbersTable, LineNumbers */
+
+.chroma .lnt,
+.chroma .ln {
+  color: #888;
+  /* Lighter than main text for line numbers */
+}
+
+/* Keyword, KeywordConstant, KeywordDeclaration, ... */
+
+.chroma .k,
+.chroma .kc,
+.chroma .kd,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr,
+.chroma .kt {
+  color: #e23e57;
+  /* Brand color for keywords for consistency and brand touch */
+}
+
+/* NameAttribute, NameClass, NameDecorator, ... */
+
+.chroma .na,
+.chroma .nc,
+.chroma .nd,
+.chroma .nx {
+  color: #2a8fbd;
+  /* A complementary color for names */
+}
+
+/* Literal, LiteralString, ... */
+
+.chroma .l,
+.chroma .s,
+.chroma .s1,
+.chroma .s2 {
+  color: #228922;
+  /* A contrasting color for literals */
+}
+
+/* LiteralNumber, ... */
+
+.chroma .m,
+.chroma .mi,
+.chroma .mf,
+.chroma .mh,
+.chroma .mo {
+  color: #994f00;
+  /* A distinct color for numbers */
+}
+
+/* Operator, OperatorWord */
+
+.chroma .o,
+.chroma .ow {
+  color: #993399;
+  /* A muted purple for operators */
+}
+
+/* Comment */
+
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
+.chroma .cp,
+.chroma .cpf {
+  color: #888888;
+  /* Grayed out comments for reduced focus */
+}
+
+/* Use the brand color subtly for some other specific token types */
+
+.chroma .nt,
+.chroma .nf,
+.chroma .no {
+  color: #e23e57;
+  /* Your brand color */
+}
+
+/* For other types, you can continue to specify or just fall back to the default text color which is set in .bg */
+
+/* -------------------------------------------- */
+
+/* Dark Mode Monokai Theme with Brand Color Accent */
+
+/* Background */
+
+.dark .chroma {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+
+/* Keywords, with brand color accent */
+
+.dark .chroma .k,
+.dark .chroma .kc,
+.dark .chroma .kd,
+.dark .chroma .kp,
+.dark .chroma .kr,
+.dark .chroma .kt {
+  color: #e23e57;
+}
+
+/* Function names, with brand color accent */
+
+.dark .chroma .nf {
+  color: #e23e57;
+}
+
+/* Other tokens with original Monokai colors */
+
+.dark .chroma .err {
+  color: #960050;
+  background-color: #1e0010;
+}
+
+.dark .chroma .na {
+  color: #a6e22e;
+}
+
+.dark .chroma .nc {
+  color: #a6e22e;
+}
+
+.dark .chroma .no {
+  color: #66d9ef;
+}
+
+.dark .chroma .nd {
+  color: #a6e22e;
+}
+
+.dark .chroma .ni {
+  color: #a6e22e;
+}
+
+.dark .chroma .nn {
+  color: #a6e22e;
+}
+
+.dark .chroma .nt {
+  color: #f92672;
+}
+
+.dark .chroma .nv {
+  color: #f92672;
+}
+
+.dark .chroma .m {
+  color: #ae81ff;
+}
+
+.dark .chroma .o {
+  color: #f92672;
+}
+
+.dark .chroma .s {
+  color: #e6db74;
+}
+
+.dark .chroma .c {
+  color: #75715e;
 }
 
 .article-container {
@@ -3901,6 +3992,12 @@ body {
 .primary-link {
   -webkit-text-decoration: underline wavy #e23e57 !important;
           text-decoration: underline wavy #e23e57 !important;
+}
+
+.section-heading {
+  letter-spacing: 2px;
+  font-family: 'Inter';
+  font-weight: normal;
 }
 
 .hover\:prose-lg:hover {
