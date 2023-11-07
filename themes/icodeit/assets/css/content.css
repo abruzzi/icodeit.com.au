@@ -17,28 +17,6 @@ h7 {
 
 /* hero */
 
-.headline-container {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.headline-container .bio {
-    width: 8rem;
-    height: 8rem;
-    display: inline-block;
-    background: linear-gradient(45deg, #e23e57, #f5a6b1);
-    padding: 4px;
-    border-radius: 50%;  
-  }
-  
-  .headline-container img {
-    border-radius: 50%;
-    width: 100%;
-    display: block;
-    margin: 0;
-  }
-
 .headline {
     font-size: 1.5rem;
     flex: 1;
