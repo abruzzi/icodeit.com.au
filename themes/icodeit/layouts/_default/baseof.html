@@ -3,6 +3,15 @@
 {{ $.Scratch.Delete "bg_color" }}<!---->
 {{ $.Scratch.Set "bg_color" "#fff" }}<!---->
 
+
+<!-- social_list -->
+{{ $social_params := slice "twitter" "github" "rss" }}<!---->
+{{ range $social_params }}<!---->
+{{ if isset site.Params . }}<!---->
+{{ $.Scratch.Add "social_list" (slice .) }}<!---->
+{{ end }}<!---->
+{{ end }}<!---->
+
 <html
   class="not-ready text-sm lg:text-base"
   style="--bg: {{ $.Scratch.Get `bg_color` }}">
@@ -19,7 +28,7 @@
       {{ block "main" . }}{{ end }}
     </main>
 
-    <footer class="opaco mx-auto flex h-[5rem] max-w-5xl items-center px-8 text-[0.9em] opacity-60">
+    <footer class="opaco mx-auto flex h-[8rem] max-w-5xl items-center px-8 text-[0.9em] opacity-60">
       {{ partial "footer.html" . }}
     </footer>
   </body>

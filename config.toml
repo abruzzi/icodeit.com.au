@@ -4,18 +4,12 @@ title = 'I Code It'
 theme = "icodeit"
 
 [params]
-  # color style
-  color = 'gray'                 # linen, wheat, gray, light
   disableHLJS = true
 
   # header social icons
-  twitter = 'JuntaoQiu'     # twitter.com/YOUR_TWITTER_ID
-  github = 'abruzzi'       # github.com/YOUR_GITHUB_ID
-
-  # home page profile
-  name = 'Juntao Qiu'
-  bio = 'Hey, my name is Juntao. I am a developer, a YouTuber and an author. I help people write better code.'
-  
+  twitter = 'JuntaoQiu'
+  github = 'abruzzi'
+  rss = true
 
 [markup]
   [markup.highlight]
