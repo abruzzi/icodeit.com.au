@@ -4,7 +4,7 @@
         <img class="book-cover object-cover rounded" src="{{ .Get "cover" }}" alt="{{ .Get "title" }}">
     </div>
     <div class="ml-6">
-        <a href="{{ .Get "link" }}" target="_blank" class="mt-2 inline-block no-underline"></a>
+        <a href="{{ .Get "link" }}" target="_blank" class="mt-2 inline-block no-underline">
         <h3 class="flex items-center gap-x-2 text-xl font-semibold leading-tight hover:text-brand transition-colors duration-200">
         <!-- Category Badge -->
         {{ with .Params.category }}
@@ -16,7 +16,7 @@
         </h3>
     </a>
 
-        <p class="text-base text-slate-600 dark:text-slate-300 font-light">
+        <p class="text-base font-light">
             {{ .Inner | markdownify }}
         </p>
     </div>
