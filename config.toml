@@ -1,7 +1,7 @@
 baseURL = 'https://icodeit.com.au/'
 languageCode = 'en-us'
 title = 'I Code It'
-theme = "paper"
+theme = "icodeit"
 
 [params]
   # color style
