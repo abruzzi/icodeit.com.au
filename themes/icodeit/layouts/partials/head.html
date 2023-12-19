@@ -9,22 +9,44 @@
 <!-- Title -->
 <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
 
-<meta name="description" content="I Code It is focusing on maintainable React code and masterful use of frontend technologies like Refactoring and Test-Driven Development." />
 <meta name="keywords" content="Software Engineering, Developer growth, Maintainable React, React, Test-Driven Development, Frontend development, coding best practices, software design patterns, I Code It" />
 <meta name="author" content="Juntao Qiu">
 <link rel="canonical" href="https://icodeit.com.au" />
-<meta property="og:title" content="I Code It" />
-<meta property="og:description" content="I Code It is focusing on maintainable React code and masterful use of frontend technologies like Refactoring and Test-Driven Development." />
+
+<meta name="theme-color" />
+{{ if eq .Kind "page" }}
+<meta name="description" content="{{ .Summary }}" />
+
+<meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}" />
+<meta property="og:description" content="{{ .Summary }}" />
 <meta property="og:url" content="https://icodeit.com.au" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="URL_TO_A_FEATURED_IMAGE" /> <!-- Replace with the actual image URL -->
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Juntao Qiu - I help developers write better code. Developer, Author, Creator." />
-<meta name="twitter:description" content="I Code It is focusing on maintainable React code and masterful use of frontend technologies like Refactoring and Test-Driven Development." />
+<meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}" />
+<meta name="twitter:description" content="{{ .Summary }}" />
 <meta name="twitter:url" content="https://icodeit.com.au" />
 <meta name="twitter:creator" content="@JuntaoQiu" />
 <meta name="twitter:image" content="URL_TO_A_TWITTER_CARD_IMAGE" /> <!-- Replace with the actual image URL -->
+
+{{ else }}
+<meta name="description" content="{{ site.Params.description }}" />
+
+<meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}" />
+<meta property="og:description" content="{{ site.Params.description }}" />
+<meta property="og:url" content="https://icodeit.com.au" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="URL_TO_A_FEATURED_IMAGE" /> <!-- Replace with the actual image URL -->
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}" />
+<meta name="twitter:description" content="{{ site.Params.description }}" />
+<meta name="twitter:url" content="https://icodeit.com.au" />
+<meta name="twitter:creator" content="@JuntaoQiu" />
+<meta name="twitter:image" content="URL_TO_A_TWITTER_CARD_IMAGE" /> <!-- Replace with the actual image URL -->
+
+{{ end }}
 
 {{ range $.Scratch.Get "social_list" }}
 <link rel="preload" as="image" href="{{ printf `%s.svg` . | absURL }}" />
